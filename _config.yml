@@ -1,11 +1,7 @@
-title: YAIB
+title: Thought Dumpster
 description: Yet Another Internet Blog
 navbar-links:
-  About Me: "aboutme"
-  Resources:
-    - Beautiful Jekyll: "http://deanattali.com/beautiful-jekyll/"
-    - Learn markdown: "http://www.markdowntutorial.com/"
-  Authors home: "http://deanattali.com"
+  About Me: "about"
 
 avatar: "/img/avatar.jpeg"
 navbar-col: "#F5F5F5"
