@@ -1,10 +1,10 @@
 ---
 layout: page
-title: About
-subtitle: Something about Alex
+title: About Me
+subtitle: Facts and myths, nah, definitely facts
 ---
 
-#### Well, hello there! This page is about me, Alex. I am a passionate software developer and an avid world traveler.
+### Well, hello there! This page is about me, Alex. I am a passionate software developer and an avid world traveler.
 
 My first encounter with a computer happened long ago, in the era of “_DOS_” (queue mysterious music). My first PC was a USSR-made  _8086_clone named  _EC1841_  which ran DOS 4.01. That is when I started playing along with  _Turbo Pascal_  and 8086 Assembler (_TASM_). I avoided Turbo C dues to its very long compile times.
 
