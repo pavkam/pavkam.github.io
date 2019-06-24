@@ -6,7 +6,7 @@ subtitle: Mildly interesting stuff about me
 
 Hello,
 
-My name is *Alex*. I was born in post-soviet _Republic of Moldova_. After finishing high school, I continued my technical education in _Romania_ where I lived for a good chunk of my life. But I could not stop there so _Ireland_ was my home for a while; then Brazil - where I lived with my beautiful wife for a while. 
+My name is *Alex*. I was born in post-soviet _Republic of Moldova_. After finishing high school, I continued my technical education in _Romania_ where I lived for a good chunk of my life. But I could not stop there - so _Ireland_ was my home for a while; then Brazil - where I lived with my beautiful wife.
 
 **As you might gather, I enjoy travelling and experiencing new places.**
 
@@ -14,6 +14,6 @@ Since the age of ten I started teaching myself computer programming on an old 80
 
 Twenty years later I am still enjoying my profession - these days - using different tech stacks and and cloud environments.
 
-Hope you found what you were looking for. But, if code is what you're looking for then go to my [GitHub](https://github.com/pavkam) page.
+And, if code is what you're looking for then go to my [GitHub](https://github.com/pavkam) page.
 
 Enjoy!
