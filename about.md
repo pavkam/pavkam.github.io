@@ -1,17 +1,19 @@
 ---
 layout: page
-title: About Me
-subtitle: Facts and myths, nah, definitely facts
+title: About
+subtitle: Mildly interesting stuff about me
 ---
 
-### Well, hello there! This page is about me, Alex. I am a passionate software developer and an avid world traveler.
+Hello,
 
-My first encounter with a computer happened long ago, in the era of “_DOS_” (queue mysterious music). My first PC was a USSR-made  _8086_clone named  _EC1841_  which ran DOS 4.01. That is when I started playing along with  _Turbo Pascal_  and 8086 Assembler (_TASM_). I avoided Turbo C dues to its very long compile times.
+My name is *Alex*. I was born in post-soviet _Republic of Moldova_. After finishing high school, I continued my technical education in _Romania_ where I lived for a good chunk of my life. But I could not stop there so _Ireland_ was my home for a while; then Brazil - where I lived with my beautiful wife for a while. 
 
-Many years later, my next transition was straight to Windows 2000 running on Pentium III chip. This finally opened up the world of programming possibilities to be. Delphi 4 was the next logical successor to Turbo Pascal, Linux seemed like a gorgeous new non-Microsoft thing, Scripting languages like Bash and TCL showed their appeal.
+**As you might gather, I enjoy travelling and experiencing new places.**
 
-Around 2008 I got the chance to work for  **Embarcadero Technologies**  on Delphi (RAD Studio) along-side the same developers that actually built the platform I loved so much since was a child. That was a great achievement for me professionally. My blog was started during that period!
+Since the age of ten I started teaching myself computer programming on an old 8086 soviet clone (_EC1841_). It was the era of “_DOS_”, _x86 assembly_ and of course _Turbo Pascal_. Since then I programmed in _Delphi, C/C++, C#, F#_, etc.
 
-Years later, here I am, writing about myself on this blog. At this stage, professionally, I am still neck-deep into Microsoft technologies like Azure Cloud and .NET Core but also passionately advocating for open source technologies.
+Twenty years later I am still enjoying my profession - these days - using different tech stacks and and cloud environments.
 
-You can check out my public  **LinkedIn**  profile by clicking  [here](http://www.linkedin.com/in/ciobanua). Also, check out my [GitHub](https://github.com/pavkam) page for all the projects I was and am involved with.
+Hope you found what you were looking for. But, if code is what you're looking for then go to my [GitHub](https://github.com/pavkam) page.
+
+Enjoy!
