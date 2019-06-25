@@ -24,14 +24,15 @@ p {
 h1,h2,h3,h4,h5,h6 {
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 800;
+  color: {{ site.page-header-text-col }};
 }
 a {
   color: {{ site.link-col }};
-  text-decoration: none;
 }
 a:hover,
 a:focus {
   color: {{ site.hover-col }};
+  text-decoration: none;
 }
 blockquote {
   color: #808080;
