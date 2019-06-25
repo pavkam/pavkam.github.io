@@ -10,7 +10,7 @@ navbar-children-col: "#353535"
 page-col: "#2a2a29"
 page-text-col: "#f0e7d5"
 page-header-text-col: "#e8e8e8"
-page-post-preview-col: "#808080";
+page-post-preview-col: "#808080"
 link-col: "#ffcc00"
 hover-col: "#0085A1"
 footer-col: "#353535"
