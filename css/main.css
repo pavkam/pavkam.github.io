@@ -347,7 +347,7 @@ footer .theme-by {
 }
 .post-preview .post-meta,
 .post-heading .post-meta {
-  color: #808080;
+  color: {{ site.page-post-preview-col }};
   font-size: 18px;
   font-style: italic;
   margin: 0 0 10px;
