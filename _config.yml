@@ -4,13 +4,13 @@ navbar-links:
   About Me: "about"
 
 avatar: "/img/avatar.jpeg"
-navbar-col: "#F5F5F5"
+navbar-col: "#353535"
 navbar-text-col: "#404040"
 navbar-children-col: "#F5F5F5"
 page-col: "#2a2a29"
 link-col: "#ffcc00"
 hover-col: "#0085A1"
-footer-col: "#F5F5F5"
+footer-col: "#353535"
 footer-text-col: "#777777"
 footer-link-col: "#404040"
 
