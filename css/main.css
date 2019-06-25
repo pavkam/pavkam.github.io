@@ -674,12 +674,39 @@ pre code {
   white-space: pre;
 }
 pre.highlight, .highlight > pre, td.code pre {
-  background-color: #FAFAFA;
-  background-image: linear-gradient(#F9F9F9 50%, #FDFDFD 50%);
-  background-repeat: repeat;
-  background-size: 3em 3em;
-  background-position: 0px 10px;
-  border-left: 7px solid #444;
+  background-clip: border-box;
+  background-color: rgb(25, 25, 25);
+  rgb(25, 25, 25)pre
+  background-image: none;
+  background-origin: padding-box;
+  background-position-x: 0%;
+  background-position-y: 0%;
+  background-repeat-x: ;
+  background-repeat-y: ;
+  background-size: auto;
+  border-bottom-color: rgb(18, 18, 18);
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-image-outset: 0px;
+  border-image-repeat: stretch;
+  border-image-slice: 100%;
+  border-image-source: none;
+  border-image-width: 1;
+  border-left-color: rgb(18, 18, 18);
+  border-left-style: solid;
+  border-left-width: 1px;
+  border-right-color: rgb(18, 18, 18);
+  border-right-style: solid;
+  border-right-width: 1px;
+  border-top-color: rgb(18, 18, 18);
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 3px 0px inset;
+  display: block;
 }
 code table, code table td, code table th, code table tbody, code table tr,
 td.gutter pre {
