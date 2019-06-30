@@ -40,7 +40,7 @@ share-links-active:
   linkedin: true
 
 url-pretty: "pavkam.github.io"
-google_analytics: "8291909/pavkam"
+gtag: "GTM-TH68XWQ"
 excerpt_length: 50
 title-separator: "-"
 timezone: "Europe/Dublin"
@@ -89,6 +89,7 @@ prose:
     - /css
     - /img
     - /js
+    - /alex.ciobanu.org
   metadata:
     _posts:
       - name: "layout"
