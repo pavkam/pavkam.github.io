@@ -16,9 +16,4 @@ Twenty years later I am still enjoying my profession - these days - using differ
 
 And, if code is what you're looking for then go to my [GitHub](https://github.com/pavkam) page.
 
-```csharp
-  var a = "hello";
-  Console.Write(a);
-```
-
 Enjoy!
