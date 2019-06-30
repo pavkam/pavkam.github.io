@@ -40,7 +40,7 @@ share-links-active:
   linkedin: true
 
 url-pretty: "pavkam.github.io"
-gtag: "GTM-TH68XWQ"
+google_analytics: "UA-143067975-1"
 excerpt_length: 50
 title-separator: "-"
 timezone: "Europe/Dublin"
