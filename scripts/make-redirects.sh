@@ -9,7 +9,7 @@ for i in *.html; do
 	FNAME="`date --date="$DATE" +%Y-%m-%d`-$FNAME.md"
         FNAME=~/Development/pavkam.github.io/_posts/$FNAME
 
-        TITLE=`echo $TITLE | sed "s/\&#8217\;/'/g"`
+        TITLE=`echo $TITLE | sed "s/\&#8217\;/'/g" | sed 's/\&#8220\;/"/g' | sed 's/\&#8221\;/"/g' | sed "s/\&#8211\;/--/g"`
 
 	echo "---" > $FNAME
 	echo "layout: post" >> $FNAME
