@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>
+	Comments on: Replication	</title>
+	<atom:link href="https://alex.ciobanu.org/?feed=rss2&#038;p=325" rel="self" type="application/rss+xml" />
+	<link>https://alex.ciobanu.org/?p=325</link>
+	<description>Yet Another Programming Blog</description>
+	<lastBuildDate>Mon, 05 Apr 2010 01:24:48 +0000</lastBuildDate>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+			<item>
+				<title>
+				By: bobD				</title>
+				<link>https://alex.ciobanu.org/?p=325&#038;cpage=1#comment-1238</link>
+		<dc:creator><![CDATA[bobD]]></dc:creator>
+		<pubDate>Mon, 05 Apr 2010 01:24:48 +0000</pubDate>
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=325#comment-1238</guid>
+					<description><![CDATA[&lt;a href=&quot;#comment-1154&quot; rel=&quot;nofollow&quot;&gt;@Jolyon Smith  &lt;/a&gt; 
+
+Yes, &#039;pixie dust&#039; code is a growing issue.
+
+http://codemonkeyism.com/beware-magical-code/
+
+http://viewfromthefringe.blogspot.com/2010/02/java-annotations-have-become-pixie-dust.html
+
+bobD]]></description>
+		<content:encoded><![CDATA[<p><a href="#comment-1154" rel="nofollow">@Jolyon Smith  </a> </p>
+<p>Yes, &#8216;pixie dust&#8217; code is a growing issue.</p>
+<p><a href="http://codemonkeyism.com/beware-magical-code/" rel="nofollow">http://codemonkeyism.com/beware-magical-code/</a></p>
+<p><a href="http://viewfromthefringe.blogspot.com/2010/02/java-annotations-have-become-pixie-dust.html" rel="nofollow">http://viewfromthefringe.blogspot.com/2010/02/java-annotations-have-become-pixie-dust.html</a></p>
+<p>bobD</p>
+]]></content:encoded>
+						</item>
+						<item>
+				<title>
+				By: Nick Hodges &#187; Blog Archive &#187; Random Thoughts on the Passing Scene #152				</title>
+				<link>https://alex.ciobanu.org/?p=325&#038;cpage=1#comment-1181</link>
+		<dc:creator><![CDATA[Nick Hodges &#187; Blog Archive &#187; Random Thoughts on the Passing Scene #152]]></dc:creator>
+		<pubDate>Tue, 23 Mar 2010 22:08:30 +0000</pubDate>
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=325#comment-1181</guid>
+					<description><![CDATA[[...] From time to time, people ask how to make a deep copy of an existing instance of a class.&#160; Well, using the new, super cool RTTI, Alex is on the case. [...]]]></description>
+		<content:encoded><![CDATA[<p>[&#8230;] From time to time, people ask how to make a deep copy of an existing instance of a class.&#160; Well, using the new, super cool RTTI, Alex is on the case. [&#8230;]</p>
+]]></content:encoded>
+						</item>
+						<item>
+				<title>
+				By: alex				</title>
+				<link>https://alex.ciobanu.org/?p=325&#038;cpage=1#comment-1161</link>
+		<dc:creator><![CDATA[alex]]></dc:creator>
+		<pubDate>Fri, 19 Mar 2010 09:50:33 +0000</pubDate>
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=325#comment-1161</guid>
+					<description><![CDATA[&lt;a href=&quot;#comment-1154&quot; rel=&quot;nofollow&quot;&gt;@Jolyon Smith &lt;/a&gt; 
+How much separation is enough? For example .NET has its SmlSerializer class and a set of attributes that allow controlling how properties get serialized to XML. Nobody seem to complain about separation of concern there. It&#039;s probably because XmlSerializer is a part of the framework and thus viewed a part of the ecosystem in which the object lives.
+
+Going in the same direction: If you would derive your class from TCloneableObject (which uses TReplicator inside) would that create the same separation problem? _You_ know that you have derived from TCloneableObject so you know the implications, and, most of all, the attributes ([ByReference] and [NonReplicable]) are a direct part of your ecosystem. In this case, the &quot;replication concern&quot; is handled by your own object and not some external class.]]></description>
+		<content:encoded><![CDATA[<p><a href="#comment-1154" rel="nofollow">@Jolyon Smith </a><br />
+How much separation is enough? For example .NET has its SmlSerializer class and a set of attributes that allow controlling how properties get serialized to XML. Nobody seem to complain about separation of concern there. It&#8217;s probably because XmlSerializer is a part of the framework and thus viewed a part of the ecosystem in which the object lives.</p>
+<p>Going in the same direction: If you would derive your class from TCloneableObject (which uses TReplicator inside) would that create the same separation problem? _You_ know that you have derived from TCloneableObject so you know the implications, and, most of all, the attributes ([ByReference] and [NonReplicable]) are a direct part of your ecosystem. In this case, the &#8220;replication concern&#8221; is handled by your own object and not some external class.</p>
+]]></content:encoded>
+						</item>
+						<item>
+				<title>
+				By: alex				</title>
+				<link>https://alex.ciobanu.org/?p=325&#038;cpage=1#comment-1160</link>
+		<dc:creator><![CDATA[alex]]></dc:creator>
+		<pubDate>Fri, 19 Mar 2010 09:28:56 +0000</pubDate>
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=325#comment-1160</guid>
+					<description><![CDATA[&lt;a href=&quot;#comment-1159&quot; rel=&quot;nofollow&quot;&gt;@Paolo Biondi &lt;/a&gt; 
+To prove a point. FSelf points to the original object. The new created object will have a field FSelf pointing to itself rather than the original object.]]></description>
+		<content:encoded><![CDATA[<p><a href="#comment-1159" rel="nofollow">@Paolo Biondi </a><br />
+To prove a point. FSelf points to the original object. The new created object will have a field FSelf pointing to itself rather than the original object.</p>
+]]></content:encoded>
+						</item>
+						<item>
+				<title>
+				By: Paolo Biondi				</title>
+				<link>https://alex.ciobanu.org/?p=325&#038;cpage=1#comment-1159</link>
+		<dc:creator><![CDATA[Paolo Biondi]]></dc:creator>
+		<pubDate>Fri, 19 Mar 2010 08:08:20 +0000</pubDate>
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=325#comment-1159</guid>
+					<description><![CDATA[Maybe this is noob question but why do you need FSelf?]]></description>
+		<content:encoded><![CDATA[<p>Maybe this is noob question but why do you need FSelf?</p>
+]]></content:encoded>
+						</item>
+						<item>
+				<title>
+				By: alex				</title>
+				<link>https://alex.ciobanu.org/?p=325&#038;cpage=1#comment-1158</link>
+		<dc:creator><![CDATA[alex]]></dc:creator>
+		<pubDate>Fri, 19 Mar 2010 07:55:02 +0000</pubDate>
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=325#comment-1158</guid>
+					<description><![CDATA[&lt;a href=&quot;#comment-1155&quot; rel=&quot;nofollow&quot;&gt;@David Novo &lt;/a&gt; 
+Speed indeed. All type-independent solutions are known to be slower of course. There is a trade between execution speed and implementation speed. Speed-passionate programmers would still avoid pretty much everything that has to do with run-time type inspection.]]></description>
+		<content:encoded><![CDATA[<p><a href="#comment-1155" rel="nofollow">@David Novo </a><br />
+Speed indeed. All type-independent solutions are known to be slower of course. There is a trade between execution speed and implementation speed. Speed-passionate programmers would still avoid pretty much everything that has to do with run-time type inspection.</p>
+]]></content:encoded>
+						</item>
+						<item>
+				<title>
+				By: alex				</title>
+				<link>https://alex.ciobanu.org/?p=325&#038;cpage=1#comment-1157</link>
+		<dc:creator><![CDATA[alex]]></dc:creator>
+		<pubDate>Fri, 19 Mar 2010 07:51:28 +0000</pubDate>
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=325#comment-1157</guid>
+					<description><![CDATA[&lt;a href=&quot;#comment-1154&quot; rel=&quot;nofollow&quot;&gt;@Jolyon Smith &lt;/a&gt; 
+TCloneableObject implements interface ICloneable and exposes virtual method Clone(). So you can either implement cloning by hand or leave the default implementation that uses TReplicator&lt;T&gt; (TCloner&lt;T&gt; sounded pretty wrong to me btw).]]></description>
+		<content:encoded><![CDATA[<p><a href="#comment-1154" rel="nofollow">@Jolyon Smith </a><br />
+TCloneableObject implements interface ICloneable and exposes virtual method Clone(). So you can either implement cloning by hand or leave the default implementation that uses TReplicator<t> (TCloner</t><t> sounded pretty wrong to me btw).</t></p>
+]]></content:encoded>
+						</item>
+						<item>
+				<title>
+				By: Gary Mueller				</title>
+				<link>https://alex.ciobanu.org/?p=325&#038;cpage=1#comment-1156</link>
+		<dc:creator><![CDATA[Gary Mueller]]></dc:creator>
+		<pubDate>Fri, 19 Mar 2010 03:03:11 +0000</pubDate>
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=325#comment-1156</guid>
+					<description><![CDATA[Very nice work! Educational, functional, and looking forward to implementing. keep it up!]]></description>
+		<content:encoded><![CDATA[<p>Very nice work! Educational, functional, and looking forward to implementing. keep it up!</p>
+]]></content:encoded>
+						</item>
+						<item>
+				<title>
+				By: David Novo				</title>
+				<link>https://alex.ciobanu.org/?p=325&#038;cpage=1#comment-1155</link>
+		<dc:creator><![CDATA[David Novo]]></dc:creator>
+		<pubDate>Fri, 19 Mar 2010 00:00:24 +0000</pubDate>
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=325#comment-1155</guid>
+					<description><![CDATA[&lt;a href=&quot;#comment-1154&quot; rel=&quot;nofollow&quot;&gt;@Jolyon Smith  &lt;/a&gt; 
+
+&quot;And all you need to tell each new team member is… the ICloneable interface needs to be implemented&quot;
+
+And once you have simply told them this sentence, these mythical new team members magically know how to implement ICloneable according to your conventions.
+
+Lets move back from your world to the real one. You then start teaching your new team members your convention for cloning. Lets say you use some version of the Assign &quot;pattern&quot; to do this. So you teach them there are several types of properties
+
+1. those you dont want to assign in a clone. Leave those alone.
+2. those to assign by reference. Just copy the fields
+3. objects you want to assign by doing doing a deep copy. use the .Assign pattern on those as well.
+4. whatever else you do when cloning in your infrastructure.
+
+so you could manually write 
+
+a.Assign(source.A)
+B.Assign(source.B) 
+c:=source.C
+
+all up and down every class in your system
+
+or you could mark the A,B,C properties with certain attributes and have a replicator do the work.
+
+The attributes are not vague and the interaction is not unclear. The replicator understands certain attributes, just like the person who uses ICloneable understands a certain interface. The attributes should be clearly defined and named of course, as should interface methods and interface names.
+
+The benefit of attributes is that I can, for instance, get a report of all the assignable properties of my class, something you cannot do the &quot;old fashioned&quot; way. Or for debugging, the replicator can easily keep track of all the properties/classes it assigned/cloned and you can inspect the report for bugs. It is so much more flexible and useful than hard coding the properties to assign in the body of the method in a hierarchy.
+
+The only valid argument IMHO is speed. Of course, the attribute based approach is slower than a virtual method call. That has to be weighed against the convenience, flexibility and all around coolness of using attributes in this context.]]></description>
+		<content:encoded><![CDATA[<p><a href="#comment-1154" rel="nofollow">@Jolyon Smith  </a> </p>
+<p>&#8220;And all you need to tell each new team member is… the ICloneable interface needs to be implemented&#8221;</p>
+<p>And once you have simply told them this sentence, these mythical new team members magically know how to implement ICloneable according to your conventions.</p>
+<p>Lets move back from your world to the real one. You then start teaching your new team members your convention for cloning. Lets say you use some version of the Assign &#8220;pattern&#8221; to do this. So you teach them there are several types of properties</p>
+<p>1. those you dont want to assign in a clone. Leave those alone.<br />
+2. those to assign by reference. Just copy the fields<br />
+3. objects you want to assign by doing doing a deep copy. use the .Assign pattern on those as well.<br />
+4. whatever else you do when cloning in your infrastructure.</p>
+<p>so you could manually write </p>
+<p>a.Assign(source.A)<br />
+B.Assign(source.B)<br />
+c:=source.C</p>
+<p>all up and down every class in your system</p>
+<p>or you could mark the A,B,C properties with certain attributes and have a replicator do the work.</p>
+<p>The attributes are not vague and the interaction is not unclear. The replicator understands certain attributes, just like the person who uses ICloneable understands a certain interface. The attributes should be clearly defined and named of course, as should interface methods and interface names.</p>
+<p>The benefit of attributes is that I can, for instance, get a report of all the assignable properties of my class, something you cannot do the &#8220;old fashioned&#8221; way. Or for debugging, the replicator can easily keep track of all the properties/classes it assigned/cloned and you can inspect the report for bugs. It is so much more flexible and useful than hard coding the properties to assign in the body of the method in a hierarchy.</p>
+<p>The only valid argument IMHO is speed. Of course, the attribute based approach is slower than a virtual method call. That has to be weighed against the convenience, flexibility and all around coolness of using attributes in this context.</p>
+]]></content:encoded>
+						</item>
+						<item>
+				<title>
+				By: Jolyon Smith				</title>
+				<link>https://alex.ciobanu.org/?p=325&#038;cpage=1#comment-1154</link>
+		<dc:creator><![CDATA[Jolyon Smith]]></dc:creator>
+		<pubDate>Thu, 18 Mar 2010 23:23:37 +0000</pubDate>
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=325#comment-1154</guid>
+					<description><![CDATA[Yet another good demonstration of how the use and proliferation of attributes leads to a conflation and mingling of concerns, not a separation.
+
+In this case, objects now need to include attribute decorations of members to inform some other class, the interaction with which isn&#039;t clear (or even predictable) by simple inspection of the class itself.
+
+i.e. someone writing TData cannot predict the interaction with TReplicator(), and the developer using TReplicator cannot know that TData is &quot;compatible&quot; with TReplicator usage.
+
+Makes for a great demo or classroom feature, but I for one would not want to use this on a complex, long lived project with a dynamic team composition (having to teach new team members the conventions of what attributes need to be used to decorate which aspects of a class for those times when some other member of the team might employ some other class in conjunction with the code they are working in...).
+
+Better instead to have an IReplicatable interface (oh wait, ICloneable is already a well recognized convention for this, so let&#039;s stick to that).  A class that implements ICloneable clearly supports cloning and can be cloned, and if a class doesn&#039;t implement ICloneable then it clearly doesn&#039;t and cannot be, because it was never designed to be.
+
+And all you need to tell each new team member is... the ICloneable interface needs to be implemented for classes that are required to support cloning.]]></description>
+		<content:encoded><![CDATA[<p>Yet another good demonstration of how the use and proliferation of attributes leads to a conflation and mingling of concerns, not a separation.</p>
+<p>In this case, objects now need to include attribute decorations of members to inform some other class, the interaction with which isn&#8217;t clear (or even predictable) by simple inspection of the class itself.</p>
+<p>i.e. someone writing TData cannot predict the interaction with TReplicator(), and the developer using TReplicator cannot know that TData is &#8220;compatible&#8221; with TReplicator usage.</p>
+<p>Makes for a great demo or classroom feature, but I for one would not want to use this on a complex, long lived project with a dynamic team composition (having to teach new team members the conventions of what attributes need to be used to decorate which aspects of a class for those times when some other member of the team might employ some other class in conjunction with the code they are working in&#8230;).</p>
+<p>Better instead to have an IReplicatable interface (oh wait, ICloneable is already a well recognized convention for this, so let&#8217;s stick to that).  A class that implements ICloneable clearly supports cloning and can be cloned, and if a class doesn&#8217;t implement ICloneable then it clearly doesn&#8217;t and cannot be, because it was never designed to be.</p>
+<p>And all you need to tell each new team member is&#8230; the ICloneable interface needs to be implemented for classes that are required to support cloning.</p>
+]]></content:encoded>
+						</item>
+			</channel>
+</rss>

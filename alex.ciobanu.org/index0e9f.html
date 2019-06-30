@@ -1,0 +1,542 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Help &#8211; YAPB</title>
+	<atom:link href="https://alex.ciobanu.org/?feed=rss2&#038;tag=help" rel="self" type="application/rss+xml" />
+	<link>https://alex.ciobanu.org</link>
+	<description>Yet Another Programming Blog</description>
+	<lastBuildDate>Tue, 15 Sep 2009 17:42:26 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+
+<image>
+	<url>https://alex.ciobanu.org/files/uploads/2018/05/7327309-150x150.jpg</url>
+	<title>Help &#8211; YAPB</title>
+	<link>https://alex.ciobanu.org</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+	<item>
+		<title>Class constructors and Generics</title>
+		<link>https://alex.ciobanu.org/?p=258</link>
+				<comments>https://alex.ciobanu.org/?p=258#comments</comments>
+				<pubDate>Sun, 13 Sep 2009 10:39:32 +0000</pubDate>
+		<dc:creator><![CDATA[Alexandru Ciobanu]]></dc:creator>
+				<category><![CDATA[Software Development]]></category>
+		<category><![CDATA[delphi]]></category>
+		<category><![CDATA[embarcadero]]></category>
+		<category><![CDATA[Help]]></category>
+		<category><![CDATA[LinkedIn]]></category>
+		<category><![CDATA[rtl]]></category>
+
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=258</guid>
+				<description><![CDATA[The new great addition to the Delphi language in Delphi 2010 is the possibility to specify a class constructor and a class destructor to your class/record. I will not describe this feature in this post since you can... ]]></description>
+								<content:encoded><![CDATA[<p>The new great addition to the Delphi language in <strong>Delphi 2010</strong> is the possibility to specify a <a href="http://docwiki.embarcadero.com/RADStudio/en/Methods#Class_Constructors">class constructor</a> and a <a href="http://docwiki.embarcadero.com/RADStudio/en/Methods#Class_Destructors">class destructor</a> to your class/record. I will not describe this feature in this post since you can see the online documentation for it on the<em> Embarcadero Doc Wiki</em>. The part I am interested in is the combination of class constructors and generics. As you might already know generic types aren&#8217;t really &#8220;run-time entities&#8221; but rather &#8220;compile-time&#8221; ones. This makes the initialization of &#8220;static&#8221; members of the type a bit more complicated. See for example this record:</p>
+<pre class="brush: delphi; title: ; notranslate">
+type
+  TMyType&lt;T&gt; = record
+  private class var
+    FSomeList: TList&lt;T&gt;;
+
+  public
+    ...
+    ...
+  end;
+</pre>
+<p>In this case the static <strong>FSomeList</strong> variable needs to be initialized to make sense. Normally, in non-generic classes, you would use the &#8220;<em>initialization</em>&#8221; and &#8220;<em>finalization</em>&#8221; sections to create and then destroy that variable. In generic classes this is impossible though. You have to get some workarounds (like initializing the list lazily), but you still cannot destroy the list on finalization.</p>
+<p><strong>Well, not anymore!</strong> Using class constructors and destructors allows you to easily initialize any static member of a type:</p>
+<pre class="brush: delphi; title: ; notranslate">
+type
+  TMyType&lt;T&gt; = record
+  private class var
+    FSomeList: TList&lt;T&gt;;
+    
+    class constructor Create;
+    class destructor Destroy;
+  public
+    ...
+    ...
+  end;
+
+class constructor TMyType&lt;T&gt;.Create;
+begin
+  // Executed on application initialization.
+  FSomeList := TList&lt;T&gt;.Create();
+end;
+
+class destructor TMyType&lt;T&gt;.Destroy;
+begin
+  // Freed on application termination.
+  FSomeList.Free;
+end;
+</pre>
+<p><strong>There is a catch tough.</strong> Since generic types are compile-time entities, any unit that uses a specialized generic type basically defines that type in itself. For example if you use <em>TList&lt;String&gt;</em> in four of your units, all four units will internally declare the <em>TList&lt;String&gt;</em> class. This results in the <em>TList&lt;T&gt;</em>&#8216;s class constructor to be executed four times &#8211; once per unit. This is expected behavior since each type specialization has different static members. For example:</p>
+<pre class="brush: delphi; title: ; notranslate">
+type
+  TDistinctType&lt;T&gt; = record
+  private class var
+    FMarker: Integer;
+
+    class constructor Create;
+  end;
+</pre>
+<p>If <em>TDistinctType&lt;String&gt;</em> is used in multiple units, each unit&#8217;s version has it own FMarker, which means it needs to be initialized for each unit.</p>
+<p><strong>The conclusion &#8212; be aware that class constructors and destructors for generic types may execute multiple times.</strong></p>
+]]></content:encoded>
+							<wfw:commentRss>https://alex.ciobanu.org/?feed=rss2&#038;p=258</wfw:commentRss>
+		<slash:comments>14</slash:comments>
+							</item>
+		<item>
+		<title>How to write a good email feedback (for Help)</title>
+		<link>https://alex.ciobanu.org/?p=141</link>
+				<comments>https://alex.ciobanu.org/?p=141#comments</comments>
+				<pubDate>Thu, 05 Mar 2009 11:07:44 +0000</pubDate>
+		<dc:creator><![CDATA[Alexandru Ciobanu]]></dc:creator>
+				<category><![CDATA[Software Development]]></category>
+		<category><![CDATA[delphi]]></category>
+		<category><![CDATA[Help]]></category>
+
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=141</guid>
+				<description><![CDATA[This post is here to explain how to properly write an email feedback for the Delphi Help system. So often people assume that nobody reads these emails. This leads to emails with little value to us (the Documentation... ]]></description>
+								<content:encoded><![CDATA[<p>This post is here to explain how to properly write an email feedback for the Delphi Help system. So often people assume that nobody reads these emails. This leads to emails with little value to us (the Documentation team). Next I am going to describe what is a documentation feedback email, who reads those, why should you care and how to write them properly.</p>
+<p><strong><em>What is a feedback email:</em></strong></p>
+<ul>
+<li>It&#8217;s an email in which you tell us what we did wrong.</li>
+<li>In the recent versions of the RAD Studio Help  at the bottom of the page you can see a &#8220;<span style="text-decoration: underline;">Send us feedback</span>&#8221; link.</li>
+<li>Pressing of that link will open up a new message window (with your email client). That mail contains some information about the topic in which you pressed the  &#8220;<span style="text-decoration: underline;">Send us feedback</span>&#8221; link.</li>
+<li>You&#8217;re supposed to leave that information in the body, and add a few lines of description.</li>
+</ul>
+<p><em><strong>Why write feedback emails (aka &#8220;Why should you care&#8221;):</strong></em></p>
+<ol>
+<li>It helps us identify the topics which are more important to our readers.</li>
+<li>Some topics are out of date or need some notes. Suggesting that in the feedback email helps us complete these topics with more precise &#8220;field&#8221; information. If you have more free time on your hands you can even suggest fixes for topics.</li>
+<li>You as a consumer of the help may know better which articles would need better &#8220;See Also&#8221; links.</li>
+<li>It generally takes less than one minute to wrote us an email.</li>
+</ol>
+<p><em><strong>Who is looking at them:</strong></em></p>
+<ul>
+<li>A person in the documentation team.  Usually the emails are processed once a month (it may be longer).</li>
+<li>The QA step is performed by the person in the documentation team and the bug is registered in the internal bug-tracker directly.</li>
+</ul>
+<p><em><strong>How to write a feedback email:</strong></em></p>
+<ol>
+<li>Leave the subject intact and keep the information in the body of the mail. By removing that information you make the life of the person reviewing that email a lot harder.</li>
+<li>Be specific. Emails that say &#8220;all the help is bad&#8221; are discarded immediately. If you&#8217;re targeting  more articles, be sure to specify that.</li>
+<li>Be sure that the email targets a documentation problem. Bugs in the product should be entered through QC. You&#8217;re not going to get an answer if you ask a non-documentation related question.</li>
+<li>If you are using a localized Help (French, German or Japanese), write about the problem in <span style="text-decoration: underline;">English</span>. People reading these feedback emails do not know all the languages.</li>
+<li>Try to refrain from inflammatory phrases. It&#8217;s not that pretty to read people using curse words. These mails are sometimes discarded directly.</li>
+<li>Mails that simply praise Delphi 7 help and nothing more are discarded (no informational value).</li>
+</ol>
+<p><span style="color: #ff0000;"><em>Note for people using older help versions (like 2006, 2007). A lot of bugs in those versions have already been fixed. I would suggest you download newer versions at <a href="http://docs.embarcadero.com/docs/delphicpp.php">http://docs.embarcadero.com</a> (you can get a CHM file for example).</em></span></p>
+]]></content:encoded>
+							<wfw:commentRss>https://alex.ciobanu.org/?feed=rss2&#038;p=141</wfw:commentRss>
+		<slash:comments>7</slash:comments>
+							</item>
+		<item>
+		<title>How To: Creating a custom Variant type</title>
+		<link>https://alex.ciobanu.org/?p=76</link>
+				<comments>https://alex.ciobanu.org/?p=76#comments</comments>
+				<pubDate>Mon, 09 Feb 2009 13:54:34 +0000</pubDate>
+		<dc:creator><![CDATA[Alexandru Ciobanu]]></dc:creator>
+				<category><![CDATA[Software Development]]></category>
+		<category><![CDATA[dehl]]></category>
+		<category><![CDATA[delphi]]></category>
+		<category><![CDATA[Help]]></category>
+		<category><![CDATA[LinkedIn]]></category>
+		<category><![CDATA[oop]]></category>
+		<category><![CDATA[rtl]]></category>
+
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=76</guid>
+				<description><![CDATA[In this post I will detail on how to create a custom Variant for your data type. First of all, the help should be pretty useful in this case, but it if doesn&#8217;t help much, there is always... ]]></description>
+								<content:encoded><![CDATA[<p>In this post I will detail on how to create a custom <strong>Variant</strong> for your data type. First of all, the help should be pretty useful in this case, but it if doesn&#8217;t help much, there is always the <em>FmtBcd</em> unit which creates a Variant for it&#8217;s BCD data type.</p>
+<p>There are a few steps to be followed in order to create a custom Variant, and here they are:</p>
+<ol>
+<li>Create a public data type with all the functionality. This is the data type which you will wrap into a custom Variant. It is also a good practice to make that data type and all supporting functions public to consumers. In many cases people will not need a Variant wrapping your data type but rather the data type directly. This improves speed and readability of the code in many cases.</li>
+<li>A Variant is simply a record holding some data which is used by the RTL at run-time to decide which functions to invoke and in what case. So the next step would be to declare such a record. The basic structure of that record is the same except a single 4-byte field in which you will hold a reference to your data type (or a value if it fits directly).</li>
+<li>Step 3 involves creating a descendant class from <strong>TCustomVariantType</strong> which will act as a proxy between the variant manager (handled by the RTL) and your custom Variant.</li>
+<li>The last step is to &#8220;plug-in&#8221; your proxy class at unit initialization time; and unplug it at finalization.</li>
+</ol>
+<p>In my case, I will make a custom Variant for <em>BigCardinal</em> data type declared <a href="http://code.google.com/p/delphilhlplib/">HelperLib</a>. First off, all the code I will add will reside in the same unit in which <em>BigCardinal</em> is implemented. I need that to avoid having more units in &#8220;uses&#8221; clause and secondly I need access to internals of <em>BigCardinal.</em> As the first step is already completed (I already have the data type created), I will start with the second one: Declaring a custom <strong>TVarData</strong> to hold my data:</p>
+<pre class="brush: delphi; title: ; notranslate">
+type
+  PBigCardinal = ^BigCardinal;
+
+  { Mapping the BigCardinal into TVarData structure }
+  TBigCardinalVarData = packed record
+    { Var type, will be assigned at runtime }
+    VType: TVarType;
+    { Reserved stuff }
+    Reserved1, Reserved2, Reserved3: Word;
+    { A reference to the enclosed big cardinal }
+    BigCardinalPtr: PBigCardinal;
+    { Reserved stuff }
+    Reserved4: LongWord;
+  end;
+</pre>
+<p>In this structure, <strong>VType</strong> will hold an Id (which we will obtain at runtime) that will uniquely identify our variant data type. This Id will be used by the variant manager to call our proxy class for each operation we will make on the Variant. <strong>Reserved1</strong>, <strong>Reserved2</strong>, <strong>Reserved3 </strong>and <strong>Reserved4 </strong>should be ignored and not used. And finally <strong>BigCardinalPtr</strong> is a pointer to a <em>BigCardinal</em> structure.</p>
+<p>The next step is to create our proxy class that will receive all requests to &#8220;work&#8221; on the Variants of our type. Here is the declaration:</p>
+<pre class="brush: delphi; title: ; notranslate">
+{ Manager for our variant type }
+  TBigCardinalVariantType = class(TCustomVariantType)
+  private
+    { Will create a big cardinal, or raise an error }
+    function VarDataToBigCardinal(const 
+      Value: TVarData): BigCardinal;
+    { Will create a variant from a BigCardinal }
+    procedure BigCardinalToVarData(const Value: BigCardinal; 
+      var OutValue: TVarData);
+  public
+    procedure Clear(var V: TVarData); override;
+    procedure Copy(var Dest: TVarData; const Source: TVarData; 
+      const Indirect: Boolean); override;
+    procedure Cast(var Dest: TVarData; 
+      const Source: TVarData); override;
+    procedure CastTo(var Dest: TVarData; 
+      const Source: TVarData; 
+      const AVarType: TVarType); override;
+    procedure BinaryOp(var Left: TVarData; 
+      const Right: TVarData; 
+      const Operator: TVarOp); override;
+    procedure UnaryOp(var Right: TVarData; 
+      const Operator: TVarOp); override;
+    procedure Compare(const Left, Right: TVarData; 
+      var Relationship: TVarCompareResult); override;
+  end;
+</pre>
+<p>Note that I have only overridden the methods in which I am interested in. If your data type doesn&#8217;t support comparison operations, simply do not override the <strong>Compare</strong> method. The two private methods declared in this class are used internally to easy the coding.</p>
+<p>Well, we have created the proxy class, overridden the required methods, now let&#8217;s implement them:</p>
+<pre class="brush: delphi; title: ; notranslate">
+function TBigCardinalVariantType.VarDataToBigCardinal
+      (const Value: TVarData): BigCardinal;
+begin
+  { Check if the var data has a big cardinal inside }
+  if Value.VType = VarType then
+  begin
+    { Copy the value to result }
+    Exit(TBigCardinalVarData(Value).BigCardinalPtr^);
+  end;
+
+  { OK, try to convert the incoming var type to 
+    something useful }
+  case Value.VType of
+    varByte:
+      Result := Value.VByte;
+    varShortInt:
+      Result := Value.VShortInt;
+    varWord:
+      Result := Value.VWord;
+    varSmallint:
+      Result := Value.VSmallInt;
+    varInteger:
+      Result := Value.VInteger;
+    varLongWord:
+      Result := Value.VLongWord;
+    varUInt64:
+      Result := Value.VUInt64;
+    varInt64:
+      Result := Value.VInt64;
+    varString, varUString, varOleStr:
+    begin
+      { Be careful here, a string may not be a good number }
+      try
+        Result := StrToBigCardinal(VarDataToStr(Value));
+      except
+        on EConvertError do
+          RaiseCastError;
+      end;
+    end;
+  end;
+end;
+</pre>
+<p>Note the fact that we check if the type (Id) of the <em>Value</em> is the same as the one assigned to us by the variant managed. In this case, we are sure that the <em>Value</em> contains a <em>BigCardinal</em> inside, in which case we simply return that value; otherwise we convert the incoming Variant to a <em>BigCardinal</em>.</p>
+<pre class="brush: delphi; title: ; notranslate">
+procedure TBigCardinalVariantType.BigCardinalToVarData
+      (const Value: BigCardinal; var OutValue: TVarData);
+begin
+  { Dispose of the old value. Check it it's ours first }
+  if OutValue.VType = VarType then
+    Clear(OutValue)
+  else
+    VarDataClear(OutValue);
+
+  with TBigCardinalVarData(OutValue) do
+  begin
+    { Assign the new variant the var type that was 
+      allocated for us }
+    VType := VarType;
+
+    { Allocate space for our big cardinal pointer }
+    New(BigCardinalPtr);
+
+    { Copy self to this memory }
+    BigCardinalPtr^ := Value;
+  end;
+end;
+</pre>
+<p>This function simply clears out the <em>OutValue </em>and then create an instance of our <em>BigCardinal</em> type into it. Again, note that if <em>OutValue </em>contains a <em>BigCardinal</em> inside we must clear it properly (to not leak references of <em>BigCardinal</em>).</p>
+<pre class="brush: delphi; title: ; notranslate">
+procedure TBigCardinalVariantType.BinaryOp(var Left: TVarData; 
+    const Right: TVarData; const Operator: TVarOp);
+begin
+  { Select the appropriate operation }
+  case Operator of
+    opAdd:
+      BigCardinalToVarData(VarDataToBigCardinal(Left) + 
+        VarDataToBigCardinal(Right), Left);
+    opAnd:
+      BigCardinalToVarData(VarDataToBigCardinal(Left) and 
+        VarDataToBigCardinal(Right), Left);
+    opIntDivide:
+      BigCardinalToVarData(VarDataToBigCardinal(Left) div 
+        VarDataToBigCardinal(Right), Left);
+    opModulus:
+      BigCardinalToVarData(VarDataToBigCardinal(Left) mod 
+        VarDataToBigCardinal(Right), Left);
+    opMultiply:
+      BigCardinalToVarData(VarDataToBigCardinal(Left) * 
+        VarDataToBigCardinal(Right), Left);
+    opOr:
+      BigCardinalToVarData(VarDataToBigCardinal(Left) or 
+        VarDataToBigCardinal(Right), Left);
+    opShiftLeft:
+      BigCardinalToVarData(VarDataToBigCardinal(Left) shl 
+        VarDataToBigCardinal(Right), Left);
+    opShiftRight:
+      BigCardinalToVarData(VarDataToBigCardinal(Left) shr 
+        VarDataToBigCardinal(Right), Left);
+    opSubtract:
+      BigCardinalToVarData(VarDataToBigCardinal(Left) - 
+        VarDataToBigCardinal(Right), Left);
+    opXor:
+      BigCardinalToVarData(VarDataToBigCardinal(Left) xor 
+        VarDataToBigCardinal(Right), Left);
+    else
+      RaiseInvalidOp;
+  end;
+end;
+</pre>
+<p>This one is pretty simple: for each type of operation we simply invoke the <em>BigCardinal</em>&#8216;s operators. Note that we did not implement all possible operators but rather those that are supported by our <em>BigCardinal</em> data type.</p>
+<pre class="brush: delphi; title: ; notranslate">
+procedure TBigCardinalVariantType.Cast(var Dest: TVarData; 
+    const Source: TVarData);
+begin
+  { Cast the source to our cardinal type }
+  VarDataInit(Dest);
+  BigCardinalToVarData(VarDataToBigCardinal(Source), Dest);
+end;
+</pre>
+<p>The <strong>Cast</strong> method is invoked every time another Variant type needs to be converted into our Variant type. What we do is simply initialize the <em>Dest</em> parameter and then invoke our helper method.</p>
+<pre class="brush: delphi; title: ; notranslate">
+procedure TBigCardinalVariantType.CastTo(var Dest: TVarData; 
+    const Source: TVarData; const AVarType: TVarType);
+var
+  Big: BigCardinal;
+  Temp: TVarData;
+begin
+  if Source.VType = VarType then
+  begin
+    { Only continue if we're invoked for our data type }
+    Big := TBigCardinalVarData(Source).BigCardinalPtr^;
+
+    { Initilize the destination }
+    VarDataInit(Dest);
+    Dest.VType := AVarType;
+
+    case AVarType of
+      varByte:
+        Dest.VByte := Big.ToByte();
+      varShortInt:
+        Dest.VShortInt := Big.ToShortInt();
+      varWord:
+        Dest.VWord := Big.ToWord();
+      varSmallint:
+        Dest.VSmallInt := Big.ToSmallInt();
+      varInteger:
+        Dest.VInteger := Big.ToInteger();
+      varLongWord:
+        Dest.VLongWord := Big.ToCardinal();
+      varUInt64:
+        Dest.VUInt64 := Big.ToUInt64();
+      varInt64:
+        Dest.VInt64 := Big.ToInt64();
+      varOleStr:
+        VarDataFromOleStr(Dest, UIntToStr(Big));
+      varString, varUString:
+        VarDataFromStr(Dest, UIntToStr(Big));
+      else
+      begin
+        { No default convertion found! Trying to use the string }
+        try
+          VarDataInit(Temp);
+          VarDataFromStr(Temp, UIntToStr(Big));
+          VarDataCastTo(Dest, Temp, AVarType);
+        finally
+          { Dispose our variant }
+          VarDataClear(Temp);
+        end;
+      end;
+    end;
+  end else
+    inherited;
+end;
+</pre>
+<p>This method is the inverse of the <strong>Cast</strong> one. In most cases we can do a direct cast, while in some we will first try to convert to a string and then from that string convert to the required Variant type (most custom variants implement conversion from ant to strings so that might help).</p>
+<pre class="brush: delphi; title: ; notranslate">
+procedure TBigCardinalVariantType.Clear(var V: TVarData);
+begin
+  { Clear the variant type }
+  V.VType := varEmpty;
+
+  { And dispose the value }
+  Dispose(TBigCardinalVarData(V).BigCardinalPtr);
+  TBigCardinalVarData(V).BigCardinalPtr := nil;
+end;
+</pre>
+<p>The <strong>Clear</strong> method is invoked every time a Variant that contains a <em>BigCardinal</em> is being cleared (either by compiler inserted calls or manually by calling <em>VarClear</em>() method). Our implementation will <em>Dispose</em>() the structure and then make the Variant empty. Note that <em>FreeMem</em> is not an option because it will not finalize the record &#8212; which is what we want because we have a reference to a dynamic array there that needs to be cleared out.</p>
+<pre class="brush: delphi; title: ; notranslate">
+procedure TBigCardinalVariantType.Compare
+    (const Left, Right: TVarData; 
+      var Relationship: TVarCompareResult);
+var
+  Res: Integer;
+begin
+  { Compare these values }
+  Res := VarDataToBigCardinal(Left).CompareTo
+    (VarDataToBigCardinal(Right));
+
+  { Return the compare result }
+  if Res &lt; 0 then
+    Relationship := crLessThan
+  else if Res &gt; 0 then
+    Relationship := crGreaterThan
+  else
+    Relationship := crEqual;
+end;
+</pre>
+<p><strong>Compare</strong> is simple and doesn&#8217;t need any explanations. We simply &#8220;convert&#8221; the variants to <em>BigCardinal</em> and compare them.</p>
+<pre class="brush: delphi; title: ; notranslate">
+procedure TBigCardinalVariantType.Copy(var Dest: TVarData; 
+    const Source: TVarData; const Indirect: Boolean);
+begin
+  if Indirect and VarDataIsByRef(Source) then
+    VarDataCopyNoInd(Dest, Source)
+  else
+  begin
+    with TBigCardinalVarData(Dest) do
+    begin
+      { Copy the variant type }
+      VType := VarType;
+
+      { Initialize the pointer }
+      New(BigCardinalPtr);
+
+      { Copy by value }
+      BigCardinalPtr^ := TBigCardinalVarData(Source).
+        BigCardinalPtr^;
+    end;
+  end;
+end;
+</pre>
+<p>This method is invoked every time we assign a Variant to another Variant. See Help for more description on what <em>Indirect</em> and <em>VarDataIsByRef</em> mean in this context.</p>
+<pre class="brush: delphi; title: ; notranslate">
+procedure TBigCardinalVariantType.UnaryOp
+    (var Right: TVarData; const Operator: TVarOp);
+begin
+  { Select the appropriate operation }
+  case Operator of
+    opNegate:
+      BigCardinalToVarData(VarDataToBigCardinal(Right), Right);
+    else
+      RaiseInvalidOp;
+  end;
+end;
+</pre>
+<p>We implement a single operator: <em>opNegate</em>. Even so, negation works on <em>BigCardinal</em>s only is overflow checking is disabled.</p>
+<p>Now that we have implemented our proxy, let&#8217;s plug it in! First you declare a global but implementation-only variable of your proxy type (in our case: <strong>TBigCardinalVariantType</strong>). You will probably declare that variable at the top of the implementation section so that other code can use it (later on this):</p>
+<pre class="brush: delphi; title: ; notranslate">
+var
+  { Our singleton that manages tour variant types }
+  SgtBigCardinalVariantType: TBigCardinalVariantType;
+</pre>
+<p>&#8230; and then register it by using this code:</p>
+<pre class="brush: delphi; title: ; notranslate">
+initialization
+  { Register our custom variant type }
+  SgtBigCardinalVariantType := TBigCardinalVariantType.Create();
+
+finalization
+  { Unregister our custom variant }
+  FreeAndNil(SgtBigCardinalVariantType);
+</pre>
+<p>When <strong>SgtBigCardinalVariantType</strong> is created, it&#8217;s <em>VarType</em> member (which we used in our functions)  is automatically assigned a unique Id by the variant manager. That Id is used in our code to uniquely distinguish our custom Variant.</p>
+<p>OK, we&#8217;ve go to the point where everything is ready to go with one little exception &#8212; there is no public method or routine that can create a Variant type from a BigCardinal. In this case I have decided to implement an &#8220;implicit&#8221; operator for <em>BigCardinal</em> that will do this creation automatically:</p>
+<pre class="brush: delphi; title: ; notranslate">
+class operator BigCardinal.Implicit
+      (const ANumber: BigCardinal): Variant;
+begin
+  { Clear out the result }
+  VarClear(Result);
+
+  with TBigCardinalVarData(Result) do
+  begin
+    { Assign the new variant the var type that was 
+      allocated for us }
+    VType := SgtBigCardinalVariantType.VarType;
+
+    { Allocate space for our big cardinal pointer }
+    New(BigCardinalPtr);
+
+    { Copy self to this memory }
+    BigCardinalPtr^ := ANumber;
+  end;
+end;
+</pre>
+<p>That&#8217;s all! Now we can write code like this:</p>
+<pre class="brush: delphi; title: ; notranslate">
+var
+  X: Variant;
+begin
+  X := BigCardinal(1);
+  X := X + '343267727663266525438020038463';
+  WriteLn(X);
+end;
+</pre>
+<p><strong>In the next post I will create an invokable variant.</strong></p>
+]]></content:encoded>
+							<wfw:commentRss>https://alex.ciobanu.org/?feed=rss2&#038;p=76</wfw:commentRss>
+		<slash:comments>3</slash:comments>
+							</item>
+		<item>
+		<title>Help Update 1 is out!</title>
+		<link>https://alex.ciobanu.org/?p=49</link>
+				<comments>https://alex.ciobanu.org/?p=49#respond</comments>
+				<pubDate>Sun, 21 Dec 2008 13:56:54 +0000</pubDate>
+		<dc:creator><![CDATA[Alexandru Ciobanu]]></dc:creator>
+				<category><![CDATA[Software Development]]></category>
+		<category><![CDATA[delphi]]></category>
+		<category><![CDATA[Help]]></category>
+		<category><![CDATA[LinkedIn]]></category>
+
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=49</guid>
+				<description><![CDATA[Finally, Help Update 1 for RAD Studio 2009 is out. You can read more about it here. Note that there are more fixes and improvements which were not mentioned. Even more are being planned for Help Update 2... ]]></description>
+								<content:encoded><![CDATA[<p>Finally, Help Update 1 for RAD Studio 2009 is out. You can read more about it <a href="http://dn.codegear.com/article/39139">here</a>. Note that there are more fixes and improvements which were not mentioned. Even more are being planned for Help Update 2 due to come somewhere at the start of 2009</p>
+<p>Enjoy <img src="https://s.w.org/images/core/emoji/12.0.0-1/72x72/1f609.png" alt="😉" class="wp-smiley" style="height: 1em; max-height: 1em;" /></p>
+<p></p>
+<p><em>P.S. Forgot to mention that this is the first release that contains work from the newly formed Romanian Tech Writing team.</em></p>
+]]></content:encoded>
+							<wfw:commentRss>https://alex.ciobanu.org/?feed=rss2&#038;p=49</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+	</channel>
+</rss>

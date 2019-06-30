@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<!-- Mirrored from alex.ciobanu.org/?p=76 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 30 Jun 2019 18:52:04 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="HandheldFriendly" content="true">
+<link rel="profile" href="http://gmpg.org/xfn/11">
+
+<title>How To: Creating a custom Variant type &#8211; YAPB</title>
+<link rel='dns-prefetch' href='http://fonts.googleapis.com/' />
+<link rel='dns-prefetch' href='http://s.w.org/' />
+<link rel="alternate" type="application/rss+xml" title="YAPB &raquo; Feed" href="indexd784.html?feed=rss2" />
+<link rel="alternate" type="application/rss+xml" title="YAPB &raquo; Comments Feed" href="indexa6da.html?feed=comments-rss2" />
+<link rel="alternate" type="application/rss+xml" title="YAPB &raquo; How To: Creating a custom Variant type Comments Feed" href="indexc926.html?feed=rss2&amp;p=76" />
+<!-- This site uses the Google Analytics by MonsterInsights plugin v7.7.1 - Using Analytics tracking - https://www.monsterinsights.com/ -->
+<script type="text/javascript" data-cfasync="false">
+	var mi_version         = '7.7.1';
+	var mi_track_user      = true;
+	var mi_no_track_reason = '';
+	
+	var disableStr = 'ga-disable-UA-6468739-1';
+
+	/* Function to detect opted out users */
+	function __gaTrackerIsOptedOut() {
+		return document.cookie.indexOf(disableStr + '=true') > -1;
+	}
+
+	/* Disable tracking if the opt-out cookie exists. */
+	if ( __gaTrackerIsOptedOut() ) {
+		window[disableStr] = true;
+	}
+
+	/* Opt-out function */
+	function __gaTrackerOptout() {
+	  document.cookie = disableStr + '=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
+	  window[disableStr] = true;
+	}
+	
+	if ( mi_track_user ) {
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','http://www.google-analytics.com/analytics.js','__gaTracker');
+
+		__gaTracker('create', 'UA-6468739-1', 'auto');
+		__gaTracker('set', 'forceSSL', true);
+		__gaTracker('send','pageview');
+	} else {
+		console.log( "" );
+		(function() {
+			/* https://developers.google.com/analytics/devguides/collection/analyticsjs/ */
+			var noopfn = function() {
+				return null;
+			};
+			var noopnullfn = function() {
+				return null;
+			};
+			var Tracker = function() {
+				return null;
+			};
+			var p = Tracker.prototype;
+			p.get = noopfn;
+			p.set = noopfn;
+			p.send = noopfn;
+			var __gaTracker = function() {
+				var len = arguments.length;
+				if ( len === 0 ) {
+					return;
+				}
+				var f = arguments[len-1];
+				if ( typeof f !== 'object' || f === null || typeof f.hitCallback !== 'function' ) {
+					console.log( 'Not running function __gaTracker(' + arguments[0] + " ....) because you are not being tracked. " + mi_no_track_reason );
+					return;
+				}
+				try {
+					f.hitCallback();
+				} catch (ex) {
+
+				}
+			};
+			__gaTracker.create = function() {
+				return new Tracker();
+			};
+			__gaTracker.getByName = noopnullfn;
+			__gaTracker.getAll = function() {
+				return [];
+			};
+			__gaTracker.remove = noopfn;
+			window['__gaTracker'] = __gaTracker;
+					})();
+		}
+</script>
+<!-- / Google Analytics by MonsterInsights -->
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/alex.ciobanu.org\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.2.2"}};
+			!function(a,b,c){function d(a,b){var c=String.fromCharCode;l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,a),0,0);var d=k.toDataURL();l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,b),0,0);var e=k.toDataURL();return d===e}function e(a){var b;if(!l||!l.fillText)return!1;switch(l.textBaseline="top",l.font="600 32px Arial",a){case"flag":return!(b=d([55356,56826,55356,56819],[55356,56826,8203,55356,56819]))&&(b=d([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]),!b);case"emoji":return b=d([55357,56424,55356,57342,8205,55358,56605,8205,55357,56424,55356,57340],[55357,56424,55356,57342,8203,55358,56605,8203,55357,56424,55356,57340]),!b}return!1}function f(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var g,h,i,j,k=b.createElement("canvas"),l=k.getContext&&k.getContext("2d");for(j=Array("flag","emoji"),c.supports={everything:!0,everythingExceptFlag:!0},i=0;i<j.length;i++)c.supports[j[i]]=e(j[i]),c.supports.everything=c.supports.everything&&c.supports[j[i]],"flag"!==j[i]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[j[i]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(h=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",h,!1),a.addEventListener("load",h,!1)):(a.attachEvent("onload",h),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),g=c.source||{},g.concatemoji?f(g.concatemoji):g.wpemoji&&g.twemoji&&(f(g.twemoji),f(g.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='wp-block-library-css'  href='wp-includes/css/dist/block-library/style.minbb49.css?ver=5.2.2' type='text/css' media='all' />
+<link rel='stylesheet' id='SFSImainCss-css'  href='wp-content/plugins/ultimate-social-media-icons/css/sfsi-stylebb49.css?ver=5.2.2' type='text/css' media='all' />
+<link rel='stylesheet' id='dlm-frontend-css'  href='wp-content/plugins/download-monitor/assets/css/frontendbb49.css?ver=5.2.2' type='text/css' media='all' />
+<link rel='stylesheet' id='vt-blogging-style-css'  href='wp-content/themes/vt-blogging/style4963.css?ver=1.1' type='text/css' media='all' />
+<link rel='stylesheet' id='genericons-style-css'  href='wp-content/themes/vt-blogging/assets/fonts/genericons/genericonsbb49.css?ver=5.2.2' type='text/css' media='all' />
+<link rel='stylesheet' id='vt-blogging-fonts-css'  href='http://fonts.googleapis.com/css?family=Open+Sans%3A400%2C600%2C700&amp;subset=latin%2Clatin-ext' type='text/css' media='all' />
+<link rel='stylesheet' id='responsive-style-css'  href='wp-content/themes/vt-blogging/responsive4963.css?ver=1.1' type='text/css' media='all' />
+<script type='text/javascript'>
+/* <![CDATA[ */
+var monsterinsights_frontend = {"js_events_tracking":"true","download_extensions":"","inbound_paths":"[]","home_url":"https:\/\/alex.ciobanu.org","hash_tracking":"false"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='wp-content/plugins/google-analytics-for-wordpress/assets/js/frontend.minf66a.js?ver=7.7.1'></script>
+<script type='text/javascript' src='wp-includes/js/jquery/jquery4a5f.js?ver=1.12.4-wp'></script>
+<script type='text/javascript' src='wp-includes/js/jquery/jquery-migrate.min330a.js?ver=1.4.1'></script>
+<link rel='https://api.w.org/' href='index52f0.json?rest_route=/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="xmlrpc0db0.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='[Rant] Actions &#8230;' href='indexae74.html?p=72' />
+<link rel='next' title='Generics + System.Move = Kaboom!' href='index5cfa.html?p=91' />
+<meta name="generator" content="WordPress 5.2.2" />
+<link rel='shortlink' href='index04cd.html?p=76' />
+<link rel="alternate" type="application/json+oembed" href="index4ebe.json?rest_route=%2Foembed%2F1.0%2Fembed&amp;url=https%3A%2F%2Falex.ciobanu.org%2F%3Fp%3D76" />
+<link rel="alternate" type="text/xml+oembed" href="indexed37.php?rest_route=%2Foembed%2F1.0%2Fembed&amp;url=https%3A%2F%2Falex.ciobanu.org%2F%3Fp%3D76&amp;format=xml" />
+<meta name="specificfeeds-verification-code-bzBlSVNKWDZWSXlibDUzK1dxcThCclVtRW9nZmRtWXNqK0xwUVZpdmk0V2YxQjJ5RFpHMU1ZYWZIQUVnTFFMMzVlQ2FqTXFKZW1Wc2xOYXlyRlNiRFlEaU1aOEZJWHhReE1NYnJJMEMyMTZocEQ1ck11VU9nTVVvSnlOcHFGeUV8eGZBN21WSHNIem9TY0VDZFVBaVg3ZWdpV0xzZjVYZE4zRWpvUk9UVWtpND0=" content="BA1YM7MNUUdnKhMhw87A"/><!--WP More Feeds 0.17 (http://www.mashget.com) Begin -->
+<!--WP More Feeds End -->
+<link rel="pingback" href="xmlrpc.php"><style type="text/css" id="syntaxhighlighteranchor"></style>
+<link rel="icon" href="files/uploads/2018/05/7327309-150x150.jpg" sizes="32x32" />
+<link rel="icon" href="files/uploads/2018/05/7327309-300x300.jpg" sizes="192x192" />
+<link rel="apple-touch-icon-precomposed" href="files/uploads/2018/05/7327309-300x300.jpg" />
+<meta name="msapplication-TileImage" content="https://alex.ciobanu.org/files/uploads/2018/05/7327309-300x300.jpg" />
+
+</head>
+
+<body class="post-template-default single single-post postid-76 single-format-standard">
+<div id="page" class="site">
+
+	<header id="masthead" class="site-header clear">
+
+		<div class="container">
+
+			<div class="site-branding">
+			
+									<h1 class="site-title"><a href="index.html" title="YAPB" rel="home">YAPB</a></h1>
+					<h2 class="site-description">Yet Another Programming Blog</h2>
+				
+			</div><!-- .site-branding -->
+
+			<nav id="primary-nav" class="main-navigation">
+
+				
+				<ul class="sf-menu">
+				  				</ul><!-- .sf-menu -->
+
+				
+			</nav><!-- #primary-nav -->
+
+				
+
+			<div id="slick-mobile-menu"></div>
+		
+		</div><!-- .container -->
+
+	</header><!-- #masthead -->
+
+	
+	<div id="content" class="site-content container clear">
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main" >
+
+			
+<article id="post-76" class="post-76 post type-post status-publish format-standard hentry category-software tag-dehl tag-delphi tag-help tag-linkedin tag-oop tag-rtl">
+	<header class="entry-header">	
+		<h1 class="entry-title">How To: Creating a custom Variant type</h1>
+		<div class="entry-meta clear">
+			<span class="entry-author"><a href="indexcd64.html?author=1"><img alt='' src='https://secure.gravatar.com/avatar/9d6eaf92de1479695fa6aa424733aeab?s=48&amp;d=mm&amp;r=g' srcset='https://secure.gravatar.com/avatar/9d6eaf92de1479695fa6aa424733aeab?s=96&#038;d=mm&#038;r=g 2x' class='avatar avatar-48 photo' height='48' width='48' /></a> Posted by <a href="indexcd64.html?author=1" title="Posts by Alexandru Ciobanu" rel="author">Alexandru Ciobanu</a></span>
+			<span class="entry-date">February 9, 2009</span>
+			<span class="entry-category">in <a href="indexd65e.html?cat=8" title="View all posts in Software Development" >Software Development</a> </span>
+		</div><!-- .entry-meta -->
+
+		
+	</header><!-- .entry-header -->
+
+	<div class="entry-content">
+	
+				
+		<p>In this post I will detail on how to create a custom <strong>Variant</strong> for your data type. First of all, the help should be pretty useful in this case, but it if doesn&#8217;t help much, there is always the <em>FmtBcd</em> unit which creates a Variant for it&#8217;s BCD data type.</p>
+<p>There are a few steps to be followed in order to create a custom Variant, and here they are:</p>
+<ol>
+<li>Create a public data type with all the functionality. This is the data type which you will wrap into a custom Variant. It is also a good practice to make that data type and all supporting functions public to consumers. In many cases people will not need a Variant wrapping your data type but rather the data type directly. This improves speed and readability of the code in many cases.</li>
+<li>A Variant is simply a record holding some data which is used by the RTL at run-time to decide which functions to invoke and in what case. So the next step would be to declare such a record. The basic structure of that record is the same except a single 4-byte field in which you will hold a reference to your data type (or a value if it fits directly).</li>
+<li>Step 3 involves creating a descendant class from <strong>TCustomVariantType</strong> which will act as a proxy between the variant manager (handled by the RTL) and your custom Variant.</li>
+<li>The last step is to &#8220;plug-in&#8221; your proxy class at unit initialization time; and unplug it at finalization.</li>
+</ol>
+<p>In my case, I will make a custom Variant for <em>BigCardinal</em> data type declared <a href="http://code.google.com/p/delphilhlplib/">HelperLib</a>. First off, all the code I will add will reside in the same unit in which <em>BigCardinal</em> is implemented. I need that to avoid having more units in &#8220;uses&#8221; clause and secondly I need access to internals of <em>BigCardinal.</em> As the first step is already completed (I already have the data type created), I will start with the second one: Declaring a custom <strong>TVarData</strong> to hold my data:</p>
+<pre class="brush: delphi; title: ; notranslate" title="">
+type
+  PBigCardinal = ^BigCardinal;
+
+  { Mapping the BigCardinal into TVarData structure }
+  TBigCardinalVarData = packed record
+    { Var type, will be assigned at runtime }
+    VType: TVarType;
+    { Reserved stuff }
+    Reserved1, Reserved2, Reserved3: Word;
+    { A reference to the enclosed big cardinal }
+    BigCardinalPtr: PBigCardinal;
+    { Reserved stuff }
+    Reserved4: LongWord;
+  end;
+</pre>
+<p>In this structure, <strong>VType</strong> will hold an Id (which we will obtain at runtime) that will uniquely identify our variant data type. This Id will be used by the variant manager to call our proxy class for each operation we will make on the Variant. <strong>Reserved1</strong>, <strong>Reserved2</strong>, <strong>Reserved3 </strong>and <strong>Reserved4 </strong>should be ignored and not used. And finally <strong>BigCardinalPtr</strong> is a pointer to a <em>BigCardinal</em> structure.</p>
+<p>The next step is to create our proxy class that will receive all requests to &#8220;work&#8221; on the Variants of our type. Here is the declaration:</p>
+<pre class="brush: delphi; title: ; notranslate" title="">
+{ Manager for our variant type }
+  TBigCardinalVariantType = class(TCustomVariantType)
+  private
+    { Will create a big cardinal, or raise an error }
+    function VarDataToBigCardinal(const 
+      Value: TVarData): BigCardinal;
+    { Will create a variant from a BigCardinal }
+    procedure BigCardinalToVarData(const Value: BigCardinal; 
+      var OutValue: TVarData);
+  public
+    procedure Clear(var V: TVarData); override;
+    procedure Copy(var Dest: TVarData; const Source: TVarData; 
+      const Indirect: Boolean); override;
+    procedure Cast(var Dest: TVarData; 
+      const Source: TVarData); override;
+    procedure CastTo(var Dest: TVarData; 
+      const Source: TVarData; 
+      const AVarType: TVarType); override;
+    procedure BinaryOp(var Left: TVarData; 
+      const Right: TVarData; 
+      const Operator: TVarOp); override;
+    procedure UnaryOp(var Right: TVarData; 
+      const Operator: TVarOp); override;
+    procedure Compare(const Left, Right: TVarData; 
+      var Relationship: TVarCompareResult); override;
+  end;
+</pre>
+<p>Note that I have only overridden the methods in which I am interested in. If your data type doesn&#8217;t support comparison operations, simply do not override the <strong>Compare</strong> method. The two private methods declared in this class are used internally to easy the coding.</p>
+<p>Well, we have created the proxy class, overridden the required methods, now let&#8217;s implement them:</p>
+<pre class="brush: delphi; title: ; notranslate" title="">
+function TBigCardinalVariantType.VarDataToBigCardinal
+      (const Value: TVarData): BigCardinal;
+begin
+  { Check if the var data has a big cardinal inside }
+  if Value.VType = VarType then
+  begin
+    { Copy the value to result }
+    Exit(TBigCardinalVarData(Value).BigCardinalPtr^);
+  end;
+
+  { OK, try to convert the incoming var type to 
+    something useful }
+  case Value.VType of
+    varByte:
+      Result := Value.VByte;
+    varShortInt:
+      Result := Value.VShortInt;
+    varWord:
+      Result := Value.VWord;
+    varSmallint:
+      Result := Value.VSmallInt;
+    varInteger:
+      Result := Value.VInteger;
+    varLongWord:
+      Result := Value.VLongWord;
+    varUInt64:
+      Result := Value.VUInt64;
+    varInt64:
+      Result := Value.VInt64;
+    varString, varUString, varOleStr:
+    begin
+      { Be careful here, a string may not be a good number }
+      try
+        Result := StrToBigCardinal(VarDataToStr(Value));
+      except
+        on EConvertError do
+          RaiseCastError;
+      end;
+    end;
+  end;
+end;
+</pre>
+<p>Note the fact that we check if the type (Id) of the <em>Value</em> is the same as the one assigned to us by the variant managed. In this case, we are sure that the <em>Value</em> contains a <em>BigCardinal</em> inside, in which case we simply return that value; otherwise we convert the incoming Variant to a <em>BigCardinal</em>.</p>
+<pre class="brush: delphi; title: ; notranslate" title="">
+procedure TBigCardinalVariantType.BigCardinalToVarData
+      (const Value: BigCardinal; var OutValue: TVarData);
+begin
+  { Dispose of the old value. Check it it's ours first }
+  if OutValue.VType = VarType then
+    Clear(OutValue)
+  else
+    VarDataClear(OutValue);
+
+  with TBigCardinalVarData(OutValue) do
+  begin
+    { Assign the new variant the var type that was 
+      allocated for us }
+    VType := VarType;
+
+    { Allocate space for our big cardinal pointer }
+    New(BigCardinalPtr);
+
+    { Copy self to this memory }
+    BigCardinalPtr^ := Value;
+  end;
+end;
+</pre>
+<p>This function simply clears out the <em>OutValue </em>and then create an instance of our <em>BigCardinal</em> type into it. Again, note that if <em>OutValue </em>contains a <em>BigCardinal</em> inside we must clear it properly (to not leak references of <em>BigCardinal</em>).</p>
+<pre class="brush: delphi; title: ; notranslate" title="">
+procedure TBigCardinalVariantType.BinaryOp(var Left: TVarData; 
+    const Right: TVarData; const Operator: TVarOp);
+begin
+  { Select the appropriate operation }
+  case Operator of
+    opAdd:
+      BigCardinalToVarData(VarDataToBigCardinal(Left) + 
+        VarDataToBigCardinal(Right), Left);
+    opAnd:
+      BigCardinalToVarData(VarDataToBigCardinal(Left) and 
+        VarDataToBigCardinal(Right), Left);
+    opIntDivide:
+      BigCardinalToVarData(VarDataToBigCardinal(Left) div 
+        VarDataToBigCardinal(Right), Left);
+    opModulus:
+      BigCardinalToVarData(VarDataToBigCardinal(Left) mod 
+        VarDataToBigCardinal(Right), Left);
+    opMultiply:
+      BigCardinalToVarData(VarDataToBigCardinal(Left) * 
+        VarDataToBigCardinal(Right), Left);
+    opOr:
+      BigCardinalToVarData(VarDataToBigCardinal(Left) or 
+        VarDataToBigCardinal(Right), Left);
+    opShiftLeft:
+      BigCardinalToVarData(VarDataToBigCardinal(Left) shl 
+        VarDataToBigCardinal(Right), Left);
+    opShiftRight:
+      BigCardinalToVarData(VarDataToBigCardinal(Left) shr 
+        VarDataToBigCardinal(Right), Left);
+    opSubtract:
+      BigCardinalToVarData(VarDataToBigCardinal(Left) - 
+        VarDataToBigCardinal(Right), Left);
+    opXor:
+      BigCardinalToVarData(VarDataToBigCardinal(Left) xor 
+        VarDataToBigCardinal(Right), Left);
+    else
+      RaiseInvalidOp;
+  end;
+end;
+</pre>
+<p>This one is pretty simple: for each type of operation we simply invoke the <em>BigCardinal</em>&#8216;s operators. Note that we did not implement all possible operators but rather those that are supported by our <em>BigCardinal</em> data type.</p>
+<pre class="brush: delphi; title: ; notranslate" title="">
+procedure TBigCardinalVariantType.Cast(var Dest: TVarData; 
+    const Source: TVarData);
+begin
+  { Cast the source to our cardinal type }
+  VarDataInit(Dest);
+  BigCardinalToVarData(VarDataToBigCardinal(Source), Dest);
+end;
+</pre>
+<p>The <strong>Cast</strong> method is invoked every time another Variant type needs to be converted into our Variant type. What we do is simply initialize the <em>Dest</em> parameter and then invoke our helper method.</p>
+<pre class="brush: delphi; title: ; notranslate" title="">
+procedure TBigCardinalVariantType.CastTo(var Dest: TVarData; 
+    const Source: TVarData; const AVarType: TVarType);
+var
+  Big: BigCardinal;
+  Temp: TVarData;
+begin
+  if Source.VType = VarType then
+  begin
+    { Only continue if we're invoked for our data type }
+    Big := TBigCardinalVarData(Source).BigCardinalPtr^;
+
+    { Initilize the destination }
+    VarDataInit(Dest);
+    Dest.VType := AVarType;
+
+    case AVarType of
+      varByte:
+        Dest.VByte := Big.ToByte();
+      varShortInt:
+        Dest.VShortInt := Big.ToShortInt();
+      varWord:
+        Dest.VWord := Big.ToWord();
+      varSmallint:
+        Dest.VSmallInt := Big.ToSmallInt();
+      varInteger:
+        Dest.VInteger := Big.ToInteger();
+      varLongWord:
+        Dest.VLongWord := Big.ToCardinal();
+      varUInt64:
+        Dest.VUInt64 := Big.ToUInt64();
+      varInt64:
+        Dest.VInt64 := Big.ToInt64();
+      varOleStr:
+        VarDataFromOleStr(Dest, UIntToStr(Big));
+      varString, varUString:
+        VarDataFromStr(Dest, UIntToStr(Big));
+      else
+      begin
+        { No default convertion found! Trying to use the string }
+        try
+          VarDataInit(Temp);
+          VarDataFromStr(Temp, UIntToStr(Big));
+          VarDataCastTo(Dest, Temp, AVarType);
+        finally
+          { Dispose our variant }
+          VarDataClear(Temp);
+        end;
+      end;
+    end;
+  end else
+    inherited;
+end;
+</pre>
+<p>This method is the inverse of the <strong>Cast</strong> one. In most cases we can do a direct cast, while in some we will first try to convert to a string and then from that string convert to the required Variant type (most custom variants implement conversion from ant to strings so that might help).</p>
+<pre class="brush: delphi; title: ; notranslate" title="">
+procedure TBigCardinalVariantType.Clear(var V: TVarData);
+begin
+  { Clear the variant type }
+  V.VType := varEmpty;
+
+  { And dispose the value }
+  Dispose(TBigCardinalVarData(V).BigCardinalPtr);
+  TBigCardinalVarData(V).BigCardinalPtr := nil;
+end;
+</pre>
+<p>The <strong>Clear</strong> method is invoked every time a Variant that contains a <em>BigCardinal</em> is being cleared (either by compiler inserted calls or manually by calling <em>VarClear</em>() method). Our implementation will <em>Dispose</em>() the structure and then make the Variant empty. Note that <em>FreeMem</em> is not an option because it will not finalize the record &#8212; which is what we want because we have a reference to a dynamic array there that needs to be cleared out.</p>
+<pre class="brush: delphi; title: ; notranslate" title="">
+procedure TBigCardinalVariantType.Compare
+    (const Left, Right: TVarData; 
+      var Relationship: TVarCompareResult);
+var
+  Res: Integer;
+begin
+  { Compare these values }
+  Res := VarDataToBigCardinal(Left).CompareTo
+    (VarDataToBigCardinal(Right));
+
+  { Return the compare result }
+  if Res &lt; 0 then
+    Relationship := crLessThan
+  else if Res &gt; 0 then
+    Relationship := crGreaterThan
+  else
+    Relationship := crEqual;
+end;
+</pre>
+<p><strong>Compare</strong> is simple and doesn&#8217;t need any explanations. We simply &#8220;convert&#8221; the variants to <em>BigCardinal</em> and compare them.</p>
+<pre class="brush: delphi; title: ; notranslate" title="">
+procedure TBigCardinalVariantType.Copy(var Dest: TVarData; 
+    const Source: TVarData; const Indirect: Boolean);
+begin
+  if Indirect and VarDataIsByRef(Source) then
+    VarDataCopyNoInd(Dest, Source)
+  else
+  begin
+    with TBigCardinalVarData(Dest) do
+    begin
+      { Copy the variant type }
+      VType := VarType;
+
+      { Initialize the pointer }
+      New(BigCardinalPtr);
+
+      { Copy by value }
+      BigCardinalPtr^ := TBigCardinalVarData(Source).
+        BigCardinalPtr^;
+    end;
+  end;
+end;
+</pre>
+<p>This method is invoked every time we assign a Variant to another Variant. See Help for more description on what <em>Indirect</em> and <em>VarDataIsByRef</em> mean in this context.</p>
+<pre class="brush: delphi; title: ; notranslate" title="">
+procedure TBigCardinalVariantType.UnaryOp
+    (var Right: TVarData; const Operator: TVarOp);
+begin
+  { Select the appropriate operation }
+  case Operator of
+    opNegate:
+      BigCardinalToVarData(VarDataToBigCardinal(Right), Right);
+    else
+      RaiseInvalidOp;
+  end;
+end;
+</pre>
+<p>We implement a single operator: <em>opNegate</em>. Even so, negation works on <em>BigCardinal</em>s only is overflow checking is disabled.</p>
+<p>Now that we have implemented our proxy, let&#8217;s plug it in! First you declare a global but implementation-only variable of your proxy type (in our case: <strong>TBigCardinalVariantType</strong>). You will probably declare that variable at the top of the implementation section so that other code can use it (later on this):</p>
+<pre class="brush: delphi; title: ; notranslate" title="">
+var
+  { Our singleton that manages tour variant types }
+  SgtBigCardinalVariantType: TBigCardinalVariantType;
+</pre>
+<p>&#8230; and then register it by using this code:</p>
+<pre class="brush: delphi; title: ; notranslate" title="">
+initialization
+  { Register our custom variant type }
+  SgtBigCardinalVariantType := TBigCardinalVariantType.Create();
+
+finalization
+  { Unregister our custom variant }
+  FreeAndNil(SgtBigCardinalVariantType);
+</pre>
+<p>When <strong>SgtBigCardinalVariantType</strong> is created, it&#8217;s <em>VarType</em> member (which we used in our functions)  is automatically assigned a unique Id by the variant manager. That Id is used in our code to uniquely distinguish our custom Variant.</p>
+<p>OK, we&#8217;ve go to the point where everything is ready to go with one little exception &#8212; there is no public method or routine that can create a Variant type from a BigCardinal. In this case I have decided to implement an &#8220;implicit&#8221; operator for <em>BigCardinal</em> that will do this creation automatically:</p>
+<pre class="brush: delphi; title: ; notranslate" title="">
+class operator BigCardinal.Implicit
+      (const ANumber: BigCardinal): Variant;
+begin
+  { Clear out the result }
+  VarClear(Result);
+
+  with TBigCardinalVarData(Result) do
+  begin
+    { Assign the new variant the var type that was 
+      allocated for us }
+    VType := SgtBigCardinalVariantType.VarType;
+
+    { Allocate space for our big cardinal pointer }
+    New(BigCardinalPtr);
+
+    { Copy self to this memory }
+    BigCardinalPtr^ := ANumber;
+  end;
+end;
+</pre>
+<p>That&#8217;s all! Now we can write code like this:</p>
+<pre class="brush: delphi; title: ; notranslate" title="">
+var
+  X: Variant;
+begin
+  X := BigCardinal(1);
+  X := X + '343267727663266525438020038463';
+  WriteLn(X);
+end;
+</pre>
+<p><strong>In the next post I will create an invokable variant.</strong></p>
+	</div><!-- .entry-content -->
+
+	<span class="entry-tags">
+		<span class="tag-links"> <a href="index5abc.html?tag=dehl" rel="tag">dehl</a> <a href="indexe714.html?tag=delphi" rel="tag">delphi</a> <a href="indexffce.html?tag=help" rel="tag">Help</a> <a href="index4073.html?tag=linkedin" rel="tag">LinkedIn</a> <a href="index2678.html?tag=oop" rel="tag">oop</a> <a href="index590e.html?tag=rtl" rel="tag">rtl</a></span>			
+			</span><!-- .entry-tags -->
+
+</article><!-- #post-## -->
+
+
+
+
+		</main><!-- #main -->
+	</div><!-- #primary -->
+
+
+<aside id="secondary" class="widget-area sidebar">
+	<div id="archives-3" class="widget widget_archive"><h3 class="widget-title"><span>Archives</span></h3>		<ul>
+				<li><a href='index0bc1.html?m=201906'>June 2019</a></li>
+	<li><a href='indexa8e7.html?m=201904'>April 2019</a></li>
+	<li><a href='index1c85.html?m=201809'>September 2018</a></li>
+	<li><a href='indexc090.html?m=201807'>July 2018</a></li>
+	<li><a href='indexcca2.html?m=201806'>June 2018</a></li>
+	<li><a href='indexeb56.html?m=201805'>May 2018</a></li>
+	<li><a href='index570a.html?m=201404'>April 2014</a></li>
+	<li><a href='index9f9d.html?m=201302'>February 2013</a></li>
+	<li><a href='indexde88.html?m=201205'>May 2012</a></li>
+	<li><a href='indexfa64.html?m=201201'>January 2012</a></li>
+	<li><a href='index62cc.html?m=201107'>July 2011</a></li>
+	<li><a href='index512b.html?m=201104'>April 2011</a></li>
+	<li><a href='index08fb.html?m=201103'>March 2011</a></li>
+	<li><a href='index52f4.html?m=201102'>February 2011</a></li>
+	<li><a href='index74f1.html?m=201101'>January 2011</a></li>
+	<li><a href='indexe3d5.html?m=201010'>October 2010</a></li>
+	<li><a href='index9ab9.html?m=201009'>September 2010</a></li>
+	<li><a href='index31f0.html?m=201006'>June 2010</a></li>
+	<li><a href='indexd189.html?m=201005'>May 2010</a></li>
+	<li><a href='indexb5c0.html?m=201004'>April 2010</a></li>
+	<li><a href='indexf258.html?m=201003'>March 2010</a></li>
+	<li><a href='index6e30.html?m=201002'>February 2010</a></li>
+	<li><a href='index451d.html?m=200910'>October 2009</a></li>
+	<li><a href='index3e04.html?m=200909'>September 2009</a></li>
+	<li><a href='index3104.html?m=200906'>June 2009</a></li>
+	<li><a href='indexc36d.html?m=200905'>May 2009</a></li>
+	<li><a href='index17e8.html?m=200904'>April 2009</a></li>
+	<li><a href='index10a5.html?m=200903'>March 2009</a></li>
+	<li><a href='index8988.html?m=200902'>February 2009</a></li>
+	<li><a href='index1419.html?m=200901'>January 2009</a></li>
+	<li><a href='index7866.html?m=200812'>December 2008</a></li>
+	<li><a href='index55f6.html?m=200811'>November 2008</a></li>
+	<li><a href='indexe77c.html?m=200809'>September 2008</a></li>
+	<li><a href='index0e62.html?m=200807'>July 2008</a></li>
+	<li><a href='indexfda7.html?m=200806'>June 2008</a></li>
+		</ul>
+			</div></aside><!-- #secondary -->
+	</div><!-- #content .site-content -->
+	
+	<footer id="colophon" class="site-footer">
+
+				
+		<div id="site-bottom" class="container clear">
+
+			<div class="site-info">Copyright &copy; 2019 <a href="index.html" title="YAPB"><span>YAPB</span></a>. All rights reserved.<br>Theme: VT Blogging by <a href="https://volthemes.com/theme/vt-blogging-pro/" target="_blank" title="VolThemes"><span>VolThemes</span></a>. Powered by <a href="https://wordpress.org/" target="_blank" title="WordPress"><span>WordPress</span></a>.</div>			
+
+		</div><!-- #site-bottom -->
+							
+	</footer><!-- #colophon -->
+	
+</div><!-- #page -->
+
+        <!--facebook like and share js -->
+        <div id="fb-root"></div>
+		<script>(function(d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+		  	if (d.getElementById(id)) return;
+		  	js = d.createElement(s); js.id = id;
+		  	js.src = "http://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
+		  	fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));</script>
+ 		
+        <script src="http://platform.linkedin.com/in.js" type="text/javascript">lang: en_US</script>
+			<!-- twitter JS End -->
+		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>	
+	             <script>
+                jQuery( document ).scroll(function( $ )
+                {
+                    var y = jQuery(this).scrollTop();
+            
+                    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))
+                    {    
+                       if(jQuery(window).scrollTop() + jQuery(window).height() >= jQuery(document).height()-100)
+                       {
+                          jQuery('.sfsi_outr_div').css({'z-index':'9996',opacity:1,top:jQuery(window).scrollTop()+"px",position:"absolute"});
+                          jQuery('.sfsi_outr_div').fadeIn(200);
+                          jQuery('.sfsi_FrntInner_chg').fadeIn(200);
+                       }
+                       else{
+                           jQuery('.sfsi_outr_div').fadeOut();
+                           jQuery('.sfsi_FrntInner_chg').fadeOut();
+                       }
+                  }
+                  else
+                  {
+                       if(jQuery(window).scrollTop() + jQuery(window).height() >= jQuery(document).height()-3)
+                       {
+                            jQuery('.sfsi_outr_div').css({'z-index':'9996',opacity:1,top:jQuery(window).scrollTop()+200+"px",position:"absolute"});
+                            jQuery('.sfsi_outr_div').fadeIn(200);
+                            jQuery('.sfsi_FrntInner_chg').fadeIn(200);
+                       }
+                       else
+                       {
+                         jQuery('.sfsi_outr_div').fadeOut();
+                         jQuery('.sfsi_FrntInner_chg').fadeOut();
+                       }
+                  } 
+                });
+             </script>
+                	<script>
+			jQuery(document).ready(function(e) {
+                jQuery("body").addClass("sfsi_2.24")
+            });
+			function sfsi_processfurther(ref) {
+				var feed_id = 'bzBlSVNKWDZWSXlibDUzK1dxcThCclVtRW9nZmRtWXNqK0xwUVZpdmk0V2YxQjJ5RFpHMU1ZYWZIQUVnTFFMMzVlQ2FqTXFKZW1Wc2xOYXlyRlNiRFlEaU1aOEZJWHhReE1NYnJJMEMyMTZocEQ1ck11VU9nTVVvSnlOcHFGeUV8eGZBN21WSHNIem9TY0VDZFVBaVg3ZWdpV0xzZjVYZE4zRWpvUk9UVWtpND0=';
+				var feedtype = 8;
+				var email = jQuery(ref).find('input[name="data[Widget][email]"]').val();
+				var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+				if ((email != "Enter your email") && (filter.test(email))) {
+					if (feedtype == "8") {
+						var url ="https://www.specificfeeds.com/widgets/subscribeWidget/"+feed_id+"/"+feedtype;
+						window.open('', "popupwindow", "scrollbars=yes,width=1080,height=760");
+						ref.action=url;
+						ref.target="popupwindow";
+						return true;
+					}else{
+						return false
+					}
+				} else {
+					alert("Please enter email address");
+					jQuery(ref).find('input[name="data[Widget][email]"]').focus();
+					return false;
+				}
+			}
+		</script>
+        <style type="text/css" aria-selected="true">
+			.sfsi_subscribe_Popinner
+			{
+								width: 100% !important;
+				height: auto !important;
+												border: 1px solid #b5b5b5 !important;
+								padding: 18px 0px !important;
+				background-color: #ffffff !important;
+			}
+			.sfsi_subscribe_Popinner form
+			{
+				margin: 0 20px !important;
+			}
+			.sfsi_subscribe_Popinner h5
+			{
+				font-family: Helvetica,Arial,sans-serif !important;
+								font-weight: bold !important;
+								color: #000000 !important;
+				font-size: 16px !important;
+				text-align: center !important;
+				margin: 0 0 10px !important;
+    			padding: 0 !important;
+			}
+			.sfsi_subscription_form_field {
+				margin: 5px 0 !important;
+				width: 100% !important;
+				display: inline-flex;
+				display: -webkit-inline-flex;
+			}
+			.sfsi_subscription_form_field input {
+				width: 100% !important;
+				padding: 10px 0px !important;
+			}
+			.sfsi_subscribe_Popinner input[type=email]
+			{
+				font-family: Helvetica,Arial,sans-serif !important;
+								font-style: normal !important;
+								color:  !important;
+				font-size: 14px !important;
+				text-align: center !important;
+			}
+			.sfsi_subscribe_Popinner input[type=email]::-webkit-input-placeholder {
+			   	font-family: Helvetica,Arial,sans-serif !important;
+								font-style: normal !important;
+								color:  !important;
+				font-size: 14px !important;
+				text-align: center !important;
+			}
+			.sfsi_subscribe_Popinner input[type=email]:-moz-placeholder { /* Firefox 18- */
+			    font-family: Helvetica,Arial,sans-serif !important;
+								font-style: normal !important;
+								color:  !important;
+				font-size: 14px !important;
+				text-align: center !important;
+			}
+			.sfsi_subscribe_Popinner input[type=email]::-moz-placeholder {  /* Firefox 19+ */
+			    font-family: Helvetica,Arial,sans-serif !important;
+								font-style: normal !important;
+								color:  !important;
+				font-size: 14px !important;
+				text-align: center !important;
+			}
+			.sfsi_subscribe_Popinner input[type=email]:-ms-input-placeholder {  
+			  	font-family: Helvetica,Arial,sans-serif !important;
+								font-style: normal !important;
+								color:  !important;
+				font-size: 14px !important;
+				text-align: center !important;
+			}
+			.sfsi_subscribe_Popinner input[type=submit]
+			{
+				font-family: Helvetica,Arial,sans-serif !important;
+								font-weight: bold !important;
+								color: #000000 !important;
+				font-size: 16px !important;
+				text-align: center !important;
+				background-color: #dedede !important;
+			}
+		</style>
+	<script type='text/javascript' src='wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shCore09b1.js?ver=3.0.9b'></script>
+<script type='text/javascript' src='wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushDelphi09b1.js?ver=3.0.9b'></script>
+<script type='text/javascript'>
+	(function(){
+		var corecss = document.createElement('link');
+		var themecss = document.createElement('link');
+		var corecssurl = "wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shCore09b1.css?ver=3.0.9b";
+		if ( corecss.setAttribute ) {
+				corecss.setAttribute( "rel", "stylesheet" );
+				corecss.setAttribute( "type", "text/css" );
+				corecss.setAttribute( "href", corecssurl );
+		} else {
+				corecss.rel = "stylesheet";
+				corecss.href = corecssurl;
+		}
+		document.getElementsByTagName("head")[0].insertBefore( corecss, document.getElementById("syntaxhighlighteranchor") );
+		var themecssurl = "wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shThemeDefault09b1.css?ver=3.0.9b";
+		if ( themecss.setAttribute ) {
+				themecss.setAttribute( "rel", "stylesheet" );
+				themecss.setAttribute( "type", "text/css" );
+				themecss.setAttribute( "href", themecssurl );
+		} else {
+				themecss.rel = "stylesheet";
+				themecss.href = themecssurl;
+		}
+		//document.getElementById("syntaxhighlighteranchor").appendChild(themecss);
+		document.getElementsByTagName("head")[0].insertBefore( themecss, document.getElementById("syntaxhighlighteranchor") );
+	})();
+	SyntaxHighlighter.config.strings.expandSource = '+ expand source';
+	SyntaxHighlighter.config.strings.help = '?';
+	SyntaxHighlighter.config.strings.alert = 'SyntaxHighlighter\n\n';
+	SyntaxHighlighter.config.strings.noBrush = 'Can\'t find brush for: ';
+	SyntaxHighlighter.config.strings.brushNotHtmlScript = 'Brush wasn\'t configured for html-script option: ';
+	SyntaxHighlighter.defaults['pad-line-numbers'] = false;
+	SyntaxHighlighter.defaults['toolbar'] = false;
+	SyntaxHighlighter.all();
+
+	// Infinite scroll support
+	if ( typeof( jQuery ) !== 'undefined' ) {
+		jQuery( function( $ ) {
+			$( document.body ).on( 'post-load', function() {
+				SyntaxHighlighter.highlight();
+			} );
+		} );
+	}
+</script>
+<script type='text/javascript' src='wp-includes/js/jquery/ui/core.mine899.js?ver=1.11.4'></script>
+<script type='text/javascript' src='wp-content/plugins/ultimate-social-media-icons/js/shuffle/modernizr.custom.minbb49.js?ver=5.2.2'></script>
+<script type='text/javascript' src='wp-content/plugins/ultimate-social-media-icons/js/shuffle/jquery.shuffle.minbb49.js?ver=5.2.2'></script>
+<script type='text/javascript' src='wp-content/plugins/ultimate-social-media-icons/js/shuffle/random-shuffle-minbb49.js?ver=5.2.2'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var sfsi_icon_ajax_object = {"ajax_url":"https:\/\/alex.ciobanu.org\/wp-admin\/admin-ajax.php"};
+var sfsi_icon_ajax_object = {"ajax_url":"https:\/\/alex.ciobanu.org\/wp-admin\/admin-ajax.php","plugin_url":"https:\/\/alex.ciobanu.org\/wp-content\/plugins\/ultimate-social-media-icons\/"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='wp-content/plugins/ultimate-social-media-icons/js/custombb49.js?ver=5.2.2'></script>
+<script type='text/javascript' src='wp-includes/js/comment-reply.minbb49.js?ver=5.2.2'></script>
+<script type='text/javascript' src='wp-content/themes/vt-blogging/assets/js/superfish.minbb49.js?ver=5.2.2'></script>
+<script type='text/javascript' src='wp-content/themes/vt-blogging/assets/js/jquery.slicknav.minbb49.js?ver=5.2.2'></script>
+<script type='text/javascript' src='wp-content/themes/vt-blogging/assets/js/modernizr.minbb49.js?ver=5.2.2'></script>
+<script type='text/javascript' src='wp-content/themes/vt-blogging/assets/js/html5shiv.minbb49.js?ver=5.2.2'></script>
+<script type='text/javascript' src='wp-content/themes/vt-blogging/assets/js/jquery.custombb49.js?ver=5.2.2'></script>
+<script type='text/javascript' src='wp-includes/js/wp-embed.minbb49.js?ver=5.2.2'></script>
+
+</body>
+
+<!-- Mirrored from alex.ciobanu.org/?p=76 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 30 Jun 2019 18:52:07 GMT -->
+</html>

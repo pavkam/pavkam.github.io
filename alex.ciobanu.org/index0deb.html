@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>lame &#8211; YAPB</title>
+	<atom:link href="https://alex.ciobanu.org/?feed=rss2&#038;tag=lame" rel="self" type="application/rss+xml" />
+	<link>https://alex.ciobanu.org</link>
+	<description>Yet Another Programming Blog</description>
+	<lastBuildDate>Sun, 08 Jan 2012 01:09:21 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+
+<image>
+	<url>https://alex.ciobanu.org/files/uploads/2018/05/7327309-150x150.jpg</url>
+	<title>lame &#8211; YAPB</title>
+	<link>https://alex.ciobanu.org</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+	<item>
+		<title>Delphi anonymous methods are &#8230;</title>
+		<link>https://alex.ciobanu.org/?p=496</link>
+				<comments>https://alex.ciobanu.org/?p=496#comments</comments>
+				<pubDate>Sun, 08 Jan 2012 01:05:18 +0000</pubDate>
+		<dc:creator><![CDATA[Alexandru Ciobanu]]></dc:creator>
+				<category><![CDATA[Software Development]]></category>
+		<category><![CDATA[bsd]]></category>
+		<category><![CDATA[bugs]]></category>
+		<category><![CDATA[dehl]]></category>
+		<category><![CDATA[delphi]]></category>
+		<category><![CDATA[embarcadero]]></category>
+		<category><![CDATA[lame]]></category>
+		<category><![CDATA[LinkedIn]]></category>
+		<category><![CDATA[oop]]></category>
+		<category><![CDATA[rtl]]></category>
+
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=496</guid>
+				<description><![CDATA[&#8230; too fat. Surely writing code like this gets frustrating very fast. I want my lambdas!! In other news, there is a working version of Collections 2.0 in the SVN. Most of the changes were sitting on my... ]]></description>
+								<content:encoded><![CDATA[<h1>&#8230; too fat.</h1>
+<p>Surely writing code like this gets frustrating very fast. I want my <strong>lambdas</strong>!!</p>
+<pre class="brush: delphi; title: ; notranslate">
+  { Lovely, isn't it? }
+  LGroupJoined := LOwners.Op.GroupJoin&lt;TPet, TPerson, TOwnedPets&gt;(LPets,
+    function(Arg1: TPerson): TPerson begin Result := Arg1; end,
+    function(Arg1: TPet): TPerson begin Result := Arg1.FOwner; end,
+    function(Arg1: TPerson; Arg2: ISequence&lt;TPet&gt;): TOwnedPets
+    begin
+      Result.FOwnerName := Format('%s, %s', [Arg1.FLast, Arg1.FFirst]);
+      Result.FPetNames := Arg2.Op.Select&lt;String&gt;(
+        function(Arg1: TPet): String begin Result := Arg1.FName; end);
+    end
+  );
+
+  for LOwnedPets in LGroupJoined do
+  begin
+    WriteLn('Person ', LOwnedPets.FOwnerName, ' owns: ');
+    Write('    ');
+
+    for LName in LOwnedPets.FPetNames do
+      Write(LName, ', ');
+
+    WriteLn;
+  end;
+</pre>
+<p>In other news, there is a working version of <em>Collections 2.0</em> in the SVN. Most of the changes were sitting on my hard drive for a year now. I just made sure that the last touches are applied and that this version compiles in Delphi XE2. I have also applied a few fixes that enabled the package to work in 64 bit environment.</p>
+<p>&nbsp;</p>
+<p><span style="color: #ff0000;">Be advised: The unit tests are completely broken. I have no short term plans on making them work. The amount of time needed for that is staggering. I am currently focused on features so I won&#8217;t touch them in a while.</span></p>
+<p>&nbsp;</p>
+<p><em>P.S. I have to say that I am very disappointed with the quality of the IDE when generics are involved. I had countless unpleasant problems in the past but was expecting things to get better in XE2. Not so. My IDE froze countless time when trying to edit some source files. Whenever I would type a &#8220;.&#8221; or a &#8220;(&#8221; it would be gone for good. This makes me wonder whether Collections will be usable at all to you guys. With such buggy support I can predict only crashes. And don&#8217;t get me started on the EXE size &#8230;</em></p>
+]]></content:encoded>
+							<wfw:commentRss>https://alex.ciobanu.org/?feed=rss2&#038;p=496</wfw:commentRss>
+		<slash:comments>9</slash:comments>
+							</item>
+		<item>
+		<title>Cool security</title>
+		<link>https://alex.ciobanu.org/?p=44</link>
+				<comments>https://alex.ciobanu.org/?p=44#comments</comments>
+				<pubDate>Wed, 10 Dec 2008 16:55:01 +0000</pubDate>
+		<dc:creator><![CDATA[Alexandru Ciobanu]]></dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[lame]]></category>
+
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=44</guid>
+				<description><![CDATA[This is not a Delphi post, it&#8217;s a post about stupidity! I have my laptop protected by a boot password. The cool thing is that if you press CTRL+ALT+DEL at the time when you have to enter the... ]]></description>
+								<content:encoded><![CDATA[<p>This is not a Delphi post, it&#8217;s a post about stupidity! I have my laptop protected by a boot password. The cool thing is that if you press CTRL+ALT+DEL at the time when you have to enter the password, the laptop reboots and will not ask you for the password. Guess I have to remve the password &#8230; it&#8217;s useless anyway.</p>
+<p></p>
+<p><em>Note: I&#8217;m talking about Fujitsu-Siemens Amilo Pro V3505-1.</em></p>
+]]></content:encoded>
+							<wfw:commentRss>https://alex.ciobanu.org/?feed=rss2&#038;p=44</wfw:commentRss>
+		<slash:comments>4</slash:comments>
+							</item>
+	</channel>
+</rss>

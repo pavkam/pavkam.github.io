@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>f# &#8211; YAPB</title>
+	<atom:link href="https://alex.ciobanu.org/?feed=rss2&#038;tag=f" rel="self" type="application/rss+xml" />
+	<link>https://alex.ciobanu.org</link>
+	<description>Yet Another Programming Blog</description>
+	<lastBuildDate>Tue, 16 Apr 2019 14:18:42 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+
+<image>
+	<url>https://alex.ciobanu.org/files/uploads/2018/05/7327309-150x150.jpg</url>
+	<title>f# &#8211; YAPB</title>
+	<link>https://alex.ciobanu.org</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+	<item>
+		<title>Dipping my toes into the lands of F# and functional programming</title>
+		<link>https://alex.ciobanu.org/?p=737</link>
+				<pubDate>Thu, 18 Apr 2019 23:00:06 +0000</pubDate>
+		<dc:creator><![CDATA[Alexandru Ciobanu]]></dc:creator>
+				<category><![CDATA[Software Development]]></category>
+		<category><![CDATA[.net]]></category>
+		<category><![CDATA[f#]]></category>
+		<category><![CDATA[functional]]></category>
+
+		<guid isPermaLink="false">https://alex.ciobanu.org/?p=737</guid>
+				<description><![CDATA[Mid-2018, after quite some time spent in C# and Azure lands I decided it was time for a change. The next job, I said to myself, is going to have at least one new tech element to it.... ]]></description>
+								<content:encoded><![CDATA[<p>Mid-2018, after quite some time spent in C# and Azure lands I decided it was time for a change. The next job, I said to myself, is going to have at least one new tech element to it. So, early in 2019 I joined a new company called <a href="https://www.jet.com">Jet.com</a>.<em> [You can find some amazing blog posts written by my colleagues at the <a href="https://medium.com/jettech">Jet Tech Blog</a>.]</em></p>
+<p>The things that attracted me at Jet were the <a href="https://stackshare.io/jet-com/jet-com">tech stack</a> and the scale. I finally got to use a functional language such as <strong>F#</strong> in production. To be completely honest, before this position, functional languages always seemed like a niche to me. Besides, languages like C# have ingested a lot of functional features to make them better. <em>As you might expect, 3 months in, my views are starting to change</em>.</p>
+<p>So what did I learn in the last months and what do I think about F#? That&#8217;s my list so far (guaranteed to be revised in another 3 months!):</p>
+<ul>
+<li>For a person grown on Pascal and C-like languages, F# syntax looks odd for the first &#8220;<em>many</em>&#8221; weeks. It takes time to adjust to the Python-like indentation-based blocks. The presence of the &#8220;<em>{ }</em>&#8221; brackets is confusing since they are used for quite a few things including &#8220;<em>async</em>&#8221; code.</li>
+<li>F# is multi-paradigm language on top of .NET. That makes it support things such as classes, for loops and other &#8220;<em>not entirely function things</em>&#8220;. You can write imperative code in F#. It will look ugly as hell, but you can do it.</li>
+<li>Type inference is crazy! Most of the time you can get away with using a type on anything. C# is seems like a half-baked potato compared to its sibling. The downside becomes apparent when trying to refactor code. One small change in a one function can lead to hundreds of compilation errors as the type inference starts deciding values and arguments have different types.</li>
+<li>It&#8217;s all .NET stack so the hard learning curve that one would expect is non a thing (if you come from other .NET languages).</li>
+<li>Works like a charm on .NET Core and docker containers on Linux. [<em>Hard to imagine what Microsoft looks like these days isn&#8217;t it?!</em>]</li>
+<li>I have not written one loop yet and I used a recursive function only once. Most of the sequence processing is done using the standard modules and function such as <code>Seq.map</code>.</li>
+<li>Currying, partial application and other &#8220;<em>functions creating functions</em>&#8221; concepts are not hard to get around if you used C#&#8217;s lambdas and delegates for a while.</li>
+<li>For a person like me that used to write assembler it is hard to let go to the micro-optimizations. One can always write more optimized hand-crafted imperative code. It still takes discipline for me not to drop those immutable <code>Maps</code> or <code>lists</code> in favor of their mutable counterparts. On the other hand, having default immutability on objects makes things much nicer.</li>
+</ul>
+<p>These are just my first impressions and I do already sense there is some functionality that I wouldn&#8217;t be able t give up in the future!</p>
+]]></content:encoded>
+										</item>
+	</channel>
+</rss>

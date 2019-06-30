@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>
+	Comments on: DeHL 0.2.3 released	</title>
+	<atom:link href="https://alex.ciobanu.org/?feed=rss2&#038;p=172" rel="self" type="application/rss+xml" />
+	<link>https://alex.ciobanu.org/?p=172</link>
+	<description>Yet Another Programming Blog</description>
+	<lastBuildDate>Thu, 30 Apr 2009 05:28:25 +0000</lastBuildDate>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+			<item>
+				<title>
+				By: alex				</title>
+				<link>https://alex.ciobanu.org/?p=172&#038;cpage=1#comment-270</link>
+		<dc:creator><![CDATA[alex]]></dc:creator>
+		<pubDate>Thu, 30 Apr 2009 05:28:25 +0000</pubDate>
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=172#comment-270</guid>
+					<description><![CDATA[I meant removing test suites entirely -- unit-by-unit. I know this error and it happens somewhere else but is only triggered in the unit you&#039;re saying. Removing unit-by-unit should pretty much tell you exactly where it really happens.]]></description>
+		<content:encoded><![CDATA[<p>I meant removing test suites entirely &#8212; unit-by-unit. I know this error and it happens somewhere else but is only triggered in the unit you&#8217;re saying. Removing unit-by-unit should pretty much tell you exactly where it really happens.</p>
+]]></content:encoded>
+						</item>
+						<item>
+				<title>
+				By: Daniele Teti				</title>
+				<link>https://alex.ciobanu.org/?p=172&#038;cpage=1#comment-267</link>
+		<dc:creator><![CDATA[Daniele Teti]]></dc:creator>
+		<pubDate>Wed, 29 Apr 2009 22:38:13 +0000</pubDate>
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=172#comment-267</guid>
+					<description><![CDATA[The problem arise only with &quot;Tests.MultiMap.pas&quot;  file.
+
+Seems that every single test case method arise this problem.
+
+For example:
+
+I&#039;ve commented all tests method but TTestMultiMap.TestExceptions; and problem is still here.
+
+I&#039;ve commented all method but TTestMultiMap.TestCleanup; and the problem is still here.
+
+I&#039;ve commented all method but TTestMultiMap.TestValues; and the problem is still here.
+
+I&#039;ve commented all method but TTestMultiMap.TestClearAddRemoveCount; and the problem is still here.
+
+So if you create a testcase with only one of this methods you can reproduce the compiler error.
+I&#039;m using  RAD Studio 2009  Version 12.0.3210.17555 
+(Update 2)
+I&#039;m not tested on Weaver nor with D2009 Update 3.
+
+Thanks for your work]]></description>
+		<content:encoded><![CDATA[<p>The problem arise only with &#8220;Tests.MultiMap.pas&#8221;  file.</p>
+<p>Seems that every single test case method arise this problem.</p>
+<p>For example:</p>
+<p>I&#8217;ve commented all tests method but TTestMultiMap.TestExceptions; and problem is still here.</p>
+<p>I&#8217;ve commented all method but TTestMultiMap.TestCleanup; and the problem is still here.</p>
+<p>I&#8217;ve commented all method but TTestMultiMap.TestValues; and the problem is still here.</p>
+<p>I&#8217;ve commented all method but TTestMultiMap.TestClearAddRemoveCount; and the problem is still here.</p>
+<p>So if you create a testcase with only one of this methods you can reproduce the compiler error.<br />
+I&#8217;m using  RAD Studio 2009  Version 12.0.3210.17555<br />
+(Update 2)<br />
+I&#8217;m not tested on Weaver nor with D2009 Update 3.</p>
+<p>Thanks for your work</p>
+]]></content:encoded>
+						</item>
+						<item>
+				<title>
+				By: alex				</title>
+				<link>https://alex.ciobanu.org/?p=172&#038;cpage=1#comment-266</link>
+		<dc:creator><![CDATA[alex]]></dc:creator>
+		<pubDate>Wed, 29 Apr 2009 16:54:18 +0000</pubDate>
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=172#comment-266</guid>
+					<description><![CDATA[Hi Daniele,
+
+I am using the 2010 Beta ATM. I think Update 3 should fix your problems. Although I had taken all precautions to make sure that DeHL compiler on Update 2 also. 
+
+Can you trim down the test-case units and only leave the one that is killing the compiler? It will help me identify where the error happens and how can I fix it.
+
+Alex.]]></description>
+		<content:encoded><![CDATA[<p>Hi Daniele,</p>
+<p>I am using the 2010 Beta ATM. I think Update 3 should fix your problems. Although I had taken all precautions to make sure that DeHL compiler on Update 2 also. </p>
+<p>Can you trim down the test-case units and only leave the one that is killing the compiler? It will help me identify where the error happens and how can I fix it.</p>
+<p>Alex.</p>
+]]></content:encoded>
+						</item>
+						<item>
+				<title>
+				By: Daniele Teti				</title>
+				<link>https://alex.ciobanu.org/?p=172&#038;cpage=1#comment-265</link>
+		<dc:creator><![CDATA[Daniele Teti]]></dc:creator>
+		<pubDate>Tue, 28 Apr 2009 20:42:37 +0000</pubDate>
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=172#comment-265</guid>
+					<description><![CDATA[ERRATA CORRIGE:
+I cannot compile Testing project, package instead compile without problems]]></description>
+		<content:encoded><![CDATA[<p>ERRATA CORRIGE:<br />
+I cannot compile Testing project, package instead compile without problems</p>
+]]></content:encoded>
+						</item>
+						<item>
+				<title>
+				By: Daniele Teti				</title>
+				<link>https://alex.ciobanu.org/?p=172&#038;cpage=1#comment-264</link>
+		<dc:creator><![CDATA[Daniele Teti]]></dc:creator>
+		<pubDate>Tue, 28 Apr 2009 20:38:32 +0000</pubDate>
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=172#comment-264</guid>
+					<description><![CDATA[Very good work!
+
+but I cannot compile in Delphi 2009 Version 12.0.3210.17555
+becouse following QC http://qc.embarcadero.com/wc/qcmain.aspx?d=68527
+
+Can you help me? Have you a different version of compiler (some kind of not-still-released-update) ?]]></description>
+		<content:encoded><![CDATA[<p>Very good work!</p>
+<p>but I cannot compile in Delphi 2009 Version 12.0.3210.17555<br />
+becouse following QC <a href="http://qc.embarcadero.com/wc/qcmain.aspx?d=68527" rel="nofollow">http://qc.embarcadero.com/wc/qcmain.aspx?d=68527</a></p>
+<p>Can you help me? Have you a different version of compiler (some kind of not-still-released-update) ?</p>
+]]></content:encoded>
+						</item>
+			</channel>
+</rss>

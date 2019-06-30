@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>
+	Comments on: [Rant] Actions &#8230;	</title>
+	<atom:link href="https://alex.ciobanu.org/?feed=rss2&#038;p=72" rel="self" type="application/rss+xml" />
+	<link>https://alex.ciobanu.org/?p=72</link>
+	<description>Yet Another Programming Blog</description>
+	<lastBuildDate>Tue, 10 Feb 2009 10:57:00 +0000</lastBuildDate>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+			<item>
+				<title>
+				By: alex				</title>
+				<link>https://alex.ciobanu.org/?p=72&#038;cpage=1#comment-124</link>
+		<dc:creator><![CDATA[alex]]></dc:creator>
+		<pubDate>Tue, 10 Feb 2009 10:57:00 +0000</pubDate>
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=72#comment-124</guid>
+					<description><![CDATA[1) For disabling the actions: I was referring to the fact that old applications which depend on disabling whole menus are quite hard to port over. And in fact when using normal menus, disabling the whole Edit menu saved quite some typing.
+-- And I still don&#039;t agree with the fact that a sub-menu can be selected even if it&#039;s disabled. That just seems wrong to me.
+
+2) Ribbons - that&#039;s why I said: stay away from ribbons, at least for a while. This actually meant what was written -- Not everything is ready so don&#039;t use it -- you might be disappointed.
+
+Example: CheckBoxProperties.Width; When you switch over to ControlProperties, the ctor sets the Width to -1 which makes that client item of 0 size and you cannot the select it properly.
+
+All in all, most of the real problems are in design mode and not at run-time.]]></description>
+		<content:encoded><![CDATA[<p>1) For disabling the actions: I was referring to the fact that old applications which depend on disabling whole menus are quite hard to port over. And in fact when using normal menus, disabling the whole Edit menu saved quite some typing.<br />
+&#8212; And I still don&#8217;t agree with the fact that a sub-menu can be selected even if it&#8217;s disabled. That just seems wrong to me.</p>
+<p>2) Ribbons &#8211; that&#8217;s why I said: stay away from ribbons, at least for a while. This actually meant what was written &#8212; Not everything is ready so don&#8217;t use it &#8212; you might be disappointed.</p>
+<p>Example: CheckBoxProperties.Width; When you switch over to ControlProperties, the ctor sets the Width to -1 which makes that client item of 0 size and you cannot the select it properly.</p>
+<p>All in all, most of the real problems are in design mode and not at run-time.</p>
+]]></content:encoded>
+						</item>
+						<item>
+				<title>
+				By: Jeremy North				</title>
+				<link>https://alex.ciobanu.org/?p=72&#038;cpage=1#comment-122</link>
+		<dc:creator><![CDATA[Jeremy North]]></dc:creator>
+		<pubDate>Tue, 10 Feb 2009 00:18:32 +0000</pubDate>
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=72#comment-122</guid>
+					<description><![CDATA[Further to items 2 and 3 your design is just wrong.
+
+You are using actions. You should disable the action itself. Not its parent menu. It makes no sense (to disable the parent menu) because what if you used that action on a Toolbar. Do you expect the toolbar command (which points to the same action) to be disabled when a sub menu is disabled.
+
+Just write OnUpdate events for your actions.]]></description>
+		<content:encoded><![CDATA[<p>Further to items 2 and 3 your design is just wrong.</p>
+<p>You are using actions. You should disable the action itself. Not its parent menu. It makes no sense (to disable the parent menu) because what if you used that action on a Toolbar. Do you expect the toolbar command (which points to the same action) to be disabled when a sub menu is disabled.</p>
+<p>Just write OnUpdate events for your actions.</p>
+]]></content:encoded>
+						</item>
+						<item>
+				<title>
+				By: Jeremy North				</title>
+				<link>https://alex.ciobanu.org/?p=72&#038;cpage=1#comment-121</link>
+		<dc:creator><![CDATA[Jeremy North]]></dc:creator>
+		<pubDate>Tue, 10 Feb 2009 00:15:09 +0000</pubDate>
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=72#comment-121</guid>
+					<description><![CDATA[1. Not something I&#039;ve experienced but I&#039;m sure you posted the crash reports to QC.
+2/3. So instead of disabling the individual actions contained in the sub menu, you want to disable the parent item for the sub menu. It doesn&#039;t work like that, but that doesn&#039;t make it a bug.
+4. Interesting. The only time I see an issue when changing CommandTypes is when the CommandProperties property is expanded in the object inspector and the object inspector raises exceptions when trying to redraw the OI. Feel free to point out the code you think is the cause via email.
+5. Most is a bit of a stretch. Apart from in ribbon galleries, what properties are not currently supported? These items were included as they may have been enhanced in an update instead of waiting for a new release.]]></description>
+		<content:encoded><![CDATA[<p>1. Not something I&#8217;ve experienced but I&#8217;m sure you posted the crash reports to QC.<br />
+2/3. So instead of disabling the individual actions contained in the sub menu, you want to disable the parent item for the sub menu. It doesn&#8217;t work like that, but that doesn&#8217;t make it a bug.<br />
+4. Interesting. The only time I see an issue when changing CommandTypes is when the CommandProperties property is expanded in the object inspector and the object inspector raises exceptions when trying to redraw the OI. Feel free to point out the code you think is the cause via email.<br />
+5. Most is a bit of a stretch. Apart from in ribbon galleries, what properties are not currently supported? These items were included as they may have been enhanced in an update instead of waiting for a new release.</p>
+]]></content:encoded>
+						</item>
+						<item>
+				<title>
+				By: Loïs Bégué				</title>
+				<link>https://alex.ciobanu.org/?p=72&#038;cpage=1#comment-118</link>
+		<dc:creator><![CDATA[Loïs Bégué]]></dc:creator>
+		<pubDate>Mon, 09 Feb 2009 14:18:02 +0000</pubDate>
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=72#comment-118</guid>
+					<description><![CDATA[I&#039;ve encountered some problem running (I didn&#039;t modify it at all - just SHIFT + F9) the Ribbon demo app provided with RAD D2009:
+Sometimes, the icons/actions/buttons (?) will be disabled (&quot;Themes&quot;) after changing the theme.
+Sometimes, the text attribute icons/actions/buttons (?) will almost &quot;disapear&quot;...
+I didn&#039;t try to debug and find out what&#039;s going wrong, though.]]></description>
+		<content:encoded><![CDATA[<p>I&#8217;ve encountered some problem running (I didn&#8217;t modify it at all &#8211; just SHIFT + F9) the Ribbon demo app provided with RAD D2009:<br />
+Sometimes, the icons/actions/buttons (?) will be disabled (&#8220;Themes&#8221;) after changing the theme.<br />
+Sometimes, the text attribute icons/actions/buttons (?) will almost &#8220;disapear&#8221;&#8230;<br />
+I didn&#8217;t try to debug and find out what&#8217;s going wrong, though.</p>
+]]></content:encoded>
+						</item>
+						<item>
+				<title>
+				By: alex				</title>
+				<link>https://alex.ciobanu.org/?p=72&#038;cpage=1#comment-117</link>
+		<dc:creator><![CDATA[alex]]></dc:creator>
+		<pubDate>Mon, 09 Feb 2009 09:05:14 +0000</pubDate>
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=72#comment-117</guid>
+					<description><![CDATA[OK, I should have put a &quot;Rant&quot; in the title. This post wasn&#039;t really supposed to be useful in the first place. But to answer your questions:
+
+1. TActionMainMenuBar -- If you build it visually, you will probably get an AV sooner or later. But I guess people are used to it already.
+
+2. TActionMainMenuBar -- Try creating a menu which has a sub menu and etc. You can&#039;t really disable a whole menu. Anyone can press the ALT+shortcut or select an activated menu item and the using the keyboard go to the disabled menu. This makes it really hard to port application which disable only the &quot;Edit&quot; menu item and not it&#039;s sub-items. You can get to those items pretty quickly. (Example: go into the IDE and go to the Translation manager using the keyboard. Even if the menu item is disabled, press enter and a sub-menu will be displayed, note that those 2 options in the submenu are enabled and can be clicked! Even if you&#039;re not allowed to do so.)
+
+3. I tried to find a way to disable menu items without assigning bogus actions to categories-generated action client items. It seems no underlying control is created for items in submenus which makes it impossible to do so.
+
+4. Ribbons -- Put an action onto a ribbon group. A new action client item will be generated. Set it&#039;s CommandStyle property to csCheckBox. Then, if you&#039;re lucky, CommandProperties should be set properly or an AV happens (for obvious reasons in the code). So the handling of these properties is very ugly.
+
+5. Ribbons -- again, most of  CommandStyle/CommandProperties are not yet handled (thus the &quot;stay away from the ribbons for now&quot;). You may be really disappointed if you think something will work and it won&#039;t.
+
+
+NOTE: Ribbon issues are reported and being worked on so no worries there.
+
+P.S. Note to myself: next time add more useful information :)]]></description>
+		<content:encoded><![CDATA[<p>OK, I should have put a &#8220;Rant&#8221; in the title. This post wasn&#8217;t really supposed to be useful in the first place. But to answer your questions:</p>
+<p>1. TActionMainMenuBar &#8212; If you build it visually, you will probably get an AV sooner or later. But I guess people are used to it already.</p>
+<p>2. TActionMainMenuBar &#8212; Try creating a menu which has a sub menu and etc. You can&#8217;t really disable a whole menu. Anyone can press the ALT+shortcut or select an activated menu item and the using the keyboard go to the disabled menu. This makes it really hard to port application which disable only the &#8220;Edit&#8221; menu item and not it&#8217;s sub-items. You can get to those items pretty quickly. (Example: go into the IDE and go to the Translation manager using the keyboard. Even if the menu item is disabled, press enter and a sub-menu will be displayed, note that those 2 options in the submenu are enabled and can be clicked! Even if you&#8217;re not allowed to do so.)</p>
+<p>3. I tried to find a way to disable menu items without assigning bogus actions to categories-generated action client items. It seems no underlying control is created for items in submenus which makes it impossible to do so.</p>
+<p>4. Ribbons &#8212; Put an action onto a ribbon group. A new action client item will be generated. Set it&#8217;s CommandStyle property to csCheckBox. Then, if you&#8217;re lucky, CommandProperties should be set properly or an AV happens (for obvious reasons in the code). So the handling of these properties is very ugly.</p>
+<p>5. Ribbons &#8212; again, most of  CommandStyle/CommandProperties are not yet handled (thus the &#8220;stay away from the ribbons for now&#8221;). You may be really disappointed if you think something will work and it won&#8217;t.</p>
+<p>NOTE: Ribbon issues are reported and being worked on so no worries there.</p>
+<p>P.S. Note to myself: next time add more useful information 🙂</p>
+]]></content:encoded>
+						</item>
+						<item>
+				<title>
+				By: Jeremy North				</title>
+				<link>https://alex.ciobanu.org/?p=72&#038;cpage=1#comment-116</link>
+		<dc:creator><![CDATA[Jeremy North]]></dc:creator>
+		<pubDate>Mon, 09 Feb 2009 01:48:17 +0000</pubDate>
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=72#comment-116</guid>
+					<description><![CDATA[What are the issues you are encountering? 
+How is this post supposed to help people out?
+
+Why not document the issues you are seeing and then the issues can be addressed.
+
+1. What are the steps for these issues?
+2. What is a complicated menu? The Delphi IDE is a pretty complicated menu and it uses the ActionManager.
+3. So do you want to disable the menu item that controls the sub menu, or you want to disable the sub menu items?
+
+Disclaimer: I wrote the Ribbon controls for CodeGear so am interested in all feedback, even though I am no longer maintaining it.]]></description>
+		<content:encoded><![CDATA[<p>What are the issues you are encountering?<br />
+How is this post supposed to help people out?</p>
+<p>Why not document the issues you are seeing and then the issues can be addressed.</p>
+<p>1. What are the steps for these issues?<br />
+2. What is a complicated menu? The Delphi IDE is a pretty complicated menu and it uses the ActionManager.<br />
+3. So do you want to disable the menu item that controls the sub menu, or you want to disable the sub menu items?</p>
+<p>Disclaimer: I wrote the Ribbon controls for CodeGear so am interested in all feedback, even though I am no longer maintaining it.</p>
+]]></content:encoded>
+						</item>
+						<item>
+				<title>
+				By: alex				</title>
+				<link>https://alex.ciobanu.org/?p=72&#038;cpage=1#comment-115</link>
+		<dc:creator><![CDATA[alex]]></dc:creator>
+		<pubDate>Sat, 07 Feb 2009 08:30:09 +0000</pubDate>
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=72#comment-115</guid>
+					<description><![CDATA[1. There are bugs in action client items and ribbons handling those. (play with CommandStyle/Properties)
+2. Try to build a more complicated menu using the action manager + action main menu.
+3. Try to control that menu by disabling sub-menus and etc.
+
+You would then understand the problem. It is possible to work around the problems but I don&#039;t think its worth it yet.
+
+P.S. I mentioned in the post it&#039;s &quot;out of frustration&quot; (mine) :)]]></description>
+		<content:encoded><![CDATA[<p>1. There are bugs in action client items and ribbons handling those. (play with CommandStyle/Properties)<br />
+2. Try to build a more complicated menu using the action manager + action main menu.<br />
+3. Try to control that menu by disabling sub-menus and etc.</p>
+<p>You would then understand the problem. It is possible to work around the problems but I don&#8217;t think its worth it yet.</p>
+<p>P.S. I mentioned in the post it&#8217;s &#8220;out of frustration&#8221; (mine) 🙂</p>
+]]></content:encoded>
+						</item>
+						<item>
+				<title>
+				By: Richard				</title>
+				<link>https://alex.ciobanu.org/?p=72&#038;cpage=1#comment-114</link>
+		<dc:creator><![CDATA[Richard]]></dc:creator>
+		<pubDate>Sat, 07 Feb 2009 02:03:35 +0000</pubDate>
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=72#comment-114</guid>
+					<description><![CDATA[Why don&#039;t you go into a little more detail - you&#039;ll either get help or confirmation of the issues.  As it stands, your rant helps no-one, yourself least.
+
+I have used ActionManager, Menus and Toolbars since D6 very successfully.  And the new Ribbon works fine for what I&#039;m doing.]]></description>
+		<content:encoded><![CDATA[<p>Why don&#8217;t you go into a little more detail &#8211; you&#8217;ll either get help or confirmation of the issues.  As it stands, your rant helps no-one, yourself least.</p>
+<p>I have used ActionManager, Menus and Toolbars since D6 very successfully.  And the new Ribbon works fine for what I&#8217;m doing.</p>
+]]></content:encoded>
+						</item>
+						<item>
+				<title>
+				By: Chris				</title>
+				<link>https://alex.ciobanu.org/?p=72&#038;cpage=1#comment-113</link>
+		<dc:creator><![CDATA[Chris]]></dc:creator>
+		<pubDate>Sat, 07 Feb 2009 00:06:10 +0000</pubDate>
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=72#comment-113</guid>
+					<description><![CDATA[Not of actions surely - you mean action bands, right?  (TActionList vs. TActionManager)]]></description>
+		<content:encoded><![CDATA[<p>Not of actions surely &#8211; you mean action bands, right?  (TActionList vs. TActionManager)</p>
+]]></content:encoded>
+						</item>
+			</channel>
+</rss>

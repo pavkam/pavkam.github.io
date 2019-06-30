@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>microsoft &#8211; YAPB</title>
+	<atom:link href="https://alex.ciobanu.org/?feed=rss2&#038;tag=microsoft" rel="self" type="application/rss+xml" />
+	<link>https://alex.ciobanu.org</link>
+	<description>Yet Another Programming Blog</description>
+	<lastBuildDate>Tue, 28 Aug 2018 13:56:00 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+
+<image>
+	<url>https://alex.ciobanu.org/files/uploads/2018/05/7327309-150x150.jpg</url>
+	<title>microsoft &#8211; YAPB</title>
+	<link>https://alex.ciobanu.org</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+	<item>
+		<title>Where is the Microsoft development stack?</title>
+		<link>https://alex.ciobanu.org/?p=727</link>
+				<pubDate>Fri, 31 Aug 2018 23:00:49 +0000</pubDate>
+		<dc:creator><![CDATA[Alexandru Ciobanu]]></dc:creator>
+				<category><![CDATA[Software Development]]></category>
+		<category><![CDATA[microsoft]]></category>
+		<category><![CDATA[oss]]></category>
+		<category><![CDATA[thoughts]]></category>
+
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=727</guid>
+				<description><![CDATA[I have recently read this blog post that looks at the current development stacks used by biggest startups &#8220;out there&#8220;. One thing becomes apparent: none of Microsoft&#8217;s tech is in any list. To be honest this is not... ]]></description>
+								<content:encoded><![CDATA[<p>I have recently read <a href="https://michaelscodingspot.com/2018/07/30/where-did-the-microsoft-tech-stack-disappear/">this blog post</a> that looks at the current development stacks used by biggest startups &#8220;<em>out there</em>&#8220;. One thing becomes apparent: <strong>none of Microsoft&#8217;s tech is in any list</strong>.</p>
+<p>To be honest this is not news to me or to anyone that pays attention to the state of affairs in the development world. The whole <em>.NET Core</em> strategy on Microsoft&#8217;s part is an effort to push mainly against <em>Node.js</em>. It is too early to say anything with certainty but it does look like Microsoft is a bit late (<span style="text-decoration: underline;">and that&#8217;s an understatement</span>) to the party.</p>
+<p>While I do tend to be language-agnostic these days (use Python and Node.js for a few projects), <strong>I do hope .NET Core gains some traction</strong> in the open source community. It&#8217;s quite an amazing technology, even if it&#8217;s Microsoft backed!</p>
+<p>&#8212;</p>
+<p>P.S. There is an interesting process of polarization happening right now around me: the companies using the Microsoft stack are mostly leaning towards the financial sector, while the smaller ones (not necessarily startups) are mostly oriented towards the Open Source tooling/frameworks.</p>
+]]></content:encoded>
+										</item>
+		<item>
+		<title>Rate limiting an Azure queue</title>
+		<link>https://alex.ciobanu.org/?p=680</link>
+				<comments>https://alex.ciobanu.org/?p=680#respond</comments>
+				<pubDate>Sat, 02 Jun 2018 20:00:23 +0000</pubDate>
+		<dc:creator><![CDATA[Alexandru Ciobanu]]></dc:creator>
+				<category><![CDATA[Software Development]]></category>
+		<category><![CDATA[azure]]></category>
+		<category><![CDATA[function apps]]></category>
+		<category><![CDATA[microsoft]]></category>
+		<category><![CDATA[queues]]></category>
+		<category><![CDATA[service bus]]></category>
+
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=680</guid>
+				<description><![CDATA[In my previous post (&#8220;Singleton&#8221; Azure Functions) I offered a tip on how to set up an Azure function to serve as a system-wide &#8220;singleton&#8221;. One of the use cases I was looking for was to set up... ]]></description>
+								<content:encoded><![CDATA[<p>In my previous post (<a href="http://alex.ciobanu.org/?p=674">&#8220;Singleton&#8221; Azure Functions</a>) I offered a tip on how to set up an Azure function to serve as a system-wide &#8220;singleton&#8221;. One of the use cases I was looking for was to set up a service to act as a &#8220;<em>broker between two Service Bus queues</em>&#8220;. I will not go into details, suffice to say, there is a requirement to only allow, let&#8217;s say, 100 messages per second to pass through the queue.</p>
+<p>As I am a strong proponent of &#8220;<em>less talk, more code</em>&#8221; so here is a rough version that gets the job done:</p>
+<pre class="brush: csharp; title: ; notranslate">
+private static readonly SemaphoreSlim _semaphore = new new SemaphoreSlim(1, 1);
+private static readonly QueueClient _outputQueueClient = new QueueClient(&quot;{connection string}&quot;);
+private static double _nextDispatchAt;
+private const double _rate = 100; // the rate!
+
+/* Method creates a task scheduled to run approximately 
+   at a given &quot;time&quot; */
+private static Task MoveMessageToOutputQueue(Message message) 
+{ 
+    Contract.Assert(message != null);
+
+    /* Get a lock to make sure _nextDispatchAt is modified 
+       atomically. This is a lazy implementation but it does the job. */
+    _semaphore.Wait(); 
+    try 
+    { 
+        /* Calculate the next &quot;click&quot;. */
+        var now = DateTime.UtcNow.Ticks; 
+        var delta = _nextDispatchAt - now; 
+        var click = TimeSpan.TicksPerMillisecond * (1000 / _rate); 
+        if (delta &gt; 0) 
+        { 
+            /* We need to wait until the next dispatch. */ 
+            var millisToWait = (_nextDispatchAt - now) / TimeSpan.TicksPerMillisecond; 
+            _nextDispatchAt += click;
+
+            /* If the number of ticks is below the millisecond 
+               threshold, execute directly. */
+            return millisToWait &gt; 0 ?
+                Task.Delay((int)millisToWait).ContinueWith(t =&gt; _outputQueueClient.SendAsync(message)) :
+                _outputQueueClient.SendAsync(message);
+        }
+        else 
+        {
+            /* The execution is direct as there is no waiting time. */ 
+            _nextDispatchAt = now + click; 
+            return _outputQueueClient.SendAsync(message);
+        } 
+    } 
+    finally 
+    { 
+        _semaphore.Release();
+    }
+}
+
+/* This is the actual Azure function which is set up to listen on the &quot;input-queue&quot; */
+[FunctionName(nameof(MoveMessageFromInputToOutput))]
+public static async Task MoveMessageFromInputToOutput(
+[ServiceBusTrigger(&quot;input-queue&quot;)] Microsoft.ServiceBus.Messaging.BrokeredMessage message, 
+TraceWriter log)
+{
+    Contract.Assert(message != null);
+    Contract.Assert(log != null);
+    log.Debug($&quot;Moving incoming message with label \&quot;{message.Label}\&quot; ...&quot;);
+
+    /* Make a copy of the message (just the body and whatever fields are interesting). */
+    Message outputMessage;
+    using (var ms = new MemoryStream())
+    {
+        await message.GetBody&lt;Stream&gt;().CopyToAsync(ms).ConfigureAwait(false);
+        outputMessage = new Message(ms.ToArray())
+        {
+            Label = message.Label,
+            ContentType = message.ContentType
+        };
+    }
+
+    await MoveMessageToOutputQueue(outputMessage).ConfigureAwait(false);
+}
+</pre>
+<p>To make sure the higher rates are handled, and that the function does not starve, one can update the <em>host.json</em> as follows:</p>
+<pre class="brush: jscript; title: ; notranslate">
+{
+    &quot;serviceBus&quot;: {
+        &quot;maxConcurrentCalls&quot;: 32, // Threads will mostly be awaiting
+        &quot;prefetchCount&quot;: 256 // The more the merrier
+    }
+}
+</pre>
+<p>After some testing it turns out that the rate limiter is almost perfect on &#8220;<em>low rates</em>&#8221; such as <strong>100 messages/second</strong>. Due limitations of the Service Bus and other factors this code <strong>will not surpass ~600 messages/second</strong>. In such cases, multiple instances of the rate limiter should be deployed, and dividing the load between them.</p>
+]]></content:encoded>
+							<wfw:commentRss>https://alex.ciobanu.org/?feed=rss2&#038;p=680</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>&#8220;Singleton&#8221; Azure Functions</title>
+		<link>https://alex.ciobanu.org/?p=674</link>
+				<comments>https://alex.ciobanu.org/?p=674#respond</comments>
+				<pubDate>Mon, 28 May 2018 20:00:39 +0000</pubDate>
+		<dc:creator><![CDATA[Alexandru Ciobanu]]></dc:creator>
+				<category><![CDATA[Software Development]]></category>
+		<category><![CDATA[azure]]></category>
+		<category><![CDATA[microsoft]]></category>
+
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=674</guid>
+				<description><![CDATA[This is not the sort of &#8220;stuff&#8221; I would usually be writing about in the past. Lately, though, more and more work that I am involved with is somewhat related to Azure. More often than not, my daily tasks... ]]></description>
+								<content:encoded><![CDATA[<p>This is not the sort of &#8220;stuff&#8221; I would usually be writing about in the past. Lately, though, more and more work that I am involved with is somewhat related to <a href="https://azure.microsoft.com/en-us/">Azure</a>. More often than not, my daily tasks include bending Azure services to my needs rather than writing code (which is a tediously philosophical discussion in itself!).</p>
+<p>In one of our current projects, the architecture requires a number of &#8220;<em>singleton</em>&#8221; services to be connected to a shared service bus and regularly communicate with &#8220;<em>other services</em>&#8220;. In Azure terminology those singleton services would qualify as <a href="https://docs.microsoft.com/en-us/azure/app-service/web-sites-create-web-jobs">Web Jobs</a>. Due to the current direction Microsoft is taking in regards to <a href="https://stackify.com/azure-webjobs-vs-azure-functions/">Azure Functions</a>, we have decided to go with them, rather than Web Jobs (not to mention it is much easier to deploy and monitor). All good and well so far, excluding a few annoyances here and there due to immature management Web UI.</p>
+<p>One of the peculiar things that took some time to figure out, was how to set up a function to run as a singleton. It can be annoying to find exactly what needs to be done in tons of promotional material and blogs all focusing on the &#8220;<em>benefits of scaling out</em>&#8220;. In the unlikely event you&#8217;re trying to make sure your function app runs as singleton try the following:</p>
+<ol>
+<li>Set up your function app using the <a href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-scale">App Service plan</a>. Consumption plan gives Azure infrastructure all the power to move your app between machines or start up additional instances.</li>
+<li>Make sure the &#8220;Always On&#8221; is toggled in Application Settings. Our singleton needs to be up an running at all times:<img class="size-full wp-image-675" style="font-weight: bold; background-color: transparent; color: #767676;" src="http://alex.ciobanu.org/files/uploads/2018/05/azp1.png" alt="Azure Function Always On" width="1050" height="110" srcset="https://alex.ciobanu.org/files/uploads/2018/05/azp1.png 1050w, https://alex.ciobanu.org/files/uploads/2018/05/azp1-300x31.png 300w, https://alex.ciobanu.org/files/uploads/2018/05/azp1-768x80.png 768w, https://alex.ciobanu.org/files/uploads/2018/05/azp1-1024x107.png 1024w, https://alex.ciobanu.org/files/uploads/2018/05/azp1-80x8.png 80w" sizes="(max-width: 1050px) 100vw, 1050px" /></li>
+<li>Finally, one has to add <em>WEBSITE_MAX_DYNAMIC_APPLICATION_SCALE_OUT</em> with a value of &#8220;1&#8221; to the Application Settings. <a href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-app-settings">Do not ask</a>&#8230;<img class="size-full wp-image-676" src="http://alex.ciobanu.org/files/uploads/2018/05/azp2.png" alt="Azure Function Scaleout Setting" width="1899" height="105" srcset="https://alex.ciobanu.org/files/uploads/2018/05/azp2.png 1899w, https://alex.ciobanu.org/files/uploads/2018/05/azp2-300x17.png 300w, https://alex.ciobanu.org/files/uploads/2018/05/azp2-768x42.png 768w, https://alex.ciobanu.org/files/uploads/2018/05/azp2-1024x57.png 1024w, https://alex.ciobanu.org/files/uploads/2018/05/azp2-80x4.png 80w" sizes="(max-width: 1899px) 100vw, 1899px" /></li>
+</ol>
+<p>Be aware, that using an App Service plan incurs additional costs, but I guess that is not different compared to attaching Seb Jobs to existing Web Applications.</p>
+]]></content:encoded>
+							<wfw:commentRss>https://alex.ciobanu.org/?feed=rss2&#038;p=674</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+	</channel>
+</rss>

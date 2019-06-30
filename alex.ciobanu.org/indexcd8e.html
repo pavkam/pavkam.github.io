@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>
+	Comments on: TZDB 1.7 database 14 March	</title>
+	<atom:link href="https://alex.ciobanu.org/?feed=rss2&#038;p=472" rel="self" type="application/rss+xml" />
+	<link>https://alex.ciobanu.org/?p=472</link>
+	<description>Yet Another Programming Blog</description>
+	<lastBuildDate>Mon, 21 May 2018 19:13:13 +0000</lastBuildDate>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+			<item>
+				<title>
+				By: alex				</title>
+				<link>https://alex.ciobanu.org/?p=472&#038;cpage=1#comment-8450</link>
+		<dc:creator><![CDATA[alex]]></dc:creator>
+		<pubDate>Mon, 13 Jun 2011 14:45:07 +0000</pubDate>
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=472#comment-8450</guid>
+					<description><![CDATA[Hm, maybe the format changed. I will check the code and post a fix.]]></description>
+		<content:encoded><![CDATA[<p>Hm, maybe the format changed. I will check the code and post a fix.</p>
+]]></content:encoded>
+						</item>
+						<item>
+				<title>
+				By: Tim				</title>
+				<link>https://alex.ciobanu.org/?p=472&#038;cpage=1#comment-7926</link>
+		<dc:creator><![CDATA[Tim]]></dc:creator>
+		<pubDate>Thu, 02 Jun 2011 15:25:07 +0000</pubDate>
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=472#comment-7926</guid>
+					<description><![CDATA[... and the GMT-minus offsets are positive, too, as well as being in minutes.]]></description>
+		<content:encoded><![CDATA[<p>&#8230; and the GMT-minus offsets are positive, too, as well as being in minutes.</p>
+]]></content:encoded>
+						</item>
+						<item>
+				<title>
+				By: Tim				</title>
+				<link>https://alex.ciobanu.org/?p=472&#038;cpage=1#comment-7925</link>
+		<dc:creator><![CDATA[Tim]]></dc:creator>
+		<pubDate>Thu, 02 Jun 2011 14:54:59 +0000</pubDate>
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=472#comment-7925</guid>
+					<description><![CDATA[There seems to be a bug somewhere, either in the database or in your extraction code.  All the &#039;offset&#039; values for GMT+x and GMT-x in the table are values in minutes, for example 60, 120, 180.  But this field should contain the offset in seconds, and does for almost all the other entries that I have so far checked.  See the definition of CZone_307_Arr for an example.  The result is a four-minute time change when I call ToLocalTime for GMT-4, instead of four hours.
+
+There are one or two other errors, such as a value of 300 for Cairo before 1900, and -70200 for Casablanca before 1913; but I do not need the historical data. In fact I would really like to have an option for the program that creates the .INC file, to include only data for years from the current year forward.
+
+I have fixed this for now by editing the INC file, but you may want to check the extraction code.]]></description>
+		<content:encoded><![CDATA[<p>There seems to be a bug somewhere, either in the database or in your extraction code.  All the &#8216;offset&#8217; values for GMT+x and GMT-x in the table are values in minutes, for example 60, 120, 180.  But this field should contain the offset in seconds, and does for almost all the other entries that I have so far checked.  See the definition of CZone_307_Arr for an example.  The result is a four-minute time change when I call ToLocalTime for GMT-4, instead of four hours.</p>
+<p>There are one or two other errors, such as a value of 300 for Cairo before 1900, and -70200 for Casablanca before 1913; but I do not need the historical data. In fact I would really like to have an option for the program that creates the .INC file, to include only data for years from the current year forward.</p>
+<p>I have fixed this for now by editing the INC file, but you may want to check the extraction code.</p>
+]]></content:encoded>
+						</item>
+			</channel>
+</rss>

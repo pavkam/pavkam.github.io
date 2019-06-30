@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Life &amp; Stuff &#8211; YAPB</title>
+	<atom:link href="https://alex.ciobanu.org/?feed=rss2&#038;cat=49" rel="self" type="application/rss+xml" />
+	<link>https://alex.ciobanu.org</link>
+	<description>Yet Another Programming Blog</description>
+	<lastBuildDate>Sun, 30 Jun 2019 18:22:30 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+
+<image>
+	<url>https://alex.ciobanu.org/files/uploads/2018/05/7327309-150x150.jpg</url>
+	<title>Life &amp; Stuff &#8211; YAPB</title>
+	<link>https://alex.ciobanu.org</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+	<item>
+		<title>Moving the blog</title>
+		<link>https://alex.ciobanu.org/?p=752</link>
+				<comments>https://alex.ciobanu.org/?p=752#respond</comments>
+				<pubDate>Sun, 30 Jun 2019 17:44:22 +0000</pubDate>
+		<dc:creator><![CDATA[Alexandru Ciobanu]]></dc:creator>
+				<category><![CDATA[Life & Stuff]]></category>
+		<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[blogging]]></category>
+
+		<guid isPermaLink="false">https://alex.ciobanu.org/?p=752</guid>
+				<description><![CDATA[I have moved my blog to Jekyll and onto a new URL: https://pavkam.dev. See you there!]]></description>
+								<content:encoded><![CDATA[
+<p class="has-medium-font-size">I have moved my blog to Jekyll and onto a new URL: <a href="https://pavkam.dev">https://pavkam.dev</a>. </p>
+
+
+
+<p>See you there!</p>
+
+
+
+<p></p>
+]]></content:encoded>
+							<wfw:commentRss>https://alex.ciobanu.org/?feed=rss2&#038;p=752</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>Hi Linux, again! (Ubuntu 18.04 on Dell XPS 9350)</title>
+		<link>https://alex.ciobanu.org/?p=718</link>
+				<comments>https://alex.ciobanu.org/?p=718#respond</comments>
+				<pubDate>Fri, 06 Jul 2018 21:00:01 +0000</pubDate>
+		<dc:creator><![CDATA[Alexandru Ciobanu]]></dc:creator>
+				<category><![CDATA[Life & Stuff]]></category>
+		<category><![CDATA[linux]]></category>
+
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=718</guid>
+				<description><![CDATA[Once every N years I give Linux a try. I&#8217;ve been a great supporter in the past and I always enjoyed tinkering with my OSes. I gradually lost the appetite due to jobs always requiring a windows PC,... ]]></description>
+								<content:encoded><![CDATA[<p>Once every N years I give Linux a try. I&#8217;ve been a great supporter in the past and I always enjoyed tinkering with my OSes. I gradually lost the appetite due to jobs always requiring a windows PC, making the use of Linux a pain.</p>
+<p>For my previous attempt to use Linux, in the summer of 2017, I used my Dell XPS 13 (9350) machine. This model is touted by Dell and Ubuntu as &#8220;<em>Linux developer friendly</em>&#8220;. I used an <strong>Ubuntu 16.04</strong> as my distribution of choice. In short &#8212; I was disappointed. Nothing was working properly, the system was crashing and overheating. I gave up after a couple of days.</p>
+<p>Well, since it has been a year, time for another try &#8211; this time using <strong>Ubuntu 18.04</strong>. It&#8217;s been a week so far and <strong>I am still using it</strong>, which says a lot (for me at least).</p>
+<h6>The bad:</h6>
+<ul>
+<li>Wayland was not fixed, but simply, not used.</li>
+<li>The default session is based on Gnome 3, which is buggy and slow. CPU usage on minimal interaction was extremely high. Even things like <em>glxgears</em> was jerky every few seconds.</li>
+<li>Hibernation needs to be enabled manually, and a lot of Googling has to be done prior to that point.</li>
+<li>Mouse cursor high DPI issues still unresolved for applications such as <em>Firefox</em> or <em>Spotify</em> (I use Chrome so that is less of a concern to me).</li>
+</ul>
+<h6>The good:</h6>
+<ul>
+<li>Hardware is fully supported (who remembers the days when you had to figure out whey the sound is not working?)</li>
+<li><em>X11</em> works great, no more half-working Wayland.</li>
+<li><em>KDE</em> works great.</li>
+<li>Battery lasts as it should.</li>
+<li>No crashes so farm, even with all my tinkering.</li>
+<li>High DPI is better than in 16.04.</li>
+<li>Most of the stuff can be fixed if you follow Google!</li>
+<li>It is getting better.</li>
+</ul>
+<h6>I will keep trying to improve my experience in the next weeks. But, so far, these are some of the articles that helped me:</h6>
+<ul>
+<li>Enable <a href="https://help.ubuntu.com/community/PowerManagement/Hibernate">hibernation </a><a href="https://askubuntu.com/questions/768136/how-can-i-hibernate-on-ubuntu-16-04">using</a> <a href="https://askubuntu.com/questions/6769/hibernate-and-resume-from-a-swap-file">uswsusp</a>.</li>
+<li>Fix the <a href="https://bugs.launchpad.net/ubuntu/+source/broadcom-sta/+bug/1765036">Wi-Fi issues</a> after resume.</li>
+<li>Enable the High DPI settings for <a href="https://wiki.archlinux.org/index.php/SDDM">SDDM</a> (DPI of 192 is the best for XPS&#8217;s monitor).</li>
+<li>More <a href="https://wiki.archlinux.org/index.php/HiDPI">High DPI</a> <a href="http://www.lorenzobettini.it/2016/07/hidpi-in-kde-plasma/">tweaks</a>.</li>
+<li>And, tweaks and <a href="https://itsfoss.com/things-to-do-after-installing-ubuntu-18-04/">packages</a> you can install afterwards.</li>
+<li>Whoops, Gnome sucks, now install <a href="https://askubuntu.com/questions/919193/new-to-ubuntu-how-to-install-kubuntu">Kubuntu</a>.</li>
+</ul>
+]]></content:encoded>
+							<wfw:commentRss>https://alex.ciobanu.org/?feed=rss2&#038;p=718</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>Bringing the blog back to life&#8230;</title>
+		<link>https://alex.ciobanu.org/?p=664</link>
+				<comments>https://alex.ciobanu.org/?p=664#comments</comments>
+				<pubDate>Tue, 22 May 2018 08:09:53 +0000</pubDate>
+		<dc:creator><![CDATA[Alexandru Ciobanu]]></dc:creator>
+				<category><![CDATA[Life & Stuff]]></category>
+		<category><![CDATA[Software Development]]></category>
+		<category><![CDATA[blogging]]></category>
+		<category><![CDATA[life]]></category>
+
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=664</guid>
+				<description><![CDATA[Well, it has been years (apparently no less than four!). Since my last post a lot has changed for me in particular, and, in tech at large. So why hasn&#8217;t Alex been blogging one might not ask, and... ]]></description>
+								<content:encoded><![CDATA[<p>Well, it has been years (<strong>apparently no less than four!</strong>). Since my last post a lot has changed for me in particular, and, in tech at large.</p>
+<p>So why hasn&#8217;t Alex been blogging one might <strong>not</strong> ask, and be forgiven. Well, let me explain and rant a little bit:</p>
+<ul>
+<li>First, I have no more connection to the Delphi community for a number of reasons, most prominent being that I do not have a license and I am not willing to purchase one just to have some fun. All my open-source projects are .NET these days (incidentally, check out my <a href="https://github.com/pavkam">GitHub</a>) since Microsoft &#8220;<em>graciously</em>&#8221; offers a community edition of Visual Studio.<br />
+Given that I have no idea what is going on in the world of Delphi, I have not progressed beyond my feelings of disappointment in the horrible quality of the compiler, mediocre support for cool new language features and etc.</li>
+<li>Given the previous long rant, one can understand why I have stopped writing anything about Delphi.</li>
+<li>I moved on to <em>.NET</em>.</li>
+<li>The advent of &#8220;<em>stack overflow programming</em>&#8221; paradigm (also know as &#8220;<em>just google it</em>&#8220;) ate most of the topics I could talk about.</li>
+<li>And finally, I got older and I started caring more about project architecture rather than small implementation details.</li>
+</ul>
+<p>So here I am, and ready to start anew. I am not yet sure what is my next post going to be about, but I hope to have something interesting to write about, things that people might be interested in.</p>
+<p><em>P.S. Some older posts might resurface in the next days due to me fixing and updating up my WordPress installation.</em></p>
+]]></content:encoded>
+							<wfw:commentRss>https://alex.ciobanu.org/?feed=rss2&#038;p=664</wfw:commentRss>
+		<slash:comments>4</slash:comments>
+							</item>
+	</channel>
+</rss>

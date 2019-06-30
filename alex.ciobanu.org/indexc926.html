@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>
+	Comments on: How To: Creating a custom Variant type	</title>
+	<atom:link href="https://alex.ciobanu.org/?feed=rss2&#038;p=76" rel="self" type="application/rss+xml" />
+	<link>https://alex.ciobanu.org/?p=76</link>
+	<description>Yet Another Programming Blog</description>
+	<lastBuildDate>Tue, 10 Feb 2009 10:49:52 +0000</lastBuildDate>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+			<item>
+				<title>
+				By: alex				</title>
+				<link>https://alex.ciobanu.org/?p=76&#038;cpage=1#comment-123</link>
+		<dc:creator><![CDATA[alex]]></dc:creator>
+		<pubDate>Tue, 10 Feb 2009 10:49:52 +0000</pubDate>
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=76#comment-123</guid>
+					<description><![CDATA[Hi Patrick,
+
+Yes, the interface in a record is now widely used to get hold of operator overloading on non-classes. The only bad thing in that is the fact that a lot of &quot;back-stage&quot; calls are being inserted by the compiler.]]></description>
+		<content:encoded><![CDATA[<p>Hi Patrick,</p>
+<p>Yes, the interface in a record is now widely used to get hold of operator overloading on non-classes. The only bad thing in that is the fact that a lot of &#8220;back-stage&#8221; calls are being inserted by the compiler.</p>
+]]></content:encoded>
+						</item>
+						<item>
+				<title>
+				By: Patrick van Logchem				</title>
+				<link>https://alex.ciobanu.org/?p=76&#038;cpage=1#comment-120</link>
+		<dc:creator><![CDATA[Patrick van Logchem]]></dc:creator>
+		<pubDate>Mon, 09 Feb 2009 22:54:08 +0000</pubDate>
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=76#comment-120</guid>
+					<description><![CDATA[Thanks for this detailed explanation - information on this is rather hard to come by.
+
+In my latest attempt in creating my own data type (an alternative for the &#039;string&#039; type, called &#039;rope&#039; - google for a definition), I quickly got stuck with all sorts of details while implementing a custom Variant. So in the end, I ditched the variant-stuff, and settled for a record with a few operator overloads. This turned out to be much easier.
+
+I used a record with just 1 private data member (an interface) and a few operator overloaders (namely the add operator, plus implicit and explicit casts). The interface has only 1 function - returning the interface implementor. The record operators are redirected to the actual implementations in this instance.
+
+This construction allows to use my type as a stack-managed type, but still has the advantages of a reference-counted interface-type. (I couldn&#039;t use interfaces directly, as these are heap-managed, and don&#039;t support operator overloads).
+
+Who knows - maybe this helps someone?  - If it does, gimme a call ;-)]]></description>
+		<content:encoded><![CDATA[<p>Thanks for this detailed explanation &#8211; information on this is rather hard to come by.</p>
+<p>In my latest attempt in creating my own data type (an alternative for the &#8216;string&#8217; type, called &#8216;rope&#8217; &#8211; google for a definition), I quickly got stuck with all sorts of details while implementing a custom Variant. So in the end, I ditched the variant-stuff, and settled for a record with a few operator overloads. This turned out to be much easier.</p>
+<p>I used a record with just 1 private data member (an interface) and a few operator overloaders (namely the add operator, plus implicit and explicit casts). The interface has only 1 function &#8211; returning the interface implementor. The record operators are redirected to the actual implementations in this instance.</p>
+<p>This construction allows to use my type as a stack-managed type, but still has the advantages of a reference-counted interface-type. (I couldn&#8217;t use interfaces directly, as these are heap-managed, and don&#8217;t support operator overloads).</p>
+<p>Who knows &#8211; maybe this helps someone?  &#8211; If it does, gimme a call 😉</p>
+]]></content:encoded>
+						</item>
+						<item>
+				<title>
+				By: AllombAnnoula				</title>
+				<link>https://alex.ciobanu.org/?p=76&#038;cpage=1#comment-119</link>
+		<dc:creator><![CDATA[AllombAnnoula]]></dc:creator>
+		<pubDate>Mon, 09 Feb 2009 20:51:29 +0000</pubDate>
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=76#comment-119</guid>
+					<description><![CDATA[Hi, cool site, good writing ;)]]></description>
+		<content:encoded><![CDATA[<p>Hi, cool site, good writing 😉</p>
+]]></content:encoded>
+						</item>
+			</channel>
+</rss>

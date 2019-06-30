@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>windows &#8211; YAPB</title>
+	<atom:link href="https://alex.ciobanu.org/?feed=rss2&#038;tag=windows" rel="self" type="application/rss+xml" />
+	<link>https://alex.ciobanu.org</link>
+	<description>Yet Another Programming Blog</description>
+	<lastBuildDate>Tue, 09 Jun 2009 21:52:10 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+
+<image>
+	<url>https://alex.ciobanu.org/files/uploads/2018/05/7327309-150x150.jpg</url>
+	<title>windows &#8211; YAPB</title>
+	<link>https://alex.ciobanu.org</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+	<item>
+		<title>Playing with Windows 7</title>
+		<link>https://alex.ciobanu.org/?p=215</link>
+				<comments>https://alex.ciobanu.org/?p=215#comments</comments>
+				<pubDate>Tue, 09 Jun 2009 21:52:09 +0000</pubDate>
+		<dc:creator><![CDATA[Alexandru Ciobanu]]></dc:creator>
+				<category><![CDATA[Software Development]]></category>
+		<category><![CDATA[delphi]]></category>
+		<category><![CDATA[embarcadero]]></category>
+		<category><![CDATA[LinkedIn]]></category>
+		<category><![CDATA[vcl]]></category>
+		<category><![CDATA[windows]]></category>
+
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=215</guid>
+				<description><![CDATA[I was playing around with some (default Windows) programs these days and noticed that taskbar items for those programs show some cool effects whenever there is some progress going on So I decided to write a little unit... ]]></description>
+								<content:encoded><![CDATA[<p>I was playing around with some (default Windows) programs these days and noticed that taskbar items for those programs show some cool effects whenever there is some progress going on So I decided to write a little unit to take advantage of these effects in one of my Delphi applications.</p>
+<p>To take advantage of the new Windows 7 TaskBar API take a look at the <a href="http://msdn.microsoft.com/en-us/library/dd391692(VS.85).aspx">ITaskBarList3</a> interface (an probably 4 for that matter). I have translated the interface to Delphi and added some initialization code and came up with a little unit that exposes a <strong>class helper for TCustomForm</strong>.</p>
+<p>The final user-friendly code looks like this:</p>
+<pre class="brush: delphi; title: ; notranslate">
+procedure TForm1.Button1Click(Sender: TObject);
+begin
+  SetProgressState(tbpsError);
+  SetProgressValue(50, 100);
+end;
+</pre>
+<p>The <em>SetProgressState</em> and <em>SetProgressValue</em> methods are inserted by the class helper. The example makes the taskbar icon for the window look like a 50% complete red progress bar (indicating an error):</p>
+<p><a rel="attachment wp-att-216" href="http://alex.ciobanu.org/?attachment_id=216"><img class="alignnone size-full wp-image-216" title="error_task_bar" src="http://alex.ciobanu.org/files/uploads/2009/06/error_task_bar.png" alt="error_task_bar" width="63" height="46" /></a></p>
+<p>or something like this for a &#8220;indefinite&#8221; state (of course the animation is missing so you can&#8217;t see the effects):</p>
+<p><a rel="attachment wp-att-217" href="http://alex.ciobanu.org/?attachment_id=217"><img class="alignnone size-full wp-image-217" title="ind_task_item" src="http://alex.ciobanu.org/files/uploads/2009/06/ind_task_item.png" alt="ind_task_item" width="62" height="44" /></a></p>
+<p>If you want to play with the unit, take a look here: [download#38]</p>
+]]></content:encoded>
+							<wfw:commentRss>https://alex.ciobanu.org/?feed=rss2&#038;p=215</wfw:commentRss>
+		<slash:comments>23</slash:comments>
+							</item>
+	</channel>
+</rss>

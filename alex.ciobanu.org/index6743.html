@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>unicode &#8211; YAPB</title>
+	<atom:link href="https://alex.ciobanu.org/?feed=rss2&#038;tag=unicode" rel="self" type="application/rss+xml" />
+	<link>https://alex.ciobanu.org</link>
+	<description>Yet Another Programming Blog</description>
+	<lastBuildDate>Wed, 19 May 2010 10:05:36 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+
+<image>
+	<url>https://alex.ciobanu.org/files/uploads/2018/05/7327309-150x150.jpg</url>
+	<title>unicode &#8211; YAPB</title>
+	<link>https://alex.ciobanu.org</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+	<item>
+		<title>DeHL 0.8.2 is out</title>
+		<link>https://alex.ciobanu.org/?p=336</link>
+				<comments>https://alex.ciobanu.org/?p=336#respond</comments>
+				<pubDate>Tue, 18 May 2010 15:03:51 +0000</pubDate>
+		<dc:creator><![CDATA[Alexandru Ciobanu]]></dc:creator>
+				<category><![CDATA[Software Development]]></category>
+		<category><![CDATA[.net]]></category>
+		<category><![CDATA[dehl]]></category>
+		<category><![CDATA[delphi]]></category>
+		<category><![CDATA[embarcadero]]></category>
+		<category><![CDATA[LinkedIn]]></category>
+		<category><![CDATA[oop]]></category>
+		<category><![CDATA[rtl]]></category>
+		<category><![CDATA[rtti]]></category>
+		<category><![CDATA[unicode]]></category>
+
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=336</guid>
+				<description><![CDATA[I&#8217;ve just released the version 0.8.2 of DeHL. The downloads can be found on this page and changelog on this page. Again, this is a minor release with a few bugs fixed and a new feature: TString (as... ]]></description>
+								<content:encoded><![CDATA[<p><a rel="attachment wp-att-242" href="http://alex.ciobanu.org/?attachment_id=242"><img class="alignleft size-full wp-image-242" title="DeHL" src="http://alex.ciobanu.org/files/uploads/2009/06/Logo_2.png" alt="DeHL" width="100" height="100" /></a></p>
+<p>I&#8217;ve just released the version 0.8.2 of DeHL. The downloads can be found on <a href="http://code.google.com/p/delphilhlplib/downloads/list">this</a> page and changelog on <a href="http://code.google.com/p/delphilhlplib/source/browse/tags/0.8.2/changelog.txt">this</a> page.<br />
+Again, this is a minor release with a few bugs fixed and a new feature: <strong>TString</strong> (as asked in <a href="http://alex.ciobanu.org/?p=331&amp;cpage=1#comment-1298">this comment</a>).<br />
+As you might have guessed already, TString is a wrapper record modeled on .NET&#8217;s <a href="http://msdn.microsoft.com/en-us/library/system.string.aspx">System.String</a> class. Unfortunately I was unable to use most of the RTL&#8217;s string functionality so the &#8220;wrapper&#8221; grew quite a bit from my original expectations.</p>
+<p>But &#8230; enough talk, here are some usage scenarios that someone may find useful:</p>
+<pre class="brush: delphi; title: ; notranslate">
+var
+  LStr: TString;
+begin
+  { Overloaded operators and a special function &quot;U&quot; }
+  LStr := U('Hello World for the ') + 10 + 'th time!';
+
+  { Do some random operations }
+  if (LStr.ToUpper().Contains('HELLO')) and
+     (LStr.Contains('HeLLo', scLocaleIgnoreCase)) then
+  WriteLn(LStr.ToString);
+
+  { Now let's select all the distinct chars from the string }
+  WriteLn(
+    LStr.Concat(LStr.AsCollection.Distinct.Op.Cast&lt;string&gt;).ToString
+  );
+end.
+</pre>
+<p>TString overloads all sane operators: Equality, Inequality, Implicit conversions, Addition, Subtraction and offers functions to convert to and from UTF8 and UCS4 (via RTL of course). I also need to iron a few things about about Enex integration for the next minor release.</p>
+<p>The other small improvement that I added relates to the collection package. All simple collections (not the Key/Value pair ones) implement a sort of <i>&#8220;where T is the_class, select it as such&#8221;</i> operation. Check out this example:</p>
+<pre class="brush: delphi; title: ; notranslate">
+var
+  LList: TList&lt;TObject&gt;;
+  LBuilder: TStringBuilder;
+  LObject: TObject;
+begin
+  LList := TList&lt;TObject&gt;.Create;
+
+  { Populate the list with some random objects }
+  LList.Add(TInterfacedObject.Create);
+  LList.Add(TStringBuilder.Create);
+  LList.Add(TStringBuilder.Create);
+  LList.Add(TObject.Create);
+
+  { Now select the objects we're interested in (string builders) }
+  for LBuilder in LList.Op.Select&lt;TStringBuilder&gt; do
+    WriteLn(LBuilder.ClassName); // Do stuff
+
+  { Or select everything (not actually required - an example) }
+  for LObject in LList.Op.Select&lt;TObject&gt; do
+    WriteLn(LObject.ClassName); // Do stuff
+end.
+</pre>
+<p>If it&#8217;s still not clear what this operations does, let me explain. It basically consists of two operations: <i>Where</i> and <i>Select</i>. First, each <strong>object</strong> is checked to be of a given class and then this object is cast to that class so you can iterate directly using a <i>FOR .. IN</i> loop only over the objects you want to. Of course doing that for TObject makes no sense (as in example) &#8230; but well &#8230; that was an example.</p>
+<p>Well, that&#8217;s all for today,<strong><br />
+Have Fun!</strong></p>
+]]></content:encoded>
+							<wfw:commentRss>https://alex.ciobanu.org/?feed=rss2&#038;p=336</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>&#8220;in&#8221; is dead, long live &#8220;CharInSet&#8221; (or maybe not)</title>
+		<link>https://alex.ciobanu.org/?p=113</link>
+				<comments>https://alex.ciobanu.org/?p=113#comments</comments>
+				<pubDate>Mon, 02 Mar 2009 15:49:53 +0000</pubDate>
+		<dc:creator><![CDATA[Alexandru Ciobanu]]></dc:creator>
+				<category><![CDATA[Software Development]]></category>
+		<category><![CDATA[delphi]]></category>
+		<category><![CDATA[LinkedIn]]></category>
+		<category><![CDATA[rtl]]></category>
+		<category><![CDATA[unicode]]></category>
+
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=113</guid>
+				<description><![CDATA[I&#8217;ve this question come up a few times, so &#8230; Since Delphi 2009 you have probably noticed this warning: &#8220;[DCC Warning] Unit1.pas(27): W1050 WideChar reduced to byte char in set expressions.  Consider using &#8216;CharInSet&#8217; function in &#8216;SysUtils&#8217; unit.&#8221;... ]]></description>
+								<content:encoded><![CDATA[<p><strong>I&#8217;ve this question come up a few times, so &#8230;</strong></p>
+<p>Since Delphi 2009 you have probably noticed this warning: &#8220;<em>[DCC Warning] Unit1.pas(27): W1050 WideChar reduced to byte char in set expressions.  Consider using &#8216;CharInSet&#8217; function in &#8216;SysUtils&#8217; unit.</em>&#8221; which suggests you to use the <em>CharInSet</em> function instead. <em>CharInSet</em> still requires a simple set of <em>AnsiChar</em>s and fails (returns <em>false</em>) is the code of the passed character is greater than 255 which makes it useless for Unicode characters.<br />
+<span style="text-decoration: underline;">Putting it simple: replacing the &#8220;a in b&#8221; statement with CharInSet(a, b) will simply silence the compiler. Nothing more.</span><br />
+You should really consider using <em>Character</em> unit if you want to check whether a character is a letter, digit or is a part of another &#8220;standard set of chars&#8221;.</p>
+<p>Take this example:</p>
+<p>uses Character;<br />
+begin<br />
+  if C in [&#8216;A&#8217;..&#8217;Z&#8217;] then // <-- OLD WAY
+    WriteLn('The character is an upper-cased letter.');
+
+  if IsUpper(C) then // <-- UNICODE WAY
+    WriteLn('The character is an upper-cased letter.');
+end;
+[/sourcecode]
+</p>
+]]></content:encoded>
+							<wfw:commentRss>https://alex.ciobanu.org/?feed=rss2&#038;p=113</wfw:commentRss>
+		<slash:comments>8</slash:comments>
+							</item>
+	</channel>
+</rss>

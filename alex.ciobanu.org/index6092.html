@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>lgpl &#8211; YAPB</title>
+	<atom:link href="https://alex.ciobanu.org/?feed=rss2&#038;tag=lgpl" rel="self" type="application/rss+xml" />
+	<link>https://alex.ciobanu.org</link>
+	<description>Yet Another Programming Blog</description>
+	<lastBuildDate>Thu, 18 Dec 2008 12:38:30 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+
+<image>
+	<url>https://alex.ciobanu.org/files/uploads/2018/05/7327309-150x150.jpg</url>
+	<title>lgpl &#8211; YAPB</title>
+	<link>https://alex.ciobanu.org</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+	<item>
+		<title>FastMove: Optimizing System.Move</title>
+		<link>https://alex.ciobanu.org/?p=39</link>
+				<comments>https://alex.ciobanu.org/?p=39#comments</comments>
+				<pubDate>Thu, 04 Dec 2008 13:36:53 +0000</pubDate>
+		<dc:creator><![CDATA[Alexandru Ciobanu]]></dc:creator>
+				<category><![CDATA[Software Development]]></category>
+		<category><![CDATA[asm]]></category>
+		<category><![CDATA[delphi]]></category>
+		<category><![CDATA[lgpl]]></category>
+		<category><![CDATA[LinkedIn]]></category>
+		<category><![CDATA[rtl]]></category>
+
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=39</guid>
+				<description><![CDATA[This post describes a technique that can be used to optimize some RTL functions at run-time. At the end of the post there&#8217;s a unit; add it to your uses list (preferably as the first one) and the... ]]></description>
+								<content:encoded><![CDATA[<p>This post describes a technique that can be used to optimize some RTL functions at run-time. At the end of the post there&#8217;s a unit; add it to your uses list (preferably as the first one) and the <em>System.Move</em> routine will gain a significant speed boost. The unit will patch up the <em>Move </em>routine at run-time with <strong>MMX/SSE/SSE2/SSE3</strong> versions depending on what <em>SIMD</em> sets your CPU supports.</p>
+<p>It performs these steps at run-time (in initialization section):</p>
+<ol>
+<li>Detect the supported SIMD sets using CPUID instruction. (see <em>GetSupportedSimdInstructionSets</em>, <em>CPUIIDSupports</em>, <em>CPUID</em> functions)</li>
+<li>Detect the L2 cache size of your CPU to be used in optimizing the moving operation. (see <em>GetL2CacheSize</em> and <em>GetExtendedL2CacheSize</em> functions)</li>
+<li>Depending on what <em>SIMD </em>sets are supported the best function variant is used (<strong>SSE3</strong>, then <strong>SSE2</strong>, <strong>SSE</strong> and <strong>MMX</strong> as the last option).</li>
+<li>If your CPU doesn&#8217;t have support for any of those <em>SIMD</em> sets the original Move is left untouched.</li>
+<li>After the proper variant of the function has been selected, the System.Move routine is patched and a &#8220;JMP NEW_OPTIMIZED_VERSION&#8221; jump is written over the first instructions &#8212; this forces the use of our optimized versions. (see <em>PatchMethod </em>function)</li>
+<li>VirtualProtect windows function to un-protect the address space in which System.Move routine resides and then restore the protection.</li>
+</ol>
+<p>Of course I could have just exported those function variants and make them available to consumer code, but he interesting side-effect of run-time patching is that all code in Delphi that uses Move will get that speed boost, including RTL and VCL units. Anyway, no more words, get your copy now (while it&#8217;s hot):<br />
+<code>[download#17] </code><br />
+<strong>(Available under LGPL License &#8211; the original incense of the YAWE project)</strong></p>
+<p><em><span style="color: #ff0000;"><br />
+Note: All SIMD versions of Move method were written by Seth and initially included in our <a href="http://code.google.com/p/yawe-mmorpg/">YAWE</a> project. You can find much more interesting stuff if you look at the code we&#8217;ve laid down there.</span></em></p>
+]]></content:encoded>
+							<wfw:commentRss>https://alex.ciobanu.org/?feed=rss2&#038;p=39</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+							</item>
+	</channel>
+</rss>

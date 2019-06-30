@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>vcl &#8211; YAPB</title>
+	<atom:link href="https://alex.ciobanu.org/?feed=rss2&#038;tag=vcl" rel="self" type="application/rss+xml" />
+	<link>https://alex.ciobanu.org</link>
+	<description>Yet Another Programming Blog</description>
+	<lastBuildDate>Tue, 09 Jun 2009 21:52:10 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+
+<image>
+	<url>https://alex.ciobanu.org/files/uploads/2018/05/7327309-150x150.jpg</url>
+	<title>vcl &#8211; YAPB</title>
+	<link>https://alex.ciobanu.org</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+	<item>
+		<title>Playing with Windows 7</title>
+		<link>https://alex.ciobanu.org/?p=215</link>
+				<comments>https://alex.ciobanu.org/?p=215#comments</comments>
+				<pubDate>Tue, 09 Jun 2009 21:52:09 +0000</pubDate>
+		<dc:creator><![CDATA[Alexandru Ciobanu]]></dc:creator>
+				<category><![CDATA[Software Development]]></category>
+		<category><![CDATA[delphi]]></category>
+		<category><![CDATA[embarcadero]]></category>
+		<category><![CDATA[LinkedIn]]></category>
+		<category><![CDATA[vcl]]></category>
+		<category><![CDATA[windows]]></category>
+
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=215</guid>
+				<description><![CDATA[I was playing around with some (default Windows) programs these days and noticed that taskbar items for those programs show some cool effects whenever there is some progress going on So I decided to write a little unit... ]]></description>
+								<content:encoded><![CDATA[<p>I was playing around with some (default Windows) programs these days and noticed that taskbar items for those programs show some cool effects whenever there is some progress going on So I decided to write a little unit to take advantage of these effects in one of my Delphi applications.</p>
+<p>To take advantage of the new Windows 7 TaskBar API take a look at the <a href="http://msdn.microsoft.com/en-us/library/dd391692(VS.85).aspx">ITaskBarList3</a> interface (an probably 4 for that matter). I have translated the interface to Delphi and added some initialization code and came up with a little unit that exposes a <strong>class helper for TCustomForm</strong>.</p>
+<p>The final user-friendly code looks like this:</p>
+<pre class="brush: delphi; title: ; notranslate">
+procedure TForm1.Button1Click(Sender: TObject);
+begin
+  SetProgressState(tbpsError);
+  SetProgressValue(50, 100);
+end;
+</pre>
+<p>The <em>SetProgressState</em> and <em>SetProgressValue</em> methods are inserted by the class helper. The example makes the taskbar icon for the window look like a 50% complete red progress bar (indicating an error):</p>
+<p><a rel="attachment wp-att-216" href="http://alex.ciobanu.org/?attachment_id=216"><img class="alignnone size-full wp-image-216" title="error_task_bar" src="http://alex.ciobanu.org/files/uploads/2009/06/error_task_bar.png" alt="error_task_bar" width="63" height="46" /></a></p>
+<p>or something like this for a &#8220;indefinite&#8221; state (of course the animation is missing so you can&#8217;t see the effects):</p>
+<p><a rel="attachment wp-att-217" href="http://alex.ciobanu.org/?attachment_id=217"><img class="alignnone size-full wp-image-217" title="ind_task_item" src="http://alex.ciobanu.org/files/uploads/2009/06/ind_task_item.png" alt="ind_task_item" width="62" height="44" /></a></p>
+<p>If you want to play with the unit, take a look here: [download#38]</p>
+]]></content:encoded>
+							<wfw:commentRss>https://alex.ciobanu.org/?feed=rss2&#038;p=215</wfw:commentRss>
+		<slash:comments>23</slash:comments>
+							</item>
+		<item>
+		<title>[Rant] Actions &#8230;</title>
+		<link>https://alex.ciobanu.org/?p=72</link>
+				<comments>https://alex.ciobanu.org/?p=72#comments</comments>
+				<pubDate>Fri, 06 Feb 2009 21:00:37 +0000</pubDate>
+		<dc:creator><![CDATA[Alexandru Ciobanu]]></dc:creator>
+				<category><![CDATA[Software Development]]></category>
+		<category><![CDATA[delphi]]></category>
+		<category><![CDATA[LinkedIn]]></category>
+		<category><![CDATA[vcl]]></category>
+
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=72</guid>
+				<description><![CDATA[Just a few words out of frustration: Do yourselves a favor and stay away from actions and ribbons in Delphi. At least for a while. If you really need fancy looking menus use JEDI. P.S. This would be... ]]></description>
+								<content:encoded><![CDATA[<p>Just a few words out of frustration: Do yourselves a favor and stay away from actions and ribbons in Delphi. At least for a while. If you really need fancy looking menus use <a href="http://homepages.codegear.com/jedi/jvcl/">JEDI</a>.</p>
+<p>P.S. This would be a follow-up of <a href="http://alex.ciobanu.org/?p=16">this</a> post I&#8217;ve written last September.</p>
+]]></content:encoded>
+							<wfw:commentRss>https://alex.ciobanu.org/?feed=rss2&#038;p=72</wfw:commentRss>
+		<slash:comments>9</slash:comments>
+							</item>
+		<item>
+		<title>Delphi 2009 Language features</title>
+		<link>https://alex.ciobanu.org/?p=42</link>
+				<comments>https://alex.ciobanu.org/?p=42#respond</comments>
+				<pubDate>Sun, 07 Dec 2008 15:25:08 +0000</pubDate>
+		<dc:creator><![CDATA[Alexandru Ciobanu]]></dc:creator>
+				<category><![CDATA[Software Development]]></category>
+		<category><![CDATA[delphi]]></category>
+		<category><![CDATA[LinkedIn]]></category>
+		<category><![CDATA[rtl]]></category>
+		<category><![CDATA[vcl]]></category>
+
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=42</guid>
+				<description><![CDATA[Check out this link &#8212; pretty much details all the new language features added in Delphi 2009. A big thanks goes to Marco Cantu for preparing this document.]]></description>
+								<content:encoded><![CDATA[<p>Check out <a href="http://dn.codegear.com/article/images/39076/New_Delphi_Coding_Styles_and_Architectures.pdf">this link</a> &#8212; pretty much details all the new language features added in Delphi 2009.</p>
+<p>A big thanks goes to Marco Cantu for preparing this document.</p>
+]]></content:encoded>
+							<wfw:commentRss>https://alex.ciobanu.org/?feed=rss2&#038;p=42</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>Thread.Synchronize</title>
+		<link>https://alex.ciobanu.org/?p=41</link>
+				<comments>https://alex.ciobanu.org/?p=41#respond</comments>
+				<pubDate>Sun, 07 Dec 2008 11:40:24 +0000</pubDate>
+		<dc:creator><![CDATA[Alexandru Ciobanu]]></dc:creator>
+				<category><![CDATA[Software Development]]></category>
+		<category><![CDATA[delphi]]></category>
+		<category><![CDATA[LinkedIn]]></category>
+		<category><![CDATA[rtl]]></category>
+		<category><![CDATA[vcl]]></category>
+
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=41</guid>
+				<description><![CDATA[A general mistake many Delphi developers are making is accessing GUI classes from other threads directly (in a multi-threaded application). It&#8217;s a mistake I was doing for a long time. Eventually I started using SendMessage to synchronize with... ]]></description>
+								<content:encoded><![CDATA[<p>A general mistake many Delphi developers are making is accessing GUI classes from other threads directly (in a multi-threaded application). It&#8217;s a mistake I was doing for a long time. Eventually I started using <a href="http://msdn.microsoft.com/en-us/library/ms644950(VS.85).aspx">SendMessage</a> to synchronize with the main thread (the GUI one) by passing a set of <strong>WM_PLEASE_DO_THAT</strong> messages that carried some informational value to a specific message method.</p>
+<p>Now, if you&#8217;re coming from .NET world you&#8217;re probably used to <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.invoke.aspx">Control.Invoke</a> method to synchronize your GUI from a separate thread. Actually .NET visual classes require that the same thread is used to access the GUI all the time &#8212; otherwise you will be presented with an exception telling you&#8217;re not doing it right: a method that will <span style="text-decoration: line-through;">teach</span> make you do it right :). Well in Delphi&#8217;s case it&#8217;s not that simple: you won&#8217;t get any exceptions, and most of the time everything will work just fine; but in rare cases it will simply break. This was the case with <a href="http://alex.ciobanu.org/?page_id=13">Eduka+</a>, a program that used a few threads that accessed the GUI directly. It works on single-core CPUs but breaks down on multi-core ones. Eventually I had to turn on a special flag in the PE header to tell windows to use a single core.</p>
+<p>Anyway, Delphi posseses the required functionality to create safe applications in form of <strong>TThread.Synchronize</strong> and<strong> TThread.Queue</strong> methods. Both methods delegate a routine to be executed on the main thread. The difference between Synchronize and Queue is that the first method will wait until the delegated routine has finished executing on the main thread and the second method will not wait &#8212; something resembling the behavior of <a href="http://msdn.microsoft.com/en-us/library/ms644950(VS.85).aspx">SendMessage</a> and <a href="http://msdn.microsoft.com/en-us/library/ms644944(VS.85).aspx">PostMessage</a> in Windows world.</p>
+<p>Now, let&#8217;s see what changes should be made to unsafe code to make it safe (using Anonymous methods i Delphi 2009). Consider this code:</p>
+<pre class="brush: delphi; title: ; notranslate">
+procedure Unsafe_FunctionExecuteOnOtherThread();
+var
+  AResult : Integer;
+begin
+  AResult := DoSomeComputations();
+  CheckSomething();
+  
+  { Update the GUI }
+  Form1.Edit1.Text := IntToStr(AResult);
+end;
+</pre>
+<p>The safe variant of the code looks like this:</p>
+<pre class="brush: delphi; title: ; notranslate">
+procedure Safe_FunctionExecuteOnOtherThread();
+var
+  AResult : Integer;
+begin
+  AResult := DoSomeComputations();
+  CheckSomething();
+
+  { Update the GUI }
+  TThread.Synchronize(nil, procedure begin
+    Form1.Edit1.Text := IntToStr(AResult);
+  end);
+end;
+</pre>
+<p>That&#8217;s basically all you have to do! Of course you have to decide now if you want to wait for the GUI update to be finished or not before continuing. Also note that using Queue could be tricky because AResult variable used in the function and in the anonymous method uses the same memory location <img src="https://s.w.org/images/core/emoji/12.0.0-1/72x72/1f609.png" alt="😉" class="wp-smiley" style="height: 1em; max-height: 1em;" /></p>
+]]></content:encoded>
+							<wfw:commentRss>https://alex.ciobanu.org/?feed=rss2&#038;p=41</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>TSendMail Action</title>
+		<link>https://alex.ciobanu.org/?p=21</link>
+				<comments>https://alex.ciobanu.org/?p=21#respond</comments>
+				<pubDate>Sat, 08 Nov 2008 11:13:01 +0000</pubDate>
+		<dc:creator><![CDATA[Alexandru Ciobanu]]></dc:creator>
+				<category><![CDATA[Software Development]]></category>
+		<category><![CDATA[delphi]]></category>
+		<category><![CDATA[LinkedIn]]></category>
+		<category><![CDATA[vcl]]></category>
+
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=21</guid>
+				<description><![CDATA[If you&#8217;ve ever wondered how to use TSendMail action in ExtActns unit &#8211; drop it, it&#8217;s useless. I&#8217;ve had a few people complaining they don&#8217;t know how to set the Recipients and Subject set it &#8211; you can&#8217;t... ]]></description>
+								<content:encoded><![CDATA[<p>If you&#8217;ve ever wondered how to use TSendMail action in <strong>ExtActns </strong>unit &#8211; drop it, it&#8217;s useless. I&#8217;ve had a few people complaining they don&#8217;t know how to set the Recipients and Subject set it &#8211; you can&#8217;t do it <img src="https://s.w.org/images/core/emoji/12.0.0-1/72x72/1f642.png" alt="🙂" class="wp-smiley" style="height: 1em; max-height: 1em;" /></p>
+<p>Let&#8217;s look at the source code for the TSendMail.ExecuteTarget method:</p>
+<p>First:</p>
+<pre class="brush: delphi; title: ; notranslate">
+lpszSubject := nil;
+lpszNoteText := PAnsiChar(AnsiString(Text.Text));
+lpszMessageType := nil;
+lpszDateReceived := nil;
+lpszConversationID := nil;
+</pre>
+<p>and then:</p>
+<pre class="brush: delphi; title: ; notranslate">
+MError := MapiSendMail(0, Application.Handle, MapiMessage,
+    MAPI_DIALOG or MAPI_LOGON_UI or MAPI_NEW_SESSION, 0);
+if MError &lt;&gt; 0 then 
+    MessageDlg(SSendError, mtError, [mbOK], 0);
+</pre>
+<p>Three problems with this code:</p>
+<ol>
+<li>First it has no support for Subject and Recipients/CC and related.</li>
+<li>If the user closes the &#8220;Send mail window&#8221; of his mail client, a message box will pop up &#8211; and you can&#8217;t do anything about it!</li>
+<li>The text is converted to ANSI so no Unicode support for you email.</li>
+</ol>
+<p>The first problem can be solved rather simply by the VCL developers but I think it&#8217;s not top priority anyway.</p>
+<p>For the second problem it should at least have been an event like OnMailResult with a Boolean that would say &#8211; MessageWasSent so that you, the developer would have the control of what you would do in case of failure/cancel.</p>
+<p>Anyway, let&#8217;s hope the VCL gets cleaned up a bit in the next years and such controls are removed or updated to actually be useful to someone.</p>
+]]></content:encoded>
+							<wfw:commentRss>https://alex.ciobanu.org/?feed=rss2&#038;p=21</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>TActionMainMenuBar Sucks!</title>
+		<link>https://alex.ciobanu.org/?p=16</link>
+				<comments>https://alex.ciobanu.org/?p=16#respond</comments>
+				<pubDate>Thu, 11 Sep 2008 20:03:14 +0000</pubDate>
+		<dc:creator><![CDATA[Alexandru Ciobanu]]></dc:creator>
+				<category><![CDATA[Software Development]]></category>
+		<category><![CDATA[delphi]]></category>
+		<category><![CDATA[eduka+]]></category>
+		<category><![CDATA[vcl]]></category>
+
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=16</guid>
+				<description><![CDATA[Yeah &#8230; seriously! Tried to move away from the TMainMenu in Eduka+ today. Spent nearly 3 hours researching and trying out different approaches to make the Action based menu work&#8230; It seriously lacks clarity and functionality. So what... ]]></description>
+								<content:encoded><![CDATA[<p>Yeah &#8230; seriously! Tried to move away from the TMainMenu in Eduka+ today. Spent nearly 3 hours researching and trying out different approaches to make the Action based menu work&#8230; It seriously lacks clarity and functionality.</p>
+<p>So what do I find wrong with it? Well:</p>
+<ol>
+<li>Lack of normal documentation and samples to clarify the usage in some cases.</li>
+<li>Lack of functions to control the items directly without much hassle. I&#8217;d love to see something like: SetEnabled(Action, Boolean) or SetVisible for example. That would have made moving from TMainMenu oh so much more pleasant.</li>
+<li>Why the hell the whole menu/sub-menu would not disable when I disable the associated action? Even if the menu looks disabled I can still navigate to it and see it&#8217;s sub-actions there activated. I can even execute them.</li>
+</ol>
+<p>Anyway &#8230; will have to continue next days.</p>
+]]></content:encoded>
+							<wfw:commentRss>https://alex.ciobanu.org/?feed=rss2&#038;p=16</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+	</channel>
+</rss>

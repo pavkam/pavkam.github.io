@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>bugs &#8211; YAPB</title>
+	<atom:link href="https://alex.ciobanu.org/?feed=rss2&#038;tag=bugs" rel="self" type="application/rss+xml" />
+	<link>https://alex.ciobanu.org</link>
+	<description>Yet Another Programming Blog</description>
+	<lastBuildDate>Sun, 08 Jan 2012 01:09:21 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+
+<image>
+	<url>https://alex.ciobanu.org/files/uploads/2018/05/7327309-150x150.jpg</url>
+	<title>bugs &#8211; YAPB</title>
+	<link>https://alex.ciobanu.org</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+	<item>
+		<title>Delphi anonymous methods are &#8230;</title>
+		<link>https://alex.ciobanu.org/?p=496</link>
+				<comments>https://alex.ciobanu.org/?p=496#comments</comments>
+				<pubDate>Sun, 08 Jan 2012 01:05:18 +0000</pubDate>
+		<dc:creator><![CDATA[Alexandru Ciobanu]]></dc:creator>
+				<category><![CDATA[Software Development]]></category>
+		<category><![CDATA[bsd]]></category>
+		<category><![CDATA[bugs]]></category>
+		<category><![CDATA[dehl]]></category>
+		<category><![CDATA[delphi]]></category>
+		<category><![CDATA[embarcadero]]></category>
+		<category><![CDATA[lame]]></category>
+		<category><![CDATA[LinkedIn]]></category>
+		<category><![CDATA[oop]]></category>
+		<category><![CDATA[rtl]]></category>
+
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=496</guid>
+				<description><![CDATA[&#8230; too fat. Surely writing code like this gets frustrating very fast. I want my lambdas!! In other news, there is a working version of Collections 2.0 in the SVN. Most of the changes were sitting on my... ]]></description>
+								<content:encoded><![CDATA[<h1>&#8230; too fat.</h1>
+<p>Surely writing code like this gets frustrating very fast. I want my <strong>lambdas</strong>!!</p>
+<pre class="brush: delphi; title: ; notranslate">
+  { Lovely, isn't it? }
+  LGroupJoined := LOwners.Op.GroupJoin&lt;TPet, TPerson, TOwnedPets&gt;(LPets,
+    function(Arg1: TPerson): TPerson begin Result := Arg1; end,
+    function(Arg1: TPet): TPerson begin Result := Arg1.FOwner; end,
+    function(Arg1: TPerson; Arg2: ISequence&lt;TPet&gt;): TOwnedPets
+    begin
+      Result.FOwnerName := Format('%s, %s', [Arg1.FLast, Arg1.FFirst]);
+      Result.FPetNames := Arg2.Op.Select&lt;String&gt;(
+        function(Arg1: TPet): String begin Result := Arg1.FName; end);
+    end
+  );
+
+  for LOwnedPets in LGroupJoined do
+  begin
+    WriteLn('Person ', LOwnedPets.FOwnerName, ' owns: ');
+    Write('    ');
+
+    for LName in LOwnedPets.FPetNames do
+      Write(LName, ', ');
+
+    WriteLn;
+  end;
+</pre>
+<p>In other news, there is a working version of <em>Collections 2.0</em> in the SVN. Most of the changes were sitting on my hard drive for a year now. I just made sure that the last touches are applied and that this version compiles in Delphi XE2. I have also applied a few fixes that enabled the package to work in 64 bit environment.</p>
+<p>&nbsp;</p>
+<p><span style="color: #ff0000;">Be advised: The unit tests are completely broken. I have no short term plans on making them work. The amount of time needed for that is staggering. I am currently focused on features so I won&#8217;t touch them in a while.</span></p>
+<p>&nbsp;</p>
+<p><em>P.S. I have to say that I am very disappointed with the quality of the IDE when generics are involved. I had countless unpleasant problems in the past but was expecting things to get better in XE2. Not so. My IDE froze countless time when trying to edit some source files. Whenever I would type a &#8220;.&#8221; or a &#8220;(&#8221; it would be gone for good. This makes me wonder whether Collections will be usable at all to you guys. With such buggy support I can predict only crashes. And don&#8217;t get me started on the EXE size &#8230;</em></p>
+]]></content:encoded>
+							<wfw:commentRss>https://alex.ciobanu.org/?feed=rss2&#038;p=496</wfw:commentRss>
+		<slash:comments>9</slash:comments>
+							</item>
+		<item>
+		<title>TypeInfo workaround</title>
+		<link>https://alex.ciobanu.org/?p=270</link>
+				<comments>https://alex.ciobanu.org/?p=270#comments</comments>
+				<pubDate>Sun, 11 Oct 2009 13:29:49 +0000</pubDate>
+		<dc:creator><![CDATA[Alexandru Ciobanu]]></dc:creator>
+				<category><![CDATA[Software Development]]></category>
+		<category><![CDATA[bugs]]></category>
+		<category><![CDATA[delphi]]></category>
+		<category><![CDATA[embarcadero]]></category>
+		<category><![CDATA[LinkedIn]]></category>
+		<category><![CDATA[oop]]></category>
+		<category><![CDATA[rtl]]></category>
+		<category><![CDATA[rtti]]></category>
+
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=270</guid>
+				<description><![CDATA[This is going to be a short one. Just wanted to share a simple and elegant work-around for this QC issue: Now, you can obtain the type information for any type by simply using TypeOf&#60;T&#62;.TypeInfo: You can also... ]]></description>
+								<content:encoded><![CDATA[<p>This is going to be a short one. Just wanted to share a simple and elegant work-around for <a href="http://qc.embarcadero.com/wc/qcmain.aspx?d=78112">this QC</a> issue:</p>
+<pre class="brush: delphi; title: ; notranslate">
+type
+  TypeOf&lt;T&gt; = record
+    class function TypeInfo: PTypeInfo; static;
+    class function Name: string; static;
+    class function Kind: TTypeKind; static;
+  end;
+
+{ TypeOf&lt;T&gt; }
+
+class function TypeOf&lt;T&gt;.Kind: TTypeKind;
+var
+  LTypeInfo: PTypeInfo;
+begin
+  LTypeInfo := TypeInfo;
+
+  if LTypeInfo &lt;&gt; nil then
+    Result := LTypeInfo^.Kind
+  else
+    Result := tkUnknown;
+end;
+
+class function TypeOf&lt;T&gt;.Name: string;
+var
+  LTypeInfo: PTypeInfo;
+begin
+  LTypeInfo := TypeInfo;
+
+  if LTypeInfo &lt;&gt; nil then
+    Result := GetTypeName(LTypeInfo)
+  else
+    Result := '';
+end;
+
+class function TypeOf&lt;T&gt;.TypeInfo: PTypeInfo;
+begin
+  Result := System.TypeInfo(T);
+end;
+</pre>
+<p>Now, you can obtain the type information for any type by simply using <i>TypeOf&lt;T&gt;.TypeInfo</i>:</p>
+<pre class="brush: delphi; title: ; notranslate">
+type
+  TRecord&lt;T&gt; = record
+    FVal: T;
+  end;
+
+  TIntRecord = TRecord&lt;Integer&gt;;
+
+begin
+  // TypeInfo(TIntRecord); // Fails with compile-time error;
+  WriteLn(GetTypeName(TypeOf&lt;TIntRecord&gt;.TypeInfo));
+
+  ReadLn;
+end.
+</pre>
+<p>You can also use this construct to obtain the type information for generic types from within themselves:</p>
+<pre class="brush: delphi; title: ; notranslate">
+type
+  TSomeRec&lt;T&gt; = record
+    function GetMyName: String;
+  end;
+
+function TSomeRec&lt;T&gt;.GetMyName(): String;
+begin
+  // Result := GetTypeName(TypeInfo(TSomeRec&lt;T&gt;)); // Fails
+  Result := TypeOf&lt;TSomeRec&lt;T&gt;&gt;.Name;
+end;
+</pre>
+<p>The only thing to notice is that compile time <strong>[DCC Error] E2134 Type &#8216;XXX&#8217; has no type info</strong> errors will not be triggered for types having no type info. Instead, the <i>TypeOf&lt;T&gt;.TypeInfo</i> method will return <i>nil</i>.</p>
+]]></content:encoded>
+							<wfw:commentRss>https://alex.ciobanu.org/?feed=rss2&#038;p=270</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+							</item>
+		<item>
+		<title>DeHL 0.6 available</title>
+		<link>https://alex.ciobanu.org/?p=241</link>
+				<comments>https://alex.ciobanu.org/?p=241#comments</comments>
+				<pubDate>Sun, 21 Jun 2009 16:58:57 +0000</pubDate>
+		<dc:creator><![CDATA[Alexandru Ciobanu]]></dc:creator>
+				<category><![CDATA[Software Development]]></category>
+		<category><![CDATA[bugs]]></category>
+		<category><![CDATA[dehl]]></category>
+		<category><![CDATA[delphi]]></category>
+		<category><![CDATA[embarcadero]]></category>
+		<category><![CDATA[LinkedIn]]></category>
+		<category><![CDATA[oop]]></category>
+		<category><![CDATA[rtl]]></category>
+		<category><![CDATA[rtti]]></category>
+
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=241</guid>
+				<description><![CDATA[Yes I know I have skipped 0.5. The reality is that 0.5 was due a long time ago, but I did not have enough free time on my hands to complete the unit testing for all new features... ]]></description>
+								<content:encoded><![CDATA[<p><a rel="attachment wp-att-242" href="http://alex.ciobanu.org/?attachment_id=242"><img class="alignleft size-full wp-image-242" title="DeHL" src="http://alex.ciobanu.org/files/uploads/2009/06/Logo_2.png" alt="DeHL" width="100" height="100" /></a></p>
+<p>Yes I know I have skipped 0.5. The reality is that 0.5 was due a long time ago, but I did not have enough free time on my hands to complete the unit testing for all new features added. I always try to add as many unit tests as possible to test all possible scenarios.</p>
+<p>This release features a general reorganization of some key concepts, new type extension mechanics, boxing, a lot more collections, better support for associative collections through specific Enex extensions &#8230; and many more. I am not going to lay out all the changes here since there are quite a few of them. You can view the change log <a href="http://delphilhlplib.googlecode.com/svn/tags/0.6/changelog.0.6.txt">here</a>.</p>
+<p>One important note, check out the <strong>DeHL.Base.pas</strong> unit. There are a number of <strong>TOGGLE_XXXXX</strong> constants. Toggle them to <em>true</em> or <em>false</em> (if you are using Weaver FT builds) to enable or disable specific functionality. In Tiburon (Delphi 2009) all the features are disabled by default (to be on the safe side).</p>
+<p>Get the latest build <a href="http://code.google.com/p/delphilhlplib/downloads/list">here</a>. If you stumble upon some bugs please report them <a href="http://code.google.com/p/delphilhlplib/issues/list">here</a>.</p>
+<p><strong>Have Fun!</strong></p>
+]]></content:encoded>
+							<wfw:commentRss>https://alex.ciobanu.org/?feed=rss2&#038;p=241</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+							</item>
+		<item>
+		<title>Delphi Generics: Problem 1</title>
+		<link>https://alex.ciobanu.org/?p=23</link>
+				<comments>https://alex.ciobanu.org/?p=23#comments</comments>
+				<pubDate>Sat, 08 Nov 2008 17:08:56 +0000</pubDate>
+		<dc:creator><![CDATA[Alexandru Ciobanu]]></dc:creator>
+				<category><![CDATA[Software Development]]></category>
+		<category><![CDATA[bugs]]></category>
+		<category><![CDATA[delphi]]></category>
+		<category><![CDATA[LinkedIn]]></category>
+		<category><![CDATA[rtl]]></category>
+
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=23</guid>
+				<description><![CDATA[Kids, don&#8217;t try this at home 🙂 Error: [DCC Fatal Error] Tests.DynamicArray.pas(772): F2084 Internal Error: URW1135 There you have it 🙂 The fix is rather simple but annoying: Declare a new type in the class/record like this: And... ]]></description>
+								<content:encoded><![CDATA[<p>Kids, don&#8217;t try this at home <img src="https://s.w.org/images/core/emoji/12.0.0-1/72x72/1f642.png" alt="🙂" class="wp-smiley" style="height: 1em; max-height: 1em;" /></p>
+<pre class="brush: delphi; title: ; notranslate">
+class procedure DynamicArray&lt;T&gt;.Test();
+var
+  Arr : array of T;
+begin
+  { Fails miserably! }
+end;
+</pre>
+<p>Error:<br />
+<span style="color: #ff0000;">[DCC Fatal Error] Tests.DynamicArray.pas(772): F2084 Internal Error: URW1135</span></p>
+<p>There you have it <img src="https://s.w.org/images/core/emoji/12.0.0-1/72x72/1f642.png" alt="🙂" class="wp-smiley" style="height: 1em; max-height: 1em;" /></p>
+<p>The fix is rather simple but annoying:</p>
+<p>Declare a new type in the class/record like this:</p>
+<pre class="brush: delphi; title: ; notranslate">
+type
+  DynamicArray&lt;T&gt; = class
+  private
+  type
+    TArrayOfT = array of T;
+
+  public
+    { Lots of stuff here }
+end;
+</pre>
+<p>And then simply make the variable Arr to be TArrayOfT:</p>
+<pre class="brush: delphi; title: ; notranslate">
+class procedure DynamicArray&lt;T&gt;.Test();
+var
+  Arr : TArrayOfT;
+begin
+  { Works! }
+end;
+</pre>
+<p>Till the next bug.</p>
+]]></content:encoded>
+							<wfw:commentRss>https://alex.ciobanu.org/?feed=rss2&#038;p=23</wfw:commentRss>
+		<slash:comments>6</slash:comments>
+							</item>
+	</channel>
+</rss>

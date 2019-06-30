@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>
+	Comments on: FastMove: Optimizing System.Move	</title>
+	<atom:link href="https://alex.ciobanu.org/?feed=rss2&#038;p=39" rel="self" type="application/rss+xml" />
+	<link>https://alex.ciobanu.org/?p=39</link>
+	<description>Yet Another Programming Blog</description>
+	<lastBuildDate>Sat, 07 Nov 2015 13:21:11 +0000</lastBuildDate>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+			<item>
+				<title>
+				By: ACMer				</title>
+				<link>https://alex.ciobanu.org/?p=39&#038;cpage=1#comment-27110</link>
+		<dc:creator><![CDATA[ACMer]]></dc:creator>
+		<pubDate>Sat, 07 Nov 2015 13:21:11 +0000</pubDate>
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=39#comment-27110</guid>
+					<description><![CDATA[any chance to make it work in x64?]]></description>
+		<content:encoded><![CDATA[<p>any chance to make it work in x64?</p>
+]]></content:encoded>
+						</item>
+						<item>
+				<title>
+				By: DavidB				</title>
+				<link>https://alex.ciobanu.org/?p=39&#038;cpage=1#comment-19333</link>
+		<dc:creator><![CDATA[DavidB]]></dc:creator>
+		<pubDate>Wed, 02 Apr 2014 01:22:48 +0000</pubDate>
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=39#comment-19333</guid>
+					<description><![CDATA[Salut.
+
+Sunt programator Delphi.
+Multumesc pentru codul tau. Intr-adevar e rapid.
+
+Dar exista 2 probleme:
+
+1. Instructiunile de tip lddqu, movntdq etc nu sunt recunoscute de compilator la versiunile mai vechi de Delphi.
+Trebuie inlocuite cu echivalentele DB.
+Un exemplu:
+
+{$IFDEF SSE2Basm}
+  lddqu   xmm0, [eax+ecx]
+  lddqu   xmm1, [eax+ecx+16]
+  lddqu   xmm2, [eax+ecx+32]
+  lddqu   xmm3, [eax+ecx+48]
+{$ELSE}
+  DB      $F2,$0F,$F0,$04,$01
+  DB      $F2,$0F,$F0,$4C,$01,$10
+  DB      $F2,$0F,$F0,$54,$01,$20
+  DB      $F2,$0F,$F0,$5C,$01,$30
+{$ENDIF}
+
+2. Anumite operatii de mutare (cum ar fi cea backward) nu arata diferenta clara la procesoare Intel iar la AMD viteza de rulare e mult mai mica decat Move clasica.
+
+De exemplu acest cod:
+
+var
+   s: AnsiString;
+   ab: array of Byte;
+
+implementation
+
+procedure Test;
+var
+   i: Integer;
+   t: TTime;
+begin
+   SetLength(s, 10485780);
+   SetLength(ab, 1048578);
+   t := Now;
+   for i := 1 to 500 do
+   begin
+      Move(s[11], s[1], 10485760);
+      Move(ab[2], ab[1], 1048576);
+   end;
+   t := Now - t;
+   ShowMessage(FormatDateTime(&#039;ss.zzz&#039;, t));
+end;
+
+Pe procesoare Intel e doar de 1.08 ori mai rapid cu Optimize.Move.
+
+Procesorul meu: AMD Athlon(tm) II x2 3.2 GHz (x86, x86-64, MMX, 3DNow!, SSE, SSE2, SSE3)
+SO + mediu de programare: Windows 7 + Delphi XE5. Am si Windows XP + Delphi 7 dar nu compileaza.
+
+Optimize.Move: 11.6 sec
+Move clasica: 1.8 sec
+
+Folosesc des acest tip de de copieri in codul meu (daca vrei ti-l pot arata).
+
+Sper ca ti-au folosit aceste informatii pentru a localiza si rezolva problema. Dar daca mai ai nevoie de alte informatii te ajut bucuros.
+
+Numai bine,
+DavidB]]></description>
+		<content:encoded><![CDATA[<p>Salut.</p>
+<p>Sunt programator Delphi.<br />
+Multumesc pentru codul tau. Intr-adevar e rapid.</p>
+<p>Dar exista 2 probleme:</p>
+<p>1. Instructiunile de tip lddqu, movntdq etc nu sunt recunoscute de compilator la versiunile mai vechi de Delphi.<br />
+Trebuie inlocuite cu echivalentele DB.<br />
+Un exemplu:</p>
+<p>{$IFDEF SSE2Basm}<br />
+  lddqu   xmm0, [eax+ecx]<br />
+  lddqu   xmm1, [eax+ecx+16]<br />
+  lddqu   xmm2, [eax+ecx+32]<br />
+  lddqu   xmm3, [eax+ecx+48]<br />
+{$ELSE}<br />
+  DB      $F2,$0F,$F0,$04,$01<br />
+  DB      $F2,$0F,$F0,$4C,$01,$10<br />
+  DB      $F2,$0F,$F0,$54,$01,$20<br />
+  DB      $F2,$0F,$F0,$5C,$01,$30<br />
+{$ENDIF}</p>
+<p>2. Anumite operatii de mutare (cum ar fi cea backward) nu arata diferenta clara la procesoare Intel iar la AMD viteza de rulare e mult mai mica decat Move clasica.</p>
+<p>De exemplu acest cod:</p>
+<p>var<br />
+   s: AnsiString;<br />
+   ab: array of Byte;</p>
+<p>implementation</p>
+<p>procedure Test;<br />
+var<br />
+   i: Integer;<br />
+   t: TTime;<br />
+begin<br />
+   SetLength(s, 10485780);<br />
+   SetLength(ab, 1048578);<br />
+   t := Now;<br />
+   for i := 1 to 500 do<br />
+   begin<br />
+      Move(s[11], s[1], 10485760);<br />
+      Move(ab[2], ab[1], 1048576);<br />
+   end;<br />
+   t := Now &#8211; t;<br />
+   ShowMessage(FormatDateTime(&#8216;ss.zzz&#8217;, t));<br />
+end;</p>
+<p>Pe procesoare Intel e doar de 1.08 ori mai rapid cu Optimize.Move.</p>
+<p>Procesorul meu: AMD Athlon(tm) II x2 3.2 GHz (x86, x86-64, MMX, 3DNow!, SSE, SSE2, SSE3)<br />
+SO + mediu de programare: Windows 7 + Delphi XE5. Am si Windows XP + Delphi 7 dar nu compileaza.</p>
+<p>Optimize.Move: 11.6 sec<br />
+Move clasica: 1.8 sec</p>
+<p>Folosesc des acest tip de de copieri in codul meu (daca vrei ti-l pot arata).</p>
+<p>Sper ca ti-au folosit aceste informatii pentru a localiza si rezolva problema. Dar daca mai ai nevoie de alte informatii te ajut bucuros.</p>
+<p>Numai bine,<br />
+DavidB</p>
+]]></content:encoded>
+						</item>
+			</channel>
+</rss>

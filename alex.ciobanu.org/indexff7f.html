@@ -1,0 +1,583 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>dehl &#8211; YAPB</title>
+	<atom:link href="https://alex.ciobanu.org/?feed=rss2&#038;tag=dehl" rel="self" type="application/rss+xml" />
+	<link>https://alex.ciobanu.org</link>
+	<description>Yet Another Programming Blog</description>
+	<lastBuildDate>Mon, 21 May 2018 19:13:06 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+
+<image>
+	<url>https://alex.ciobanu.org/files/uploads/2018/05/7327309-150x150.jpg</url>
+	<title>dehl &#8211; YAPB</title>
+	<link>https://alex.ciobanu.org</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+	<item>
+		<title>Delphi anonymous methods are &#8230;</title>
+		<link>https://alex.ciobanu.org/?p=496</link>
+				<comments>https://alex.ciobanu.org/?p=496#comments</comments>
+				<pubDate>Sun, 08 Jan 2012 01:05:18 +0000</pubDate>
+		<dc:creator><![CDATA[Alexandru Ciobanu]]></dc:creator>
+				<category><![CDATA[Software Development]]></category>
+		<category><![CDATA[bsd]]></category>
+		<category><![CDATA[bugs]]></category>
+		<category><![CDATA[dehl]]></category>
+		<category><![CDATA[delphi]]></category>
+		<category><![CDATA[embarcadero]]></category>
+		<category><![CDATA[lame]]></category>
+		<category><![CDATA[LinkedIn]]></category>
+		<category><![CDATA[oop]]></category>
+		<category><![CDATA[rtl]]></category>
+
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=496</guid>
+				<description><![CDATA[&#8230; too fat. Surely writing code like this gets frustrating very fast. I want my lambdas!! In other news, there is a working version of Collections 2.0 in the SVN. Most of the changes were sitting on my... ]]></description>
+								<content:encoded><![CDATA[<h1>&#8230; too fat.</h1>
+<p>Surely writing code like this gets frustrating very fast. I want my <strong>lambdas</strong>!!</p>
+<pre class="brush: delphi; title: ; notranslate">
+  { Lovely, isn't it? }
+  LGroupJoined := LOwners.Op.GroupJoin&lt;TPet, TPerson, TOwnedPets&gt;(LPets,
+    function(Arg1: TPerson): TPerson begin Result := Arg1; end,
+    function(Arg1: TPet): TPerson begin Result := Arg1.FOwner; end,
+    function(Arg1: TPerson; Arg2: ISequence&lt;TPet&gt;): TOwnedPets
+    begin
+      Result.FOwnerName := Format('%s, %s', [Arg1.FLast, Arg1.FFirst]);
+      Result.FPetNames := Arg2.Op.Select&lt;String&gt;(
+        function(Arg1: TPet): String begin Result := Arg1.FName; end);
+    end
+  );
+
+  for LOwnedPets in LGroupJoined do
+  begin
+    WriteLn('Person ', LOwnedPets.FOwnerName, ' owns: ');
+    Write('    ');
+
+    for LName in LOwnedPets.FPetNames do
+      Write(LName, ', ');
+
+    WriteLn;
+  end;
+</pre>
+<p>In other news, there is a working version of <em>Collections 2.0</em> in the SVN. Most of the changes were sitting on my hard drive for a year now. I just made sure that the last touches are applied and that this version compiles in Delphi XE2. I have also applied a few fixes that enabled the package to work in 64 bit environment.</p>
+<p>&nbsp;</p>
+<p><span style="color: #ff0000;">Be advised: The unit tests are completely broken. I have no short term plans on making them work. The amount of time needed for that is staggering. I am currently focused on features so I won&#8217;t touch them in a while.</span></p>
+<p>&nbsp;</p>
+<p><em>P.S. I have to say that I am very disappointed with the quality of the IDE when generics are involved. I had countless unpleasant problems in the past but was expecting things to get better in XE2. Not so. My IDE froze countless time when trying to edit some source files. Whenever I would type a &#8220;.&#8221; or a &#8220;(&#8221; it would be gone for good. This makes me wonder whether Collections will be usable at all to you guys. With such buggy support I can predict only crashes. And don&#8217;t get me started on the EXE size &#8230;</em></p>
+]]></content:encoded>
+							<wfw:commentRss>https://alex.ciobanu.org/?feed=rss2&#038;p=496</wfw:commentRss>
+		<slash:comments>9</slash:comments>
+							</item>
+		<item>
+		<title>TZDB 1.7.110207 and Collections 1.1.1</title>
+		<link>https://alex.ciobanu.org/?p=462</link>
+				<comments>https://alex.ciobanu.org/?p=462#comments</comments>
+				<pubDate>Tue, 08 Feb 2011 21:36:26 +0000</pubDate>
+		<dc:creator><![CDATA[Alexandru Ciobanu]]></dc:creator>
+				<category><![CDATA[Software Development]]></category>
+		<category><![CDATA[bsd]]></category>
+		<category><![CDATA[dehl]]></category>
+		<category><![CDATA[embarcadero]]></category>
+		<category><![CDATA[fpc]]></category>
+		<category><![CDATA[LinkedIn]]></category>
+		<category><![CDATA[oop]]></category>
+		<category><![CDATA[rtl]]></category>
+		<category><![CDATA[rtti]]></category>
+		<category><![CDATA[tzdb]]></category>
+
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=462</guid>
+				<description><![CDATA[TZDB 1.7.110207 No code changes, just an updated DB from &#8220;The tz Database&#8220;. There are a small number of changes there so upgrade only if you want to stay 100% up to date. I would just recommend you... ]]></description>
+								<content:encoded><![CDATA[<p><strong>TZDB 1.7.110207</strong></p>
+<p>No code changes, just an updated DB from &#8220;<a href="http://www.twinsun.com/tz/tz-link.htm">The tz Database</a>&#8220;. There are a small number of changes there so upgrade only if you want to stay 100% up to date. I would just recommend you skip it. As usual, you can get the latest version <a href="http://code.google.com/p/delphi-tzdb/downloads/list">here</a>.</p>
+<p><strong>Collections 1.1.1</strong></p>
+<p>This is a bug fix release that addresses the following issues:</p>
+<ol>
+<li>No possibility to remove an value from a list or associative collection without invoking the &#8220;removal procedures&#8221;. This results in freed objects for object based collections. In pre-1.1 versions this wasn&#8217;t necessarily an issue. <em>(Thanks Mason for the report, hope this unblocks your scripting project)</em></li>
+<li>Removal procedures were not invoked for bidirectional dictionaries.</li>
+<li><em>TObjectMultiMap&lt;TKey, TValue&gt;</em> still used a &#8220;class&#8221; restriction on <em>TValue</em> type parameter.</li>
+<li>Fixed <strong>Delphi 2010</strong> build. Note that by &#8220;fix&#8221; I mean &#8212; disabled Collections.Dynamic code and <em>TBitSet</em> class. Cannot make the compiler accept those (circular unit problems that were fixed in XE).</li>
+</ol>
+<p>Get the bug fix release <a href="http://code.google.com/p/delphi-coll/downloads/list">here</a>.</p>
+]]></content:encoded>
+							<wfw:commentRss>https://alex.ciobanu.org/?feed=rss2&#038;p=462</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+							</item>
+		<item>
+		<title>Collections 1.0.1</title>
+		<link>https://alex.ciobanu.org/?p=440</link>
+				<comments>https://alex.ciobanu.org/?p=440#comments</comments>
+				<pubDate>Thu, 13 Jan 2011 20:14:21 +0000</pubDate>
+		<dc:creator><![CDATA[Alexandru Ciobanu]]></dc:creator>
+				<category><![CDATA[Software Development]]></category>
+		<category><![CDATA[dehl]]></category>
+		<category><![CDATA[delphi]]></category>
+		<category><![CDATA[embarcadero]]></category>
+		<category><![CDATA[LinkedIn]]></category>
+		<category><![CDATA[rtl]]></category>
+
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=440</guid>
+				<description><![CDATA[I&#8217;ve just put the 1.0.1 bug fix version up for download. It fixes XE compatibility issues, documentation fixes (thanks to Denisa Ilascu for her hard work). I don&#8217;t have access to Delphi 2010 and can&#8217;t say for sure... ]]></description>
+								<content:encoded><![CDATA[<p><a href="http://alex.ciobanu.org/files/uploads/2011/01/logo.png"><img class="size-full wp-image-431 alignleft" title="logo_coll" src="http://alex.ciobanu.org/files/uploads/2011/01/logo.png" alt="" width="55" height="55" /></a></p>
+<p><span style="color: #ff0000;"><span style="color: #000000;">I&#8217;ve just put the 1.0.1 bug fix version up for download. It fixes XE compatibility issues, documentation fixes (thanks to <strong>Denisa Ilascu</strong> for her hard work). I don&#8217;t have access to <strong>Delphi 2010</strong> and can&#8217;t say for sure whether it will work (I hope so).</span></span></p>
+<p><span style="color: #ff0000;"><span style="color: #000000;"><strong>EDIT: Confirmed, it works on Delphi 2010.</strong><br />
+</span></span></p>
+<p><span style="color: #ff0000;"><span style="color: #000000;"><strong>Download link <a href="http://code.google.com/p/delphi-coll/downloads/list">here</a>.</strong><br />
+</span></span></p>
+]]></content:encoded>
+							<wfw:commentRss>https://alex.ciobanu.org/?feed=rss2&#038;p=440</wfw:commentRss>
+		<slash:comments>16</slash:comments>
+							</item>
+		<item>
+		<title>Collections 1.0.1 soon</title>
+		<link>https://alex.ciobanu.org/?p=437</link>
+				<comments>https://alex.ciobanu.org/?p=437#comments</comments>
+				<pubDate>Tue, 11 Jan 2011 20:48:06 +0000</pubDate>
+		<dc:creator><![CDATA[Alexandru Ciobanu]]></dc:creator>
+				<category><![CDATA[Software Development]]></category>
+		<category><![CDATA[bsd]]></category>
+		<category><![CDATA[dehl]]></category>
+		<category><![CDATA[delphi]]></category>
+		<category><![CDATA[embarcadero]]></category>
+		<category><![CDATA[LinkedIn]]></category>
+		<category><![CDATA[oop]]></category>
+		<category><![CDATA[rtl]]></category>
+
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=437</guid>
+				<description><![CDATA[I will get an 1.0.1 update soon addressing XE compatibility issues some people are experiencing and some documentation fixes. Stay tuned.]]></description>
+								<content:encoded><![CDATA[<p>I will get an 1.0.1 update soon addressing XE compatibility issues some people are experiencing and some documentation fixes. Stay tuned.</p>
+]]></content:encoded>
+							<wfw:commentRss>https://alex.ciobanu.org/?feed=rss2&#038;p=437</wfw:commentRss>
+		<slash:comments>7</slash:comments>
+							</item>
+		<item>
+		<title>Collections 1.0</title>
+		<link>https://alex.ciobanu.org/?p=430</link>
+				<comments>https://alex.ciobanu.org/?p=430#comments</comments>
+				<pubDate>Mon, 10 Jan 2011 14:12:41 +0000</pubDate>
+		<dc:creator><![CDATA[Alexandru Ciobanu]]></dc:creator>
+				<category><![CDATA[Software Development]]></category>
+		<category><![CDATA[bsd]]></category>
+		<category><![CDATA[dehl]]></category>
+		<category><![CDATA[delphi]]></category>
+		<category><![CDATA[embarcadero]]></category>
+		<category><![CDATA[LinkedIn]]></category>
+		<category><![CDATA[rtl]]></category>
+
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=430</guid>
+				<description><![CDATA[Last week I have finally got some free time on my hands to do something I was planning for a long time now: create a new package that will only provide a number of collections. What this means... ]]></description>
+								<content:encoded><![CDATA[<p><a href="http://alex.ciobanu.org/files/uploads/2011/01/logo.png"><img class="size-full wp-image-431 alignleft" title="logo_coll" src="http://alex.ciobanu.org/files/uploads/2011/01/logo.png" alt="" width="55" height="55" /></a>Last week I have finally got some free time on my hands to do something I was planning for a long time now: create a new package that will only provide a number of collections. What this means is that I took <a href="http://code.google.com/p/delphilhlplib/">DeHL</a> and stripped out everything that was not collection related; remodeled the classes to rely on <strong>Generics.Collections</strong> and <strong>Generics.Defaults</strong> standard units; and finished all the documentation.</p>
+<p>&nbsp;</p>
+<p>What remained is a pure collection orientated package called (very unimaginatively)  <a href="http://code.google.com/p/delphi-coll/"><strong>Collections</strong></a>.  If you ever used DeHL&#8217;s collections you will most certainly recognize the code. But, while stripping out the bloat I was forced to re move some things that relied on that bloat:</p>
+<ul>
+<li>No more reliance on IType/TType. Collections now use <a href="http://docwiki.embarcadero.com/VCL/en/Generics.Defaults.IComparer">IComparer</a> and <a href="http://docwiki.embarcadero.com/VCL/en/Generics.Defaults.IEqualityComparer">IEqualityComparer</a> provided by <em>Generics.Defaults</em>.</li>
+<li>All associative collections use <a href="http://docwiki.embarcadero.com/VCL/en/Generics.Collections.TPair">TPair</a> now.</li>
+<li>Because IType was designed to provide cleanup for the enclosed values in the collections some reworking was necessary to make collections more Delphi-like. You still get the <strong>OwnsObjects</strong>, <strong>OwnsKeys</strong> and <strong>OwnsValues</strong> properties on the object variants.</li>
+<li>No more <em>Op.Cast&lt;&gt;</em> support. This Enex operation relied on <strong>TConverter</strong> which relied on IType and so on and so forth. Instead use a <em>Op.Select</em> with a casting predicate.</li>
+<li>Using <em>NativeInt</em> instead of <em>NativeUInt</em> in some places. This was a menace for a lot of people.</li>
+</ul>
+<p>Note that <strong>Collections</strong> is not base-class or interface compatible with <strong>Generics.Collections</strong>. I could not make the proper compatibility because of interface support.<br />
+So what would you expect in the package:</p>
+<ul>
+<li>Full inline documentation. All APIs are properly documented. <span style="color: #ff0000;">If you find any typos or errors please fill a bug!</span></li>
+<li><span style="color: #ff0000;"><span style="color: #000000;">Test cases for mostly everything provided.</span></span></li>
+<li><span style="color: #ff0000;"><span style="color: #000000;">A wide range of collections (much more than just stack, queue, list and dictionary).</span></span></li>
+<li><span style="color: #ff0000;"><span style="color: #000000;">Enumerable extensions.</span></span></li>
+<li><span style="color: #ff0000;"><span style="color: #000000;">Easy extensibility.</span></span></li>
+<li><span style="color: #ff0000;"><span style="color: #000000;">Based on NativeInt instead of Integer. Ready at interface level for 64bit support.</span></span></li>
+</ul>
+<p><span style="color: #ff0000;"><strong>Warning: This is a 1.0 release. There may still be some problems. If you find any please fill in a bug report. If you feel that you can help and implement something that is not included in the package feel free to contact me!<br />
+</strong></span></p>
+]]></content:encoded>
+							<wfw:commentRss>https://alex.ciobanu.org/?feed=rss2&#038;p=430</wfw:commentRss>
+		<slash:comments>8</slash:comments>
+							</item>
+		<item>
+		<title>DeHL 0.8.3</title>
+		<link>https://alex.ciobanu.org/?p=358</link>
+				<comments>https://alex.ciobanu.org/?p=358#comments</comments>
+				<pubDate>Thu, 17 Jun 2010 21:27:59 +0000</pubDate>
+		<dc:creator><![CDATA[Alexandru Ciobanu]]></dc:creator>
+				<category><![CDATA[Software Development]]></category>
+		<category><![CDATA[bsd]]></category>
+		<category><![CDATA[dehl]]></category>
+		<category><![CDATA[delphi]]></category>
+		<category><![CDATA[embarcadero]]></category>
+		<category><![CDATA[LinkedIn]]></category>
+		<category><![CDATA[rtl]]></category>
+		<category><![CDATA[rtti]]></category>
+
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=358</guid>
+				<description><![CDATA[I will be brief as usual &#8212; version 0.8.3 of DeHL is out. The downloads can be found on this page and changelog on this page. This release &#8220;fixes&#8221; some of the things I wanted fixed for a... ]]></description>
+								<content:encoded><![CDATA[<p><a rel="attachment wp-att-242" href="http://alex.ciobanu.org/?attachment_id=242"><img class="alignleft size-full wp-image-242" title="DeHL" src="http://alex.ciobanu.org/files/uploads/2009/06/Logo_2.png" alt="DeHL" width="100" height="100" /></a></p>
+<p>I will be brief as usual &#8212; version 0.8.3 of DeHL is out. The downloads can be found on <a href="http://code.google.com/p/delphilhlplib/downloads/list">this</a> page and changelog on <a href="http://code.google.com/p/delphilhlplib/source/browse/tags/0.8.3/changelog.txt">this</a> page. This release &#8220;fixes&#8221; some of the things I wanted fixed for a long time, so it seemed this is the perfect moment for this to happen. A new unit is introduced &#8212; <em>DeHL.Tuples</em> &#8212; which brings seven generic <strong>Tuple&lt;&#8230;&gt;</strong> types. I have also finished moving away from Integer and Cardinal to NativeInt and NativeUInt through all DeHL.</p>
+<p>Breaking changes are:</p>
+<ol>
+<li><em>DeHL.Converter</em> was renamed to <em>DeHL.Conversion</em>. This name change was done mostly to reflect the nature of the unit. It does not contain one simple class anymore. Now there is a fully featured conversion system.</li>
+<li><strong>TBinaryTree&lt;T&gt;</strong> (in <em>DeHL.Collections.BinaryTree</em>) is no more. It was written way in the beginnings of the project and was buggy, incomplete and utterly useless.</li>
+<li>And the most visible and breaking of all changes is the removal of <strong>TKeyValuePair&lt;TKey, TValue&gt;</strong> (in <em>DeHL.KeyValuePair</em>). It was replaced with <strong>KVPair&lt;TKey, TValue&gt;</strong> (in <em>DeHL.Tuples</em>). The easiet way to get over this change is to find and replace all TKeyValuePair instances with KVPair and all DeHL.KeyValuePair uses with DeHL.Tuples.</li>
+</ol>
+<p>Now, obviously an example using Tuples:</p>
+<pre class="brush: delphi; title: ; notranslate">
+uses
+  SysUtils, DeHL.Tuples;
+
+{ If you are lazy and do not wish to declare a new record type
+  to be used as result. Use Tuple&lt;..&gt; do to that. }
+function GiveMeSomeData(): Tuple&lt;String, Integer, Integer&gt;;
+begin
+  { ... Do some processing ... }
+  Result := Tuple.Create('Some data', 100, -99);
+end;
+
+var
+  LResult: Tuple&lt;String, Integer, Integer&gt;;
+begin
+  { Obtain the result }
+  LResult := GiveMeSomeData();
+
+  { And write the results to the console }
+  with LResult do
+    WriteLn('Something was done with result: ', Value1, ', ', 
+      Value2, ', ', Value3, '!');
+end.
+</pre>
+<p>The new conversion engine handles most of the possible conversions and also allows registering custom ones:</p>
+<pre class="brush: delphi; title: ; notranslate">
+uses
+  SysUtils,
+  DeHL.Conversion,
+  DeHL.Collections.List;
+
+type
+  { Declare some type that cannot be converted into integer directly.
+    We're making up an &quot;int&quot;. }
+  TRecordInt = packed record
+    FValueAsString: string;
+    FSign: Boolean;
+
+    constructor Create(const AInt: Integer);
+  end;
+
+{ TRecordInt }
+
+constructor TRecordInt.Create(const AInt: Integer);
+begin
+  { Decompose an int }
+  FValueAsString := IntToStr(Abs(AInt));
+  FSign := (AInt &lt; 0);
+end;
+
+var
+  LInputList: TList&lt;TRecordInt&gt;;
+  S: String;
+  I: Integer;
+begin
+  { Create a list of TRecordInt }
+  LInputList := TList&lt;TRecordInt&gt;.Create();
+
+  { Fill it with some random values (positive and negative) }
+  for I := 0 to 10 do
+    LInputList.Add(TRecordInt.Create(Random(MaxInt) - (MaxInt div 2)));
+
+  { Now comes the interesting part ... register a custom converter
+    from TRecordInt to Integer }
+  TConverter&lt;TRecordInt, Integer&gt;.Method :=
+    function(const AIn: TRecordInt; out AOut: Integer): Boolean
+    begin
+      { Convert the TRecordInt back to an integer }
+      Result := TryStrToInt(AIn.FValueAsString, AOut);
+      if Result and AIn.FSign then
+        AOut := -AOut;
+    end;
+
+  { Now print the values to the console. Convert them from TRecordInt to
+    Integer then to String }
+  for S in LInputList.Op.Cast&lt;Integer&gt;.Op.Cast&lt;String&gt; do
+    WriteLn(S);
+end.
+</pre>
+<p><strong>TConverter</strong> is also smart enough to figure out that <em>&#8220;type MyInt = type Integer&#8221;</em> is actually equivalent to <strong>Integer</strong>. If there is no explicit custom conversion method registered for it the converter for the standard type will be selected is possible. In the worst case, when TConverter cannot convert directly between the given types, it falls back to Variant conversion (using <em>TType<T>.TryConvertToVariant</em> and <em>TType<T>.TryConvertFromVariant</em>) which all types registered with DeHL&#8217;s type system,  if possible, should implement.</p>
+<p>Well, that&#8217;s all for today,<strong><br />
+Have Fun!</strong></p>
+]]></content:encoded>
+							<wfw:commentRss>https://alex.ciobanu.org/?feed=rss2&#038;p=358</wfw:commentRss>
+		<slash:comments>20</slash:comments>
+							</item>
+		<item>
+		<title>DeHL 0.8.2 is out</title>
+		<link>https://alex.ciobanu.org/?p=336</link>
+				<comments>https://alex.ciobanu.org/?p=336#respond</comments>
+				<pubDate>Tue, 18 May 2010 15:03:51 +0000</pubDate>
+		<dc:creator><![CDATA[Alexandru Ciobanu]]></dc:creator>
+				<category><![CDATA[Software Development]]></category>
+		<category><![CDATA[.net]]></category>
+		<category><![CDATA[dehl]]></category>
+		<category><![CDATA[delphi]]></category>
+		<category><![CDATA[embarcadero]]></category>
+		<category><![CDATA[LinkedIn]]></category>
+		<category><![CDATA[oop]]></category>
+		<category><![CDATA[rtl]]></category>
+		<category><![CDATA[rtti]]></category>
+		<category><![CDATA[unicode]]></category>
+
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=336</guid>
+				<description><![CDATA[I&#8217;ve just released the version 0.8.2 of DeHL. The downloads can be found on this page and changelog on this page. Again, this is a minor release with a few bugs fixed and a new feature: TString (as... ]]></description>
+								<content:encoded><![CDATA[<p><a rel="attachment wp-att-242" href="http://alex.ciobanu.org/?attachment_id=242"><img class="alignleft size-full wp-image-242" title="DeHL" src="http://alex.ciobanu.org/files/uploads/2009/06/Logo_2.png" alt="DeHL" width="100" height="100" /></a></p>
+<p>I&#8217;ve just released the version 0.8.2 of DeHL. The downloads can be found on <a href="http://code.google.com/p/delphilhlplib/downloads/list">this</a> page and changelog on <a href="http://code.google.com/p/delphilhlplib/source/browse/tags/0.8.2/changelog.txt">this</a> page.<br />
+Again, this is a minor release with a few bugs fixed and a new feature: <strong>TString</strong> (as asked in <a href="http://alex.ciobanu.org/?p=331&amp;cpage=1#comment-1298">this comment</a>).<br />
+As you might have guessed already, TString is a wrapper record modeled on .NET&#8217;s <a href="http://msdn.microsoft.com/en-us/library/system.string.aspx">System.String</a> class. Unfortunately I was unable to use most of the RTL&#8217;s string functionality so the &#8220;wrapper&#8221; grew quite a bit from my original expectations.</p>
+<p>But &#8230; enough talk, here are some usage scenarios that someone may find useful:</p>
+<pre class="brush: delphi; title: ; notranslate">
+var
+  LStr: TString;
+begin
+  { Overloaded operators and a special function &quot;U&quot; }
+  LStr := U('Hello World for the ') + 10 + 'th time!';
+
+  { Do some random operations }
+  if (LStr.ToUpper().Contains('HELLO')) and
+     (LStr.Contains('HeLLo', scLocaleIgnoreCase)) then
+  WriteLn(LStr.ToString);
+
+  { Now let's select all the distinct chars from the string }
+  WriteLn(
+    LStr.Concat(LStr.AsCollection.Distinct.Op.Cast&lt;string&gt;).ToString
+  );
+end.
+</pre>
+<p>TString overloads all sane operators: Equality, Inequality, Implicit conversions, Addition, Subtraction and offers functions to convert to and from UTF8 and UCS4 (via RTL of course). I also need to iron a few things about about Enex integration for the next minor release.</p>
+<p>The other small improvement that I added relates to the collection package. All simple collections (not the Key/Value pair ones) implement a sort of <i>&#8220;where T is the_class, select it as such&#8221;</i> operation. Check out this example:</p>
+<pre class="brush: delphi; title: ; notranslate">
+var
+  LList: TList&lt;TObject&gt;;
+  LBuilder: TStringBuilder;
+  LObject: TObject;
+begin
+  LList := TList&lt;TObject&gt;.Create;
+
+  { Populate the list with some random objects }
+  LList.Add(TInterfacedObject.Create);
+  LList.Add(TStringBuilder.Create);
+  LList.Add(TStringBuilder.Create);
+  LList.Add(TObject.Create);
+
+  { Now select the objects we're interested in (string builders) }
+  for LBuilder in LList.Op.Select&lt;TStringBuilder&gt; do
+    WriteLn(LBuilder.ClassName); // Do stuff
+
+  { Or select everything (not actually required - an example) }
+  for LObject in LList.Op.Select&lt;TObject&gt; do
+    WriteLn(LObject.ClassName); // Do stuff
+end.
+</pre>
+<p>If it&#8217;s still not clear what this operations does, let me explain. It basically consists of two operations: <i>Where</i> and <i>Select</i>. First, each <strong>object</strong> is checked to be of a given class and then this object is cast to that class so you can iterate directly using a <i>FOR .. IN</i> loop only over the objects you want to. Of course doing that for TObject makes no sense (as in example) &#8230; but well &#8230; that was an example.</p>
+<p>Well, that&#8217;s all for today,<strong><br />
+Have Fun!</strong></p>
+]]></content:encoded>
+							<wfw:commentRss>https://alex.ciobanu.org/?feed=rss2&#038;p=336</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>DeHL 0.8.1</title>
+		<link>https://alex.ciobanu.org/?p=331</link>
+				<comments>https://alex.ciobanu.org/?p=331#comments</comments>
+				<pubDate>Mon, 19 Apr 2010 15:51:23 +0000</pubDate>
+		<dc:creator><![CDATA[Alexandru Ciobanu]]></dc:creator>
+				<category><![CDATA[Software Development]]></category>
+		<category><![CDATA[dehl]]></category>
+		<category><![CDATA[delphi]]></category>
+		<category><![CDATA[embarcadero]]></category>
+		<category><![CDATA[LinkedIn]]></category>
+		<category><![CDATA[oop]]></category>
+		<category><![CDATA[rtl]]></category>
+		<category><![CDATA[rtti]]></category>
+
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=331</guid>
+				<description><![CDATA[I&#8217;ve just released the version 0.8.1 of DeHL. The downloads can be found on this page and changelog on this page. This is mostly a fix release with only one major feature &#8211; Cloning (in DeHL.Cloning). The rest... ]]></description>
+								<content:encoded><![CDATA[<p><a rel="attachment wp-att-242" href="http://alex.ciobanu.org/?attachment_id=242"><img class="alignleft size-full wp-image-242" title="DeHL" src="http://alex.ciobanu.org/files/uploads/2009/06/Logo_2.png" alt="DeHL" width="100" height="100" /></a></p>
+<p>I&#8217;ve just released the version 0.8.1 of DeHL. The downloads can be found on <a href="http://code.google.com/p/delphilhlplib/downloads/list">this</a> page and changelog on <a href="http://code.google.com/p/delphilhlplib/source/browse/tags/0.8.1/changelog.txt">this</a> page.</p>
+<p>This is mostly a fix release with only one major feature &#8211; Cloning (in <em>DeHL.Cloning</em>). The rest of the changes are either bug fixes or janitorial changes.</p>
+<p><strong>Have Fun!</strong></p>
+]]></content:encoded>
+							<wfw:commentRss>https://alex.ciobanu.org/?feed=rss2&#038;p=331</wfw:commentRss>
+		<slash:comments>10</slash:comments>
+							</item>
+		<item>
+		<title>Replication</title>
+		<link>https://alex.ciobanu.org/?p=325</link>
+				<comments>https://alex.ciobanu.org/?p=325#comments</comments>
+				<pubDate>Thu, 18 Mar 2010 22:50:07 +0000</pubDate>
+		<dc:creator><![CDATA[Alexandru Ciobanu]]></dc:creator>
+				<category><![CDATA[Software Development]]></category>
+		<category><![CDATA[dehl]]></category>
+		<category><![CDATA[delphi]]></category>
+		<category><![CDATA[embarcadero]]></category>
+		<category><![CDATA[LinkedIn]]></category>
+		<category><![CDATA[rtl]]></category>
+		<category><![CDATA[rtti]]></category>
+
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=325</guid>
+				<description><![CDATA[I must say, I am still pretty exited by the extended RTTI in Delphi 2010. It makes life so much easier in many circumstances. &#8220;Cloning&#8221; (I call it replication) is one of those. Say hello to TReplicator&#60;T&#62; (in... ]]></description>
+								<content:encoded><![CDATA[<p>I must say, I am still pretty exited by the extended RTTI in Delphi 2010. It makes life so much easier in many circumstances. &#8220;Cloning&#8221; (I call it <em>replication</em>) is one of those. Say hello to <strong>TReplicator&lt;T&gt;</strong> (in <em>DeHL.Replication</em>). It can take any type and create an exact copy (including deep cloning for complex types).</p>
+<p>The following example should pretty much explain what and how:</p>
+<pre class="brush: delphi; title: ; notranslate">
+uses
+  SysUtils,
+  DeHL.Replication,
+  DeHL.Collections.List;
+
+type
+  { Define a test class }
+  TData = class
+    { Pointer to self }
+    FSelf: TObject;
+
+    { A chunck of bytes }
+    FSomeData: TBytes;
+
+    { Some dummy string }
+    FName: string;
+
+    { An internal pointer. Marked as non-replicable -- will not be copied }
+    [NonReplicable]
+    FInternalPtr: Pointer;
+
+    { This field will be copied by reference. It means that the new
+      object will have the reference to the same TList&lt;String&gt; and not
+      a copy of it. }
+    [ByReference]
+    FList: TList&lt;String&gt;;
+  end;
+
+var
+  LInput, LOutput: TData;
+  LReplicator: TReplicator&lt;TData&gt;;
+begin
+  { Create the input }
+  LInput := TData.Create;
+  LInput.FSelf := LInput;
+  LInput.FSomeData := TBytes.Create(1, 2, 3, 4, 5, 6);
+  LInput.FName := 'Some Name';
+  LInput.FInternalPtr := Ptr($DEADBABE);
+  LInput.FList := TList&lt;String&gt;.Create(['Hello', 'World']);
+
+  { Create the replicator }
+  LReplicator := TReplicator&lt;TData&gt;.Create;
+
+  { Create a copy of LInput }
+  LReplicator.Replicate(LInput, LOutput);
+
+  { ... }
+end.
+</pre>
+<p>As you can see we take <span style="text-decoration: underline;">LInput</span> and create a copy into <span style="text-decoration: underline;">LOutput</span>. Also note the use of <strong>[NonReplicable]</strong> and <strong>[ByReference]</strong> attributes on two fields of <span style="text-decoration: underline;">TData</span> class. <em>NonReplicable</em> forces the replication process to skip the field and <em>ByReference</em> forces a shallow copy of reference fields (objects, pointers to arrays and dynamic arrays).</p>
+<p>For the ease of use, a <strong>TCloneableObject</strong> is defined in the same unit (<em>DeHL.Replication</em>). TCloneableObject provides a method called <em>Clone()</em> which returns a copy of the object:</p>
+<pre class="brush: delphi; title: ; notranslate">
+uses
+  SysUtils,
+  DeHL.Replication;
+
+type
+  { Define a test class }
+  TTestMe = class(TCloneableObject)
+    { ... }
+  end;
+
+var
+  LInput, LOutput: TTestMe;
+begin
+  { ... }
+  LOutput := LInput.Clone() as TTestMe;
+  { ... }
+end.
+</pre>
+<p><span style="color: #ff0000;"><strong>Note: This is just a preview of a new feature finding it&#8217;s way into DeHL. It&#8217;s currently only in the SVN repository. As usual, I need to write unit tests and so on to make sure it actually has no bugs (or at leas not that many bugs ;).</strong></span></p>
+]]></content:encoded>
+							<wfw:commentRss>https://alex.ciobanu.org/?feed=rss2&#038;p=325</wfw:commentRss>
+		<slash:comments>10</slash:comments>
+							</item>
+		<item>
+		<title>Here you go &#8212; DeHL 0.8</title>
+		<link>https://alex.ciobanu.org/?p=300</link>
+				<comments>https://alex.ciobanu.org/?p=300#comments</comments>
+				<pubDate>Tue, 16 Mar 2010 12:16:15 +0000</pubDate>
+		<dc:creator><![CDATA[Alexandru Ciobanu]]></dc:creator>
+				<category><![CDATA[Software Development]]></category>
+		<category><![CDATA[dehl]]></category>
+		<category><![CDATA[delphi]]></category>
+		<category><![CDATA[embarcadero]]></category>
+		<category><![CDATA[LinkedIn]]></category>
+		<category><![CDATA[oop]]></category>
+		<category><![CDATA[rtl]]></category>
+		<category><![CDATA[rtti]]></category>
+
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=300</guid>
+				<description><![CDATA[This is going to be a short one. After months of no releases, here it is: DeHL 0.8 (see changelog for the list of changes on this release). As I mentioned previously, this release will only work on... ]]></description>
+								<content:encoded><![CDATA[<p><a rel="attachment wp-att-242" href="http://alex.ciobanu.org/?attachment_id=242"><img class="alignleft size-full wp-image-242" title="DeHL" src="http://alex.ciobanu.org/files/uploads/2009/06/Logo_2.png" alt="DeHL" width="100" height="100" /></a></p>
+<p>This is going to be a short one. After months of no releases, here it is: <a href="http://delphilhlplib.googlecode.com/files/DeHL_0.8.0.zip">DeHL 0.8</a> (see <a href="http://code.google.com/p/delphilhlplib/source/browse/tags/0.8/changelog.txt">changelog</a> for the list of changes on this release). As I mentioned previously, this release will only work on Delphi 2010, since the number of changes required to support serialization was quite big.</p>
+<p>I must confess, this is the first time in my programming career that I had to interact with serialization (excluding the times when the frameworks do that for you). I had to learn quite a bit and changed my internal design three times.</p>
+<p>So, here&#8217;s an example how to serialize a <strong>TFormatSettings</strong> structure into binary format:</p>
+<pre class="brush: delphi; title: ; notranslate">
+var
+  LBinFile: TFileStream;
+  LBinSerializer: TBinarySerializer&lt;TFormatSettings&gt;;
+  LSettings: TFormatSettings;
+begin
+  { Obtain current thread's format settings }
+  GetFormatSettings(GetThreadLocale(), LSettings);
+
+  { Create a serializer and a file stream }
+  LBinSerializer := TBinarySerializer&lt;TFormatSettings&gt;.Create();
+  LBinFile := TFileStream.Create('dump_obj.bin', fmCreate);
+
+  { Serialize the structure }
+  try
+    LBinSerializer.Serialize(LSettings, LBinFile);
+  finally
+    LBinFile.Free;
+    LBinSerializer.Free;
+  end;
+end;
+</pre>
+<p>&#8230; and here&#8217;s an example how to deserialize it:</p>
+<pre class="brush: delphi; title: ; notranslate">
+var
+  LBinFile: TFileStream;
+  LBinSerializer: TBinarySerializer&lt;TFormatSettings&gt;;
+  LSettings: TFormatSettings;
+begin
+  { Create a serializer and a file stream }
+  LBinSerializer := TBinarySerializer&lt;TFormatSettings&gt;.Create();
+  LBinFile := TFileStream.Create('dump_obj.bin', fmOpenRead);
+
+  { Deserialize the structure }
+  try
+    LBinSerializer.Deserialize(LSettings, LBinFile);
+  finally
+    LBinFile.Free;
+    LBinSerializer.Free;
+  end;
+end;
+</pre>
+<p><em>Note: I have written quite a few unit tests to support the new changes, but most certainly there are hidden bugs. If you find one please report it <a href="http://code.google.com/p/delphilhlplib/issues/list">here</a>.</em></p>
+<p><em>Other Note: I exhausted my idea jar regarding new features. If you have an idea please do not hesitate to drop me a comment or an email.</em></p>
+<p><strong>Have Fun!</strong></p>
+]]></content:encoded>
+							<wfw:commentRss>https://alex.ciobanu.org/?feed=rss2&#038;p=300</wfw:commentRss>
+		<slash:comments>7</slash:comments>
+							</item>
+	</channel>
+</rss>

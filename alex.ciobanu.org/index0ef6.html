@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>c++ &#8211; YAPB</title>
+	<atom:link href="https://alex.ciobanu.org/?feed=rss2&#038;tag=cpp" rel="self" type="application/rss+xml" />
+	<link>https://alex.ciobanu.org</link>
+	<description>Yet Another Programming Blog</description>
+	<lastBuildDate>Mon, 17 Nov 2008 13:37:46 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+
+<image>
+	<url>https://alex.ciobanu.org/files/uploads/2018/05/7327309-150x150.jpg</url>
+	<title>c++ &#8211; YAPB</title>
+	<link>https://alex.ciobanu.org</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+	<item>
+		<title>C++ Builder TypeInfo alternative.</title>
+		<link>https://alex.ciobanu.org/?p=29</link>
+				<comments>https://alex.ciobanu.org/?p=29#comments</comments>
+				<pubDate>Mon, 17 Nov 2008 13:33:25 +0000</pubDate>
+		<dc:creator><![CDATA[Alexandru Ciobanu]]></dc:creator>
+				<category><![CDATA[Software Development]]></category>
+		<category><![CDATA[c++]]></category>
+		<category><![CDATA[delphi]]></category>
+		<category><![CDATA[LinkedIn]]></category>
+		<category><![CDATA[rtl]]></category>
+
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=29</guid>
+				<description><![CDATA[I bet most Delphi developers know about TypeInfo operator. It provides type information somehow similar to reflection in Java or .NET (of course a lot more limited). Take this simple example: It will simply write &#8220;Byte&#8221; on the... ]]></description>
+								<content:encoded><![CDATA[<p>I bet most Delphi developers know about <span style="text-decoration: underline;">TypeInfo</span> operator. It provides type information somehow similar to reflection in Java or .NET (of course a lot more limited).</p>
+<p>Take this simple example:</p>
+<pre class="brush: delphi; title: ; notranslate">
+begin
+  WriteLn(PTypeInfo(TypeInfo(Byte))^.Name);
+end.
+</pre>
+<p>It will simply write &#8220;Byte&#8221; on the console, but it demonstrates how to use RTTI emitted type information properly.</p>
+<p>Unfortunately C++ doesn&#8217;t emit this kind of RTTI for normal types but only for classes derived from TObject. Replicating the same code as in Delphi proves to be quite complicated. There is one method you can use to do it, and it involves some workarounds:</p>
+<p>/*<br />
+Define a 2 macros to generate a local class that<br />
+exports RTTI info for a predefined property.<br />
+*/<br />
+#define MAKE_TYPEINFO(T) \<br />
+class T##_LOCAL_TYPE_INFO : public TObject \<br />
+{ \<br />
+private: \<br />
+  T m_var; \<br />
+__published: \<br />
+  __property T A_VAR = { read = m_var }; \<br />
+public: \<br />
+  static PTypeInfo __fastcall TypeInfo() \<br />
+  { \<br />
+    PTypeInfo pTInfo = (PTypeInfo)__typeinfo \<br />
+       (T##_LOCAL_TYPE_INFO); \<br />
+    PPropInfo pProp = Typinfo::GetPropInfo(pTInfo, &#8220;A_VAR&#8221;); \<br />
+    return *(pProp->PropType); \<br />
+  } \<br />
+  static int __fastcall TypeSize() \<br />
+  { \<br />
+    return sizeof(T); \<br />
+  } \<br />
+}</p>
+<p>#define GET_TYPE_INFO(T) T##_LOCAL_TYPE_INFO::TypeInfo()</p>
+<p>/* Generate RTTI hack class */<br />
+MAKE_TYPEINFO(String);<br />
+int _tmain(int argc, _TCHAR* argv[])<br />
+{<br />
+  cout << AnsiString(GET_TYPE_INFO(String)->Name).c_str() << endl;
+}
+[/sourcecode]
+
+Basically what happens is that <em>MAKE_TYPEINFO</em> macro will declare a new class that exposes a published property of the given type. The <em>TypeInfo()</em>function will then use this property to get to the actual RTTI of the type. <em>GET_TYPE_INFO</em> macro will simply invoke <em>TypeInfo()</em> function of the auto-generated class (to simplify coding). It&#8217;s not pretty but it works.<br />
+<br />
+<em>Node: You cannot use this technique on template classes unfortunately.</em></p>
+]]></content:encoded>
+							<wfw:commentRss>https://alex.ciobanu.org/?feed=rss2&#038;p=29</wfw:commentRss>
+		<slash:comments>4</slash:comments>
+							</item>
+	</channel>
+</rss>

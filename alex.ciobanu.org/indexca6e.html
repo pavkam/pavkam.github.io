@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Software Development &#8211; YAPB</title>
+	<atom:link href="https://alex.ciobanu.org/?feed=rss2&#038;cat=8" rel="self" type="application/rss+xml" />
+	<link>https://alex.ciobanu.org</link>
+	<description>Yet Another Programming Blog</description>
+	<lastBuildDate>Tue, 16 Apr 2019 14:18:42 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+
+<image>
+	<url>https://alex.ciobanu.org/files/uploads/2018/05/7327309-150x150.jpg</url>
+	<title>Software Development &#8211; YAPB</title>
+	<link>https://alex.ciobanu.org</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+	<item>
+		<title>Dipping my toes into the lands of F# and functional programming</title>
+		<link>https://alex.ciobanu.org/?p=737</link>
+				<pubDate>Thu, 18 Apr 2019 23:00:06 +0000</pubDate>
+		<dc:creator><![CDATA[Alexandru Ciobanu]]></dc:creator>
+				<category><![CDATA[Software Development]]></category>
+		<category><![CDATA[.net]]></category>
+		<category><![CDATA[f#]]></category>
+		<category><![CDATA[functional]]></category>
+
+		<guid isPermaLink="false">https://alex.ciobanu.org/?p=737</guid>
+				<description><![CDATA[Mid-2018, after quite some time spent in C# and Azure lands I decided it was time for a change. The next job, I said to myself, is going to have at least one new tech element to it.... ]]></description>
+								<content:encoded><![CDATA[<p>Mid-2018, after quite some time spent in C# and Azure lands I decided it was time for a change. The next job, I said to myself, is going to have at least one new tech element to it. So, early in 2019 I joined a new company called <a href="https://www.jet.com">Jet.com</a>.<em> [You can find some amazing blog posts written by my colleagues at the <a href="https://medium.com/jettech">Jet Tech Blog</a>.]</em></p>
+<p>The things that attracted me at Jet were the <a href="https://stackshare.io/jet-com/jet-com">tech stack</a> and the scale. I finally got to use a functional language such as <strong>F#</strong> in production. To be completely honest, before this position, functional languages always seemed like a niche to me. Besides, languages like C# have ingested a lot of functional features to make them better. <em>As you might expect, 3 months in, my views are starting to change</em>.</p>
+<p>So what did I learn in the last months and what do I think about F#? That&#8217;s my list so far (guaranteed to be revised in another 3 months!):</p>
+<ul>
+<li>For a person grown on Pascal and C-like languages, F# syntax looks odd for the first &#8220;<em>many</em>&#8221; weeks. It takes time to adjust to the Python-like indentation-based blocks. The presence of the &#8220;<em>{ }</em>&#8221; brackets is confusing since they are used for quite a few things including &#8220;<em>async</em>&#8221; code.</li>
+<li>F# is multi-paradigm language on top of .NET. That makes it support things such as classes, for loops and other &#8220;<em>not entirely function things</em>&#8220;. You can write imperative code in F#. It will look ugly as hell, but you can do it.</li>
+<li>Type inference is crazy! Most of the time you can get away with using a type on anything. C# is seems like a half-baked potato compared to its sibling. The downside becomes apparent when trying to refactor code. One small change in a one function can lead to hundreds of compilation errors as the type inference starts deciding values and arguments have different types.</li>
+<li>It&#8217;s all .NET stack so the hard learning curve that one would expect is non a thing (if you come from other .NET languages).</li>
+<li>Works like a charm on .NET Core and docker containers on Linux. [<em>Hard to imagine what Microsoft looks like these days isn&#8217;t it?!</em>]</li>
+<li>I have not written one loop yet and I used a recursive function only once. Most of the sequence processing is done using the standard modules and function such as <code>Seq.map</code>.</li>
+<li>Currying, partial application and other &#8220;<em>functions creating functions</em>&#8221; concepts are not hard to get around if you used C#&#8217;s lambdas and delegates for a while.</li>
+<li>For a person like me that used to write assembler it is hard to let go to the micro-optimizations. One can always write more optimized hand-crafted imperative code. It still takes discipline for me not to drop those immutable <code>Maps</code> or <code>lists</code> in favor of their mutable counterparts. On the other hand, having default immutability on objects makes things much nicer.</li>
+</ul>
+<p>These are just my first impressions and I do already sense there is some functionality that I wouldn&#8217;t be able t give up in the future!</p>
+]]></content:encoded>
+										</item>
+		<item>
+		<title>Where is the Microsoft development stack?</title>
+		<link>https://alex.ciobanu.org/?p=727</link>
+				<pubDate>Fri, 31 Aug 2018 23:00:49 +0000</pubDate>
+		<dc:creator><![CDATA[Alexandru Ciobanu]]></dc:creator>
+				<category><![CDATA[Software Development]]></category>
+		<category><![CDATA[microsoft]]></category>
+		<category><![CDATA[oss]]></category>
+		<category><![CDATA[thoughts]]></category>
+
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=727</guid>
+				<description><![CDATA[I have recently read this blog post that looks at the current development stacks used by biggest startups &#8220;out there&#8220;. One thing becomes apparent: none of Microsoft&#8217;s tech is in any list. To be honest this is not... ]]></description>
+								<content:encoded><![CDATA[<p>I have recently read <a href="https://michaelscodingspot.com/2018/07/30/where-did-the-microsoft-tech-stack-disappear/">this blog post</a> that looks at the current development stacks used by biggest startups &#8220;<em>out there</em>&#8220;. One thing becomes apparent: <strong>none of Microsoft&#8217;s tech is in any list</strong>.</p>
+<p>To be honest this is not news to me or to anyone that pays attention to the state of affairs in the development world. The whole <em>.NET Core</em> strategy on Microsoft&#8217;s part is an effort to push mainly against <em>Node.js</em>. It is too early to say anything with certainty but it does look like Microsoft is a bit late (<span style="text-decoration: underline;">and that&#8217;s an understatement</span>) to the party.</p>
+<p>While I do tend to be language-agnostic these days (use Python and Node.js for a few projects), <strong>I do hope .NET Core gains some traction</strong> in the open source community. It&#8217;s quite an amazing technology, even if it&#8217;s Microsoft backed!</p>
+<p>&#8212;</p>
+<p>P.S. There is an interesting process of polarization happening right now around me: the companies using the Microsoft stack are mostly leaning towards the financial sector, while the smaller ones (not necessarily startups) are mostly oriented towards the Open Source tooling/frameworks.</p>
+]]></content:encoded>
+										</item>
+		<item>
+		<title>On how I &#8220;started embracing&#8221; dynamic languages</title>
+		<link>https://alex.ciobanu.org/?p=709</link>
+				<pubDate>Sun, 10 Jun 2018 21:00:29 +0000</pubDate>
+		<dc:creator><![CDATA[Alexandru Ciobanu]]></dc:creator>
+				<category><![CDATA[Software Development]]></category>
+		<category><![CDATA[.net]]></category>
+		<category><![CDATA[c#]]></category>
+		<category><![CDATA[dynamic]]></category>
+		<category><![CDATA[rant]]></category>
+		<category><![CDATA[thoughts]]></category>
+
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=709</guid>
+				<description><![CDATA[I will start by saying that that I do not have anything new to add to the everlasting &#8220;dynamic vs static binding&#8221; debate: It&#8217;s been talked about to death at this point, and yeah, I am still well... ]]></description>
+								<content:encoded><![CDATA[<p>I will start by saying that that I do not have anything new to add to the everlasting &#8220;<em>dynamic vs static binding</em>&#8221; debate: It&#8217;s been talked about to death at this point, and yeah, I am still well in the &#8220;<em>strongly typed languages</em>&#8221; camp and am not planning to leave anytime soon.</p>
+<p><strong>But that is not the point of this post.</strong></p>
+<p>It&#8217;s not a secret that I have been deeply entrenched into .NET for almost a decade now. But, only in the last couple of years I actually started enjoying all the new features to the .NET run-time and C# language language. <em>Anonymous objects</em>, <em>the dynamic language run-time</em>, value tuples, <em>async</em> and of course extensive <em>type inference</em> are just a few of them.</p>
+<p>The biggest, shift for me personally, happened when I stopped caring/worrying about the &#8220;shape of data&#8221; I was using during the programming process. I know &#8212; sounds so vague that even I am not comfortable with this explanation What I mean is the fact that in a lot of cases, now, I do not have to care about the data type more than I need to. The compiler does take a lot of the grunt work out of the equation and leaves me to worry about the truly important things.</p>
+<p>On the data and serialization side, I switched to <em>JSON</em> entirely. Popular libraries in .NET, combined with the <em>DLR</em> make object serialization a breeze. Instead of a ton of boilerplate types that never actually add any value, it&#8217;s a matter of using dynamic objects instead.</p>
+<p><strong>A quite lazy example</strong>, but illustrates somewhat my point:</p>
+<pre class="brush: csharp; title: ; notranslate">
+...
+dynamic request = JsonConvert.DeserializeObject(buffer);
+...
+var (result, details) = ProcessRequest(request);
+...
+</pre>
+<p>At the end of the day, <strong>C# is definitely not a dynamic language</strong>, but it does borrow interesting concepts quite well and that gives people like me a pleasant and &#8220;<em>safe</em>&#8221; environment to work with.</p>
+]]></content:encoded>
+										</item>
+		<item>
+		<title>Introducing (very late!) XtraLiteTemplates for .NET (4.5+ and Core 2.0+)</title>
+		<link>https://alex.ciobanu.org/?p=702</link>
+				<comments>https://alex.ciobanu.org/?p=702#respond</comments>
+				<pubDate>Mon, 04 Jun 2018 20:00:54 +0000</pubDate>
+		<dc:creator><![CDATA[Alexandru Ciobanu]]></dc:creator>
+				<category><![CDATA[Software Development]]></category>
+		<category><![CDATA[.net]]></category>
+		<category><![CDATA[bsd]]></category>
+		<category><![CDATA[c#]]></category>
+		<category><![CDATA[oss]]></category>
+		<category><![CDATA[xtralitetemplates]]></category>
+
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=702</guid>
+				<description><![CDATA[Well, to begin, this is not a new project &#8211; I have developed most of it during the end of 2015 with occasional fixes and new features along the way (recently added support for DLR and dynamic objects).... ]]></description>
+								<content:encoded><![CDATA[<p>Well, to begin, this is not a new project &#8211; I have developed most of it during the end of 2015 with occasional fixes and new features along the way (recently added support for <em>DLR and dynamic objects</em>). But, in the great tradition of the &#8220;<em>blogger</em>&#8221; I feel obligated to share my baby with the world.</p>
+<p>The project was born from a specific need we had at the company I was employed at the time: simplify email templates. You see, the templates were being kept by the developers as they were written using a tortured Razor engine (<em>yes, the same used by ASP.NET</em>). The amount of change requests coming in was, well, high. It became clear, we needed a simple way to allow non-technical staff to maintain the templates themselves &#8212; <strong>I know, sounds obvious, right!?</strong></p>
+<p>I have considered different existing libraries to achieve this, including the beloved by all &#8220;<a href="https://msdn.microsoft.com/en-us/library/system.string.replace(v=vs.110).aspx">String.Replace()</a>&#8221; method, but all options were either too simple to be useful or too complex to be used by non-techies. Nothing fit exactly into what we wanted. This prompted me to write the <a href="https://github.com/pavkam/XtraLiteTemplates">XtraLiteTemplates</a> library.</p>
+<p>The core principles of the library are: <strong>must allow complex templates</strong> and <strong>must be usable by non-technical staff</strong>. Both are achieved by what I call &#8220;<em>domain-specific templates</em>&#8220;. The library allows a developer to define her own simple template language using existing constructs. Simply put you can define things like &#8220;<em>WHILE (expr) DO &#8230; END</em>&#8221; and &#8220;<em>DO (expr) IF (expr)</em>&#8220;. Or even something like &#8220;<em>PRICE OF (expr)</em>&#8220;. One can define any constructs that fit the business needs.</p>
+<p>By default, the library comes with two &#8220;<em>dialects</em>&#8221; (the domain-specific languages): <a href="https://github.com/pavkam/XtraLiteTemplates/wiki/Standard-Dialect">Standard</a> and <a href="https://github.com/pavkam/XtraLiteTemplates/wiki/Code-Monkey-Dialect">Code Monkey</a>. Code Monkey dialect if a super-set of the Standard and simplified constructs, aimed at developers). The following example shows a small use of the library:</p>
+<pre class="brush: csharp; title: ; notranslate">
+private static async Task MainAsync(string[] args)
+{
+    var @object = new
+    {
+        Name = &quot;Alex&quot;,
+        Friends = new[] { &quot;Mary&quot;, &quot;John&quot;, &quot;Peter&quot; }
+    };
+
+    const string template = @&quot;
+        {PRE}{person.Name} has {person.Friends.Length} friends: {FOR friend IN person.Friends}{friend}{WITH}, {END}.
+        He is{IF person.Friends.Length == 0} not{END} a happy guy!{END}&quot;;
+
+    var test = await XLTemplate.EvaluateAsync(
+        CodeMonkeyDialect.Default,
+        template,
+        CancellationToken.None, person =&gt; @object).ConfigureAwait(false);
+
+    Console.WriteLine(test);
+}
+</pre>
+<p>Note that by default the engine removes additional white-spaces. To prevent that I used the &#8220;<em>PRE</em>&#8221; directive.</p>
+<p>There is enough documentation in the project&#8217;s <a href="https://github.com/pavkam/XtraLiteTemplates/wiki">wiki</a> so I am not going to repeat it here. Hope this project helps someone in need of a simple but powerful template library (<em>no, String.Replace is not an option!</em>).</p>
+]]></content:encoded>
+							<wfw:commentRss>https://alex.ciobanu.org/?feed=rss2&#038;p=702</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>Rate limiting an Azure queue</title>
+		<link>https://alex.ciobanu.org/?p=680</link>
+				<comments>https://alex.ciobanu.org/?p=680#respond</comments>
+				<pubDate>Sat, 02 Jun 2018 20:00:23 +0000</pubDate>
+		<dc:creator><![CDATA[Alexandru Ciobanu]]></dc:creator>
+				<category><![CDATA[Software Development]]></category>
+		<category><![CDATA[azure]]></category>
+		<category><![CDATA[function apps]]></category>
+		<category><![CDATA[microsoft]]></category>
+		<category><![CDATA[queues]]></category>
+		<category><![CDATA[service bus]]></category>
+
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=680</guid>
+				<description><![CDATA[In my previous post (&#8220;Singleton&#8221; Azure Functions) I offered a tip on how to set up an Azure function to serve as a system-wide &#8220;singleton&#8221;. One of the use cases I was looking for was to set up... ]]></description>
+								<content:encoded><![CDATA[<p>In my previous post (<a href="http://alex.ciobanu.org/?p=674">&#8220;Singleton&#8221; Azure Functions</a>) I offered a tip on how to set up an Azure function to serve as a system-wide &#8220;singleton&#8221;. One of the use cases I was looking for was to set up a service to act as a &#8220;<em>broker between two Service Bus queues</em>&#8220;. I will not go into details, suffice to say, there is a requirement to only allow, let&#8217;s say, 100 messages per second to pass through the queue.</p>
+<p>As I am a strong proponent of &#8220;<em>less talk, more code</em>&#8221; so here is a rough version that gets the job done:</p>
+<pre class="brush: csharp; title: ; notranslate">
+private static readonly SemaphoreSlim _semaphore = new new SemaphoreSlim(1, 1);
+private static readonly QueueClient _outputQueueClient = new QueueClient(&quot;{connection string}&quot;);
+private static double _nextDispatchAt;
+private const double _rate = 100; // the rate!
+
+/* Method creates a task scheduled to run approximately 
+   at a given &quot;time&quot; */
+private static Task MoveMessageToOutputQueue(Message message) 
+{ 
+    Contract.Assert(message != null);
+
+    /* Get a lock to make sure _nextDispatchAt is modified 
+       atomically. This is a lazy implementation but it does the job. */
+    _semaphore.Wait(); 
+    try 
+    { 
+        /* Calculate the next &quot;click&quot;. */
+        var now = DateTime.UtcNow.Ticks; 
+        var delta = _nextDispatchAt - now; 
+        var click = TimeSpan.TicksPerMillisecond * (1000 / _rate); 
+        if (delta &gt; 0) 
+        { 
+            /* We need to wait until the next dispatch. */ 
+            var millisToWait = (_nextDispatchAt - now) / TimeSpan.TicksPerMillisecond; 
+            _nextDispatchAt += click;
+
+            /* If the number of ticks is below the millisecond 
+               threshold, execute directly. */
+            return millisToWait &gt; 0 ?
+                Task.Delay((int)millisToWait).ContinueWith(t =&gt; _outputQueueClient.SendAsync(message)) :
+                _outputQueueClient.SendAsync(message);
+        }
+        else 
+        {
+            /* The execution is direct as there is no waiting time. */ 
+            _nextDispatchAt = now + click; 
+            return _outputQueueClient.SendAsync(message);
+        } 
+    } 
+    finally 
+    { 
+        _semaphore.Release();
+    }
+}
+
+/* This is the actual Azure function which is set up to listen on the &quot;input-queue&quot; */
+[FunctionName(nameof(MoveMessageFromInputToOutput))]
+public static async Task MoveMessageFromInputToOutput(
+[ServiceBusTrigger(&quot;input-queue&quot;)] Microsoft.ServiceBus.Messaging.BrokeredMessage message, 
+TraceWriter log)
+{
+    Contract.Assert(message != null);
+    Contract.Assert(log != null);
+    log.Debug($&quot;Moving incoming message with label \&quot;{message.Label}\&quot; ...&quot;);
+
+    /* Make a copy of the message (just the body and whatever fields are interesting). */
+    Message outputMessage;
+    using (var ms = new MemoryStream())
+    {
+        await message.GetBody&lt;Stream&gt;().CopyToAsync(ms).ConfigureAwait(false);
+        outputMessage = new Message(ms.ToArray())
+        {
+            Label = message.Label,
+            ContentType = message.ContentType
+        };
+    }
+
+    await MoveMessageToOutputQueue(outputMessage).ConfigureAwait(false);
+}
+</pre>
+<p>To make sure the higher rates are handled, and that the function does not starve, one can update the <em>host.json</em> as follows:</p>
+<pre class="brush: jscript; title: ; notranslate">
+{
+    &quot;serviceBus&quot;: {
+        &quot;maxConcurrentCalls&quot;: 32, // Threads will mostly be awaiting
+        &quot;prefetchCount&quot;: 256 // The more the merrier
+    }
+}
+</pre>
+<p>After some testing it turns out that the rate limiter is almost perfect on &#8220;<em>low rates</em>&#8221; such as <strong>100 messages/second</strong>. Due limitations of the Service Bus and other factors this code <strong>will not surpass ~600 messages/second</strong>. In such cases, multiple instances of the rate limiter should be deployed, and dividing the load between them.</p>
+]]></content:encoded>
+							<wfw:commentRss>https://alex.ciobanu.org/?feed=rss2&#038;p=680</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>&#8220;Singleton&#8221; Azure Functions</title>
+		<link>https://alex.ciobanu.org/?p=674</link>
+				<comments>https://alex.ciobanu.org/?p=674#respond</comments>
+				<pubDate>Mon, 28 May 2018 20:00:39 +0000</pubDate>
+		<dc:creator><![CDATA[Alexandru Ciobanu]]></dc:creator>
+				<category><![CDATA[Software Development]]></category>
+		<category><![CDATA[azure]]></category>
+		<category><![CDATA[microsoft]]></category>
+
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=674</guid>
+				<description><![CDATA[This is not the sort of &#8220;stuff&#8221; I would usually be writing about in the past. Lately, though, more and more work that I am involved with is somewhat related to Azure. More often than not, my daily tasks... ]]></description>
+								<content:encoded><![CDATA[<p>This is not the sort of &#8220;stuff&#8221; I would usually be writing about in the past. Lately, though, more and more work that I am involved with is somewhat related to <a href="https://azure.microsoft.com/en-us/">Azure</a>. More often than not, my daily tasks include bending Azure services to my needs rather than writing code (which is a tediously philosophical discussion in itself!).</p>
+<p>In one of our current projects, the architecture requires a number of &#8220;<em>singleton</em>&#8221; services to be connected to a shared service bus and regularly communicate with &#8220;<em>other services</em>&#8220;. In Azure terminology those singleton services would qualify as <a href="https://docs.microsoft.com/en-us/azure/app-service/web-sites-create-web-jobs">Web Jobs</a>. Due to the current direction Microsoft is taking in regards to <a href="https://stackify.com/azure-webjobs-vs-azure-functions/">Azure Functions</a>, we have decided to go with them, rather than Web Jobs (not to mention it is much easier to deploy and monitor). All good and well so far, excluding a few annoyances here and there due to immature management Web UI.</p>
+<p>One of the peculiar things that took some time to figure out, was how to set up a function to run as a singleton. It can be annoying to find exactly what needs to be done in tons of promotional material and blogs all focusing on the &#8220;<em>benefits of scaling out</em>&#8220;. In the unlikely event you&#8217;re trying to make sure your function app runs as singleton try the following:</p>
+<ol>
+<li>Set up your function app using the <a href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-scale">App Service plan</a>. Consumption plan gives Azure infrastructure all the power to move your app between machines or start up additional instances.</li>
+<li>Make sure the &#8220;Always On&#8221; is toggled in Application Settings. Our singleton needs to be up an running at all times:<img class="size-full wp-image-675" style="font-weight: bold; background-color: transparent; color: #767676;" src="http://alex.ciobanu.org/files/uploads/2018/05/azp1.png" alt="Azure Function Always On" width="1050" height="110" srcset="https://alex.ciobanu.org/files/uploads/2018/05/azp1.png 1050w, https://alex.ciobanu.org/files/uploads/2018/05/azp1-300x31.png 300w, https://alex.ciobanu.org/files/uploads/2018/05/azp1-768x80.png 768w, https://alex.ciobanu.org/files/uploads/2018/05/azp1-1024x107.png 1024w, https://alex.ciobanu.org/files/uploads/2018/05/azp1-80x8.png 80w" sizes="(max-width: 1050px) 100vw, 1050px" /></li>
+<li>Finally, one has to add <em>WEBSITE_MAX_DYNAMIC_APPLICATION_SCALE_OUT</em> with a value of &#8220;1&#8221; to the Application Settings. <a href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-app-settings">Do not ask</a>&#8230;<img class="size-full wp-image-676" src="http://alex.ciobanu.org/files/uploads/2018/05/azp2.png" alt="Azure Function Scaleout Setting" width="1899" height="105" srcset="https://alex.ciobanu.org/files/uploads/2018/05/azp2.png 1899w, https://alex.ciobanu.org/files/uploads/2018/05/azp2-300x17.png 300w, https://alex.ciobanu.org/files/uploads/2018/05/azp2-768x42.png 768w, https://alex.ciobanu.org/files/uploads/2018/05/azp2-1024x57.png 1024w, https://alex.ciobanu.org/files/uploads/2018/05/azp2-80x4.png 80w" sizes="(max-width: 1899px) 100vw, 1899px" /></li>
+</ol>
+<p>Be aware, that using an App Service plan incurs additional costs, but I guess that is not different compared to attaching Seb Jobs to existing Web Applications.</p>
+]]></content:encoded>
+							<wfw:commentRss>https://alex.ciobanu.org/?feed=rss2&#038;p=674</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>TZDB 1.8.2018c available</title>
+		<link>https://alex.ciobanu.org/?p=670</link>
+				<comments>https://alex.ciobanu.org/?p=670#respond</comments>
+				<pubDate>Thu, 24 May 2018 06:49:44 +0000</pubDate>
+		<dc:creator><![CDATA[Alexandru Ciobanu]]></dc:creator>
+				<category><![CDATA[Software Development]]></category>
+		<category><![CDATA[bsd]]></category>
+		<category><![CDATA[delphi]]></category>
+		<category><![CDATA[fpc]]></category>
+		<category><![CDATA[tzdb]]></category>
+
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=670</guid>
+				<description><![CDATA[Just a short announcement &#8212; after quite a few years (4 to be exact) of inactivity, Michael Taylor has graciously evicted some bugs from the TZDB code base and also upgraded the IANA database to 2018c version (released... ]]></description>
+								<content:encoded><![CDATA[<p>Just a short announcement &#8212; after quite a few years (4 to be exact) of inactivity, <a href="https://github.com/mbtaylor1982">Michael Taylor</a> has graciously evicted some bugs from the TZDB code base and also upgraded the IANA database to 2018c version (released 22nd January 2018).</p>
+<p>These days, you can find the project in its source code form <a href="https://github.com/pavkam/tzdb">here (GitHub)</a>.</p>
+]]></content:encoded>
+							<wfw:commentRss>https://alex.ciobanu.org/?feed=rss2&#038;p=670</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>Bringing the blog back to life&#8230;</title>
+		<link>https://alex.ciobanu.org/?p=664</link>
+				<comments>https://alex.ciobanu.org/?p=664#comments</comments>
+				<pubDate>Tue, 22 May 2018 08:09:53 +0000</pubDate>
+		<dc:creator><![CDATA[Alexandru Ciobanu]]></dc:creator>
+				<category><![CDATA[Life & Stuff]]></category>
+		<category><![CDATA[Software Development]]></category>
+		<category><![CDATA[blogging]]></category>
+		<category><![CDATA[life]]></category>
+
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=664</guid>
+				<description><![CDATA[Well, it has been years (apparently no less than four!). Since my last post a lot has changed for me in particular, and, in tech at large. So why hasn&#8217;t Alex been blogging one might not ask, and... ]]></description>
+								<content:encoded><![CDATA[<p>Well, it has been years (<strong>apparently no less than four!</strong>). Since my last post a lot has changed for me in particular, and, in tech at large.</p>
+<p>So why hasn&#8217;t Alex been blogging one might <strong>not</strong> ask, and be forgiven. Well, let me explain and rant a little bit:</p>
+<ul>
+<li>First, I have no more connection to the Delphi community for a number of reasons, most prominent being that I do not have a license and I am not willing to purchase one just to have some fun. All my open-source projects are .NET these days (incidentally, check out my <a href="https://github.com/pavkam">GitHub</a>) since Microsoft &#8220;<em>graciously</em>&#8221; offers a community edition of Visual Studio.<br />
+Given that I have no idea what is going on in the world of Delphi, I have not progressed beyond my feelings of disappointment in the horrible quality of the compiler, mediocre support for cool new language features and etc.</li>
+<li>Given the previous long rant, one can understand why I have stopped writing anything about Delphi.</li>
+<li>I moved on to <em>.NET</em>.</li>
+<li>The advent of &#8220;<em>stack overflow programming</em>&#8221; paradigm (also know as &#8220;<em>just google it</em>&#8220;) ate most of the topics I could talk about.</li>
+<li>And finally, I got older and I started caring more about project architecture rather than small implementation details.</li>
+</ul>
+<p>So here I am, and ready to start anew. I am not yet sure what is my next post going to be about, but I hope to have something interesting to write about, things that people might be interested in.</p>
+<p><em>P.S. Some older posts might resurface in the next days due to me fixing and updating up my WordPress installation.</em></p>
+]]></content:encoded>
+							<wfw:commentRss>https://alex.ciobanu.org/?feed=rss2&#038;p=664</wfw:commentRss>
+		<slash:comments>4</slash:comments>
+							</item>
+		<item>
+		<title>TZDB 1.8.2014b</title>
+		<link>https://alex.ciobanu.org/?p=533</link>
+				<comments>https://alex.ciobanu.org/?p=533#respond</comments>
+				<pubDate>Wed, 23 Apr 2014 13:27:21 +0000</pubDate>
+		<dc:creator><![CDATA[Alexandru Ciobanu]]></dc:creator>
+				<category><![CDATA[Software Development]]></category>
+		<category><![CDATA[bsd]]></category>
+		<category><![CDATA[delphi]]></category>
+		<category><![CDATA[embarcadero]]></category>
+		<category><![CDATA[fpc]]></category>
+		<category><![CDATA[oop]]></category>
+		<category><![CDATA[rtl]]></category>
+		<category><![CDATA[tzdb]]></category>
+
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=533</guid>
+				<description><![CDATA[A new version of TZDB has been release (1.8.2014b). This version fixes a few issues around the Windows TZ aliases provided by CLDR project. Obviously the database has been updated to the most recent version (2014b). &#160; The biggest... ]]></description>
+								<content:encoded><![CDATA[<p><a href="http://alex.ciobanu.org/files/uploads/2010/10/logo.jpg"><img class="alignleft size-full wp-image-392" title="logo" src="http://alex.ciobanu.org/files/uploads/2010/10/logo.jpg" alt="" width="88" height="87" /></a></p>
+<p>A new version of TZDB has been release (1.8.2014b). This version fixes a few issues around the <em>Windows TZ aliases</em> provided by CLDR project. Obviously the database has been updated to the most recent version (<strong>2014b</strong>).</p>
+<p>&nbsp;</p>
+<p>The biggest news is the fact that we have moved to <a href="https://github.com/pavkam/tzdb">GitHub</a>! The old Google Code url will still be around for a while, after which point it will be deleted.</p>
+<p>&nbsp;</p>
+<p>Also, I would like to thank <strong>Pierre Yager</strong> for the fixes and the release itself as I do not have access to a Delphi license any longer.</p>
+<p>&nbsp;</p>
+<address>TZDB is an open source project that provides Delphi (7+) and FreePascal (2.0+) users with a &#8220;built-in&#8221; timezone database. The same source of data is used in most Unixes, Java, MacOS and multiple other projects out there.</address>
+]]></content:encoded>
+							<wfw:commentRss>https://alex.ciobanu.org/?feed=rss2&#038;p=533</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>TZDB 1.8 &#8212; 13 November 2012 Database (2012j)</title>
+		<link>https://alex.ciobanu.org/?p=525</link>
+				<comments>https://alex.ciobanu.org/?p=525#respond</comments>
+				<pubDate>Tue, 12 Feb 2013 15:35:20 +0000</pubDate>
+		<dc:creator><![CDATA[Alexandru Ciobanu]]></dc:creator>
+				<category><![CDATA[Software Development]]></category>
+		<category><![CDATA[bsd]]></category>
+		<category><![CDATA[delphi]]></category>
+		<category><![CDATA[embarcadero]]></category>
+		<category><![CDATA[fpc]]></category>
+		<category><![CDATA[LinkedIn]]></category>
+		<category><![CDATA[tzdb]]></category>
+
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=525</guid>
+				<description><![CDATA[A new version of TZDB has been release (1.8.121113). This version adds some very small changes. The biggest update is the bundled database version. Grab the latest version here, and view the latest changes here. &#160; TZDB is an open... ]]></description>
+								<content:encoded><![CDATA[<p><a href="http://alex.ciobanu.org/files/uploads/2010/10/logo.jpg"><img class="alignleft size-full wp-image-392" title="logo" alt="" src="http://alex.ciobanu.org/files/uploads/2010/10/logo.jpg" width="88" height="87" /></a></p>
+<p>A new version of TZDB has been release (1.8.121113). This version adds some very small changes. The biggest update is the bundled database version.</p>
+<p>Grab the latest version <a href="http://code.google.com/p/delphi-tzdb/downloads/list">here</a>, and view the latest changes <a href="http://code.google.com/p/delphi-tzdb/wiki/TZDBNewsAndUpdates">here</a>.</p>
+<p>&nbsp;</p>
+<address>TZDB is an open source project that provides Delphi (7+) and FreePascal (2.0+) users with a &#8220;built-in&#8221; timezone database. The same source of data is used in most Unixes, Java, MacOS and multiple other projects out there.</address>
+]]></content:encoded>
+							<wfw:commentRss>https://alex.ciobanu.org/?feed=rss2&#038;p=525</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+	</channel>
+</rss>

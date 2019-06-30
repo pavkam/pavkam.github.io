@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>c# &#8211; YAPB</title>
+	<atom:link href="https://alex.ciobanu.org/?feed=rss2&#038;tag=c" rel="self" type="application/rss+xml" />
+	<link>https://alex.ciobanu.org</link>
+	<description>Yet Another Programming Blog</description>
+	<lastBuildDate>Wed, 06 Jun 2018 06:03:16 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+
+<image>
+	<url>https://alex.ciobanu.org/files/uploads/2018/05/7327309-150x150.jpg</url>
+	<title>c# &#8211; YAPB</title>
+	<link>https://alex.ciobanu.org</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+	<item>
+		<title>On how I &#8220;started embracing&#8221; dynamic languages</title>
+		<link>https://alex.ciobanu.org/?p=709</link>
+				<pubDate>Sun, 10 Jun 2018 21:00:29 +0000</pubDate>
+		<dc:creator><![CDATA[Alexandru Ciobanu]]></dc:creator>
+				<category><![CDATA[Software Development]]></category>
+		<category><![CDATA[.net]]></category>
+		<category><![CDATA[c#]]></category>
+		<category><![CDATA[dynamic]]></category>
+		<category><![CDATA[rant]]></category>
+		<category><![CDATA[thoughts]]></category>
+
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=709</guid>
+				<description><![CDATA[I will start by saying that that I do not have anything new to add to the everlasting &#8220;dynamic vs static binding&#8221; debate: It&#8217;s been talked about to death at this point, and yeah, I am still well... ]]></description>
+								<content:encoded><![CDATA[<p>I will start by saying that that I do not have anything new to add to the everlasting &#8220;<em>dynamic vs static binding</em>&#8221; debate: It&#8217;s been talked about to death at this point, and yeah, I am still well in the &#8220;<em>strongly typed languages</em>&#8221; camp and am not planning to leave anytime soon.</p>
+<p><strong>But that is not the point of this post.</strong></p>
+<p>It&#8217;s not a secret that I have been deeply entrenched into .NET for almost a decade now. But, only in the last couple of years I actually started enjoying all the new features to the .NET run-time and C# language language. <em>Anonymous objects</em>, <em>the dynamic language run-time</em>, value tuples, <em>async</em> and of course extensive <em>type inference</em> are just a few of them.</p>
+<p>The biggest, shift for me personally, happened when I stopped caring/worrying about the &#8220;shape of data&#8221; I was using during the programming process. I know &#8212; sounds so vague that even I am not comfortable with this explanation What I mean is the fact that in a lot of cases, now, I do not have to care about the data type more than I need to. The compiler does take a lot of the grunt work out of the equation and leaves me to worry about the truly important things.</p>
+<p>On the data and serialization side, I switched to <em>JSON</em> entirely. Popular libraries in .NET, combined with the <em>DLR</em> make object serialization a breeze. Instead of a ton of boilerplate types that never actually add any value, it&#8217;s a matter of using dynamic objects instead.</p>
+<p><strong>A quite lazy example</strong>, but illustrates somewhat my point:</p>
+<pre class="brush: csharp; title: ; notranslate">
+...
+dynamic request = JsonConvert.DeserializeObject(buffer);
+...
+var (result, details) = ProcessRequest(request);
+...
+</pre>
+<p>At the end of the day, <strong>C# is definitely not a dynamic language</strong>, but it does borrow interesting concepts quite well and that gives people like me a pleasant and &#8220;<em>safe</em>&#8221; environment to work with.</p>
+]]></content:encoded>
+										</item>
+		<item>
+		<title>Introducing (very late!) XtraLiteTemplates for .NET (4.5+ and Core 2.0+)</title>
+		<link>https://alex.ciobanu.org/?p=702</link>
+				<comments>https://alex.ciobanu.org/?p=702#respond</comments>
+				<pubDate>Mon, 04 Jun 2018 20:00:54 +0000</pubDate>
+		<dc:creator><![CDATA[Alexandru Ciobanu]]></dc:creator>
+				<category><![CDATA[Software Development]]></category>
+		<category><![CDATA[.net]]></category>
+		<category><![CDATA[bsd]]></category>
+		<category><![CDATA[c#]]></category>
+		<category><![CDATA[oss]]></category>
+		<category><![CDATA[xtralitetemplates]]></category>
+
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=702</guid>
+				<description><![CDATA[Well, to begin, this is not a new project &#8211; I have developed most of it during the end of 2015 with occasional fixes and new features along the way (recently added support for DLR and dynamic objects).... ]]></description>
+								<content:encoded><![CDATA[<p>Well, to begin, this is not a new project &#8211; I have developed most of it during the end of 2015 with occasional fixes and new features along the way (recently added support for <em>DLR and dynamic objects</em>). But, in the great tradition of the &#8220;<em>blogger</em>&#8221; I feel obligated to share my baby with the world.</p>
+<p>The project was born from a specific need we had at the company I was employed at the time: simplify email templates. You see, the templates were being kept by the developers as they were written using a tortured Razor engine (<em>yes, the same used by ASP.NET</em>). The amount of change requests coming in was, well, high. It became clear, we needed a simple way to allow non-technical staff to maintain the templates themselves &#8212; <strong>I know, sounds obvious, right!?</strong></p>
+<p>I have considered different existing libraries to achieve this, including the beloved by all &#8220;<a href="https://msdn.microsoft.com/en-us/library/system.string.replace(v=vs.110).aspx">String.Replace()</a>&#8221; method, but all options were either too simple to be useful or too complex to be used by non-techies. Nothing fit exactly into what we wanted. This prompted me to write the <a href="https://github.com/pavkam/XtraLiteTemplates">XtraLiteTemplates</a> library.</p>
+<p>The core principles of the library are: <strong>must allow complex templates</strong> and <strong>must be usable by non-technical staff</strong>. Both are achieved by what I call &#8220;<em>domain-specific templates</em>&#8220;. The library allows a developer to define her own simple template language using existing constructs. Simply put you can define things like &#8220;<em>WHILE (expr) DO &#8230; END</em>&#8221; and &#8220;<em>DO (expr) IF (expr)</em>&#8220;. Or even something like &#8220;<em>PRICE OF (expr)</em>&#8220;. One can define any constructs that fit the business needs.</p>
+<p>By default, the library comes with two &#8220;<em>dialects</em>&#8221; (the domain-specific languages): <a href="https://github.com/pavkam/XtraLiteTemplates/wiki/Standard-Dialect">Standard</a> and <a href="https://github.com/pavkam/XtraLiteTemplates/wiki/Code-Monkey-Dialect">Code Monkey</a>. Code Monkey dialect if a super-set of the Standard and simplified constructs, aimed at developers). The following example shows a small use of the library:</p>
+<pre class="brush: csharp; title: ; notranslate">
+private static async Task MainAsync(string[] args)
+{
+    var @object = new
+    {
+        Name = &quot;Alex&quot;,
+        Friends = new[] { &quot;Mary&quot;, &quot;John&quot;, &quot;Peter&quot; }
+    };
+
+    const string template = @&quot;
+        {PRE}{person.Name} has {person.Friends.Length} friends: {FOR friend IN person.Friends}{friend}{WITH}, {END}.
+        He is{IF person.Friends.Length == 0} not{END} a happy guy!{END}&quot;;
+
+    var test = await XLTemplate.EvaluateAsync(
+        CodeMonkeyDialect.Default,
+        template,
+        CancellationToken.None, person =&gt; @object).ConfigureAwait(false);
+
+    Console.WriteLine(test);
+}
+</pre>
+<p>Note that by default the engine removes additional white-spaces. To prevent that I used the &#8220;<em>PRE</em>&#8221; directive.</p>
+<p>There is enough documentation in the project&#8217;s <a href="https://github.com/pavkam/XtraLiteTemplates/wiki">wiki</a> so I am not going to repeat it here. Hope this project helps someone in need of a simple but powerful template library (<em>no, String.Replace is not an option!</em>).</p>
+]]></content:encoded>
+							<wfw:commentRss>https://alex.ciobanu.org/?feed=rss2&#038;p=702</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>New C#: Exactly my point!</title>
+		<link>https://alex.ciobanu.org/?p=20</link>
+				<comments>https://alex.ciobanu.org/?p=20#respond</comments>
+				<pubDate>Sat, 08 Nov 2008 10:27:07 +0000</pubDate>
+		<dc:creator><![CDATA[Alexandru Ciobanu]]></dc:creator>
+				<category><![CDATA[Software Development]]></category>
+		<category><![CDATA[.net]]></category>
+		<category><![CDATA[c#]]></category>
+		<category><![CDATA[delphi]]></category>
+		<category><![CDATA[LinkedIn]]></category>
+
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=20</guid>
+				<description><![CDATA[I was debating some of the new flashy changes planned for new C# version with some of my colleagues &#8230; It seems no matter what Microsoft does it&#8217;s always considered as an in innovation in the field. Let&#8217;s... ]]></description>
+								<content:encoded><![CDATA[<p>I was debating some of the new flashy changes planned for new C# version with some of my colleagues &#8230; It seems no matter what Microsoft does it&#8217;s always considered as an in innovation in the field. Let&#8217;s check out the new proposed feature <em>&#8220;dynamic&#8221;</em>: Dynamic would allow you C# program to inter-operate with external scripts and much more. It&#8217;s marketed as the new big thing for C# and would allow for much greater flexibility.</p>
+<p>But wait! I think I&#8217;ve seen something like this before &#8230; way before 2008 &#8211; oh yeah it was mid-&#8217;90s when I&#8217;ve tried Delphi 5! The feature was called Variant. Delphi language included dynamic dispatching (in form of IDispatch) from the 3rd version. Since then It has evolved the feature to allow for much more complex use cases. And I think Delphi wasn&#8217;t even the first one to introduce such a concept directly into the language &#8211; it was VB (but I may be wrong on this one).</p>
+<p><em></em></p>
+<p>Oh, and now for the title of my post &#8211; <a title="Exactly my point!" href="http://blogs.codegear.com/abauer/2008/11/07/38879">Exactly my point!</a></p>
+]]></content:encoded>
+							<wfw:commentRss>https://alex.ciobanu.org/?feed=rss2&#038;p=20</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>Testing C# syntax</title>
+		<link>https://alex.ciobanu.org/?p=7</link>
+				<comments>https://alex.ciobanu.org/?p=7#respond</comments>
+				<pubDate>Sun, 22 Jun 2008 15:13:32 +0000</pubDate>
+		<dc:creator><![CDATA[Alexandru Ciobanu]]></dc:creator>
+				<category><![CDATA[Software Development]]></category>
+		<category><![CDATA[.net]]></category>
+		<category><![CDATA[c#]]></category>
+
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=7</guid>
+				<description><![CDATA[]]></description>
+								<content:encoded><![CDATA[<pre class="brush: csharp; title: ; notranslate">
+public int TestMethodA(Int32 testInt)
+{
+return testInt + 1;
+}
+</pre>
+]]></content:encoded>
+							<wfw:commentRss>https://alex.ciobanu.org/?feed=rss2&#038;p=7</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+	</channel>
+</rss>

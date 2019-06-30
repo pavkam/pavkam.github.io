@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>
+	Comments on: C++ Builder TypeInfo alternative.	</title>
+	<atom:link href="https://alex.ciobanu.org/?feed=rss2&#038;p=29" rel="self" type="application/rss+xml" />
+	<link>https://alex.ciobanu.org/?p=29</link>
+	<description>Yet Another Programming Blog</description>
+	<lastBuildDate>Sat, 10 Apr 2010 18:56:08 +0000</lastBuildDate>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
+			<item>
+				<title>
+				By: alex				</title>
+				<link>https://alex.ciobanu.org/?p=29&#038;cpage=1#comment-1271</link>
+		<dc:creator><![CDATA[alex]]></dc:creator>
+		<pubDate>Sat, 10 Apr 2010 18:56:08 +0000</pubDate>
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=29#comment-1271</guid>
+					<description><![CDATA[&lt;a href=&quot;#comment-1270&quot; rel=&quot;nofollow&quot;&gt;@Hanno &lt;/a&gt; 
+Yes. That would be the only correct and not that pleasant way.]]></description>
+		<content:encoded><![CDATA[<p><a href="#comment-1270" rel="nofollow">@Hanno </a><br />
+Yes. That would be the only correct and not that pleasant way.</p>
+]]></content:encoded>
+						</item>
+						<item>
+				<title>
+				By: Hanno				</title>
+				<link>https://alex.ciobanu.org/?p=29&#038;cpage=1#comment-1270</link>
+		<dc:creator><![CDATA[Hanno]]></dc:creator>
+		<pubDate>Sat, 10 Apr 2010 11:28:21 +0000</pubDate>
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=29#comment-1270</guid>
+					<description><![CDATA[&lt;a href=&quot;#comment-1267&quot; rel=&quot;nofollow&quot;&gt;@alex &lt;/a&gt; 
+So looks like for getting correct typeinfo of String and RawByteString in C++ is needed to create helper functions in PAS, like: 
+
+procedure GetTypeinfo_String: PTypeInfo;
+begin Result:=TypeInfo(String); end;]]></description>
+		<content:encoded><![CDATA[<p><a href="#comment-1267" rel="nofollow">@alex </a><br />
+So looks like for getting correct typeinfo of String and RawByteString in C++ is needed to create helper functions in PAS, like: </p>
+<p>procedure GetTypeinfo_String: PTypeInfo;<br />
+begin Result:=TypeInfo(String); end;</p>
+]]></content:encoded>
+						</item>
+						<item>
+				<title>
+				By: alex				</title>
+				<link>https://alex.ciobanu.org/?p=29&#038;cpage=1#comment-1267</link>
+		<dc:creator><![CDATA[alex]]></dc:creator>
+		<pubDate>Sat, 10 Apr 2010 00:06:57 +0000</pubDate>
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=29#comment-1267</guid>
+					<description><![CDATA[&lt;a href=&quot;#comment-1266&quot; rel=&quot;nofollow&quot;&gt;@Hanno &lt;/a&gt; 
+Unsafe and you will most likely get an AV since the RTTI info is stored in read-only section (along with the code AFAIK).
+
+Plus DataSnap and C++ right now are not friends at all at the moment I&#039;m afraid.]]></description>
+		<content:encoded><![CDATA[<p><a href="#comment-1266" rel="nofollow">@Hanno </a><br />
+Unsafe and you will most likely get an AV since the RTTI info is stored in read-only section (along with the code AFAIK).</p>
+<p>Plus DataSnap and C++ right now are not friends at all at the moment I&#8217;m afraid.</p>
+]]></content:encoded>
+						</item>
+						<item>
+				<title>
+				By: Hanno				</title>
+				<link>https://alex.ciobanu.org/?p=29&#038;cpage=1#comment-1266</link>
+		<dc:creator><![CDATA[Hanno]]></dc:creator>
+		<pubDate>Fri, 09 Apr 2010 22:41:09 +0000</pubDate>
+		<guid isPermaLink="false">http://alex.ciobanu.org/?p=29#comment-1266</guid>
+					<description><![CDATA[This solution gives little-bit different results, compared to Delhi TypeInfo.
+For example RawByteString gives typename &quot;AnsiString&quot; (&quot;RawByteString&quot; in Delphi), String becomes to &quot;UnicodeString&quot; (&quot;string&quot; in Delphi), enums . When I tried to use these typeinfos in DataSnap context (see http://cc.embarcadero.com/item/27643), I got errors etc about unsupported types. Maybe setting manually typename (pProp-&#062;PropType-&#062;Name = #T;) can help, but is this safe to do?]]></description>
+		<content:encoded><![CDATA[<p>This solution gives little-bit different results, compared to Delhi TypeInfo.<br />
+For example RawByteString gives typename &#8220;AnsiString&#8221; (&#8220;RawByteString&#8221; in Delphi), String becomes to &#8220;UnicodeString&#8221; (&#8220;string&#8221; in Delphi), enums . When I tried to use these typeinfos in DataSnap context (see <a href="http://cc.embarcadero.com/item/27643" rel="nofollow">http://cc.embarcadero.com/item/27643</a>), I got errors etc about unsupported types. Maybe setting manually typename (pProp-&gt;PropType-&gt;Name = #T;) can help, but is this safe to do?</p>
+]]></content:encoded>
+						</item>
+			</channel>
+</rss>
