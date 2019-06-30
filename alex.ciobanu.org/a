@@ -1,0 +1,13 @@
+#!/bin/bash
+
+for i in *.html; do 
+    TITLE=`sed -n 's/<h1 class="entry-title">\(.*\)<\/h1>/\1/p' $i | xargs`
+    DATE=`sed -n 's/<span class="entry-date">\(.*\)<\/span>.*/\1/p' $i | xargs`
+    if [ "$TITLE" != "" ] && [ "$DATE" != "" ]; then
+	FNAME=`echo "$TITLE" | tr "[:upper:]" "[:lower:]" | tr "[:blank:]" "-" | tr -d "[!,(,),:,+,$,?]"`
+	FNAME=`echo $FNAME | sed 's/\&#[0-9]*\;//g'`
+	FNAME="`date --date="$DATE" +%Y-%m-%d`-$FNAME.md"
+
+	printf "\n---\nlayout: post\ntitle: $TITLE\n---\n[Follow up archived post.](/alex.ciobanu.org/$i)" > ~/Development/pavkam.github.io/_posts/$FNAME
+    fi
+done
