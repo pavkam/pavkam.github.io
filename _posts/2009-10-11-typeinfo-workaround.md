@@ -1,2 +1,6 @@
 ---
-[Follow up archived post.](/alex.ciobanu.org/index5295.html)
+layout: post
+title: TypeInfo workaround
+image: /img/archive.png
+---
+This archived post was originally published on October 11, 2009. Read it [here](/alex.ciobanu.org/index5295.html).

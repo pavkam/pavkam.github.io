@@ -1,2 +1,6 @@
 ---
-[Follow up archived post.](/alex.ciobanu.org/index6c46.html)
+layout: post
+title: String reverse tests
+image: /img/archive.png
+---
+This archived post was originally published on November 23, 2008. Read it [here](/alex.ciobanu.org/index6c46.html).

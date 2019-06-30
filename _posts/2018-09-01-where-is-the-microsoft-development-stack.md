@@ -1,2 +1,6 @@
 ---
-[Follow up archived post.](/alex.ciobanu.org/index58a0.html)
+layout: post
+title: Where is the Microsoft development stack?
+image: /img/archive.png
+---
+This archived post was originally published on September 1, 2018. Read it [here](/alex.ciobanu.org/index58a0.html).

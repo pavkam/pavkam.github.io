@@ -1,2 +1,6 @@
 ---
-[Follow up archived post.](/alex.ciobanu.org/index3c55.html)
+layout: post
+title: That stupid garbage collector
+image: /img/archive.png
+---
+This archived post was originally published on November 16, 2008. Read it [here](/alex.ciobanu.org/index3c55.html).

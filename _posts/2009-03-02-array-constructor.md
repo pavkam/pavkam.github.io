@@ -1,2 +1,6 @@
 ---
-[Follow up archived post.](/alex.ciobanu.org/indexd52d.html)
+layout: post
+title: Array constructor
+image: /img/archive.png
+---
+This archived post was originally published on March 2, 2009. Read it [here](/alex.ciobanu.org/indexd52d.html).

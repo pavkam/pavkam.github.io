@@ -1,2 +1,6 @@
 ---
-[Follow up archived post.](/alex.ciobanu.org/index5a6a.html)
+layout: post
+title: More about enumerables
+image: /img/archive.png
+---
+This archived post was originally published on May 12, 2009. Read it [here](/alex.ciobanu.org/index5a6a.html).

@@ -1,2 +1,6 @@
 ---
-[Follow up archived post.](/alex.ciobanu.org/indexc4f7.html)
+layout: post
+title: Testing C# syntax
+image: /img/archive.png
+---
+This archived post was originally published on June 22, 2008. Read it [here](/alex.ciobanu.org/indexc4f7.html).

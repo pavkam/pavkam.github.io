@@ -1,2 +1,6 @@
 ---
-[Follow up archived post.](/alex.ciobanu.org/index198a.html)
+layout: post
+title: Parameter checking
+image: /img/archive.png
+---
+This archived post was originally published on February 27, 2009. Read it [here](/alex.ciobanu.org/index198a.html).

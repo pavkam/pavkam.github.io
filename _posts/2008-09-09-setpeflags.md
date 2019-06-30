@@ -1,2 +1,6 @@
 ---
-[Follow up archived post.](/alex.ciobanu.org/indexa1ca.html)
+layout: post
+title: $SetPEFlags
+image: /img/archive.png
+---
+This archived post was originally published on September 9, 2008. Read it [here](/alex.ciobanu.org/indexa1ca.html).

@@ -1,2 +1,6 @@
 ---
-[Follow up archived post.](/alex.ciobanu.org/index4580.html)
+layout: post
+title: Enumerating over a directory structure
+image: /img/archive.png
+---
+This archived post was originally published on June 12, 2009. Read it [here](/alex.ciobanu.org/index4580.html).
