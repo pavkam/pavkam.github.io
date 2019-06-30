@@ -7,7 +7,11 @@ for i in *.html; do
 	FNAME=`echo "$TITLE" | tr "[:upper:]" "[:lower:]" | tr "[:blank:]" "-" | tr -d "[!,(,),:,+,$,?]"`
 	FNAME=`echo $FNAME | sed 's/\&#[0-9]*\;//g'`
 	FNAME="`date --date="$DATE" +%Y-%m-%d`-$FNAME.md"
-
-	printf "\n---\nlayout: post\ntitle: $TITLE\n---\n[Follow up archived post.](/alex.ciobanu.org/$i)" > ~/Development/pavkam.github.io/_posts/$FNAME
+        FNAME=~/Development/pavkam.github.io/_posts/$FNAME
+	echo "---" > $FNAME
+	echo "layout: post" >> $FNAME
+        echo "title: $TITLE" >> $FNAME
+	echo "---" > $FNAME
+	echo "[Follow up archived post.](/alex.ciobanu.org/$i)" >> $FNAME
     fi
 done
