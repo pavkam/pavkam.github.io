@@ -1,7 +1,7 @@
 title: Thought Dumpster
 description: Yet Another Internet Blog
 navbar-links:
-  Archive: "/alex.ciobanu.org/index.html"
+  Archives: "/alex.ciobanu.org/index.html"
   About Me: "about"
 
 avatar: "/img/avatar.jpeg"
