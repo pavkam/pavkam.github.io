@@ -1,8 +1,10 @@
 title: Thought Dumpster
 description: Yet Another Internet Blog
 navbar-links:
-  Archives: "/alex.ciobanu.org/index.html"
   About Me: "about"
+  Tags: "/tags.html"
+  Feed: "/feed.xml"
+  Archive: "/alex.ciobanu.org/index.html"
 
 avatar: "/img/avatar.jpeg"
 navbar-col: "#353535"
@@ -17,14 +19,6 @@ hover-col: "#ff8800"
 footer-col: "#353535"
 footer-text-col: "#e8e8e8"
 footer-link-col: "#ffcc00"
-
-# Alternatively, the navbar, footer, and page background can be set to use background images
-# instead of colour
-
-# navbar-img: "/img/bgimage.png"
-# footer-img: "/img/bgimage.png"
-# page-img: "/img/bgimage.png"
-
 author:
   name: Alexandru Ciobanu
 social-network-links:
