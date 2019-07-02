@@ -2,8 +2,8 @@ title: Thought Dumpster
 description: Yet Another Internet Blog
 navbar-links:
   About Me: "about"
-  Tags: "/tags.html"
-  Feed: "/feed.xml"
+  Tags: "tags"
+  Feed: "feed"
   Archive: "/alex.ciobanu.org/index.html"
 
 avatar: "/img/avatar.jpeg"
