@@ -12,6 +12,6 @@ With the release of **TZDB 1.9** I have decided to give this project some more a
 
 My plan is to finish up 2.0 in the next month or so. Hopefully this will be stable enough that I don't have to touch the source code for a while (unless rebuilding the database).
 
-If you have any long standing issues or requests use https://github.com/pavkam/tzdb/issues to submit them. I will gladly consider any request and will prioritize accordingly.
+If you have any long standing issues or requests use [here](https://github.com/pavkam/tzdb/issues) to submit them. I will gladly consider any request and will prioritize accordingly.
 
 Cheers!
