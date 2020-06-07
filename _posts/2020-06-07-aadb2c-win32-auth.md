@@ -54,7 +54,7 @@ public sealed class AzureAdAuthentication
     private static readonly string ResetAuthority = ConfigurationManager.AppSettings[nameof(ResetAuthority)];
 
     // The collection of scopes you want to obtain through the flow. Example:
-    // openid https://charitydev01.onmicrosoft.com/back-office/user_impersonation
+    // openid https://{tenant}.onmicrosoft.com/back-office/user_impersonation
     [NotNull, ItemNotNull] private static readonly string[] Scopes =
         ConfigurationManager.AppSettings[nameof(Scopes)].Split(' ').ToArray();
 
