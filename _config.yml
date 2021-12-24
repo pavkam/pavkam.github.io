@@ -6,7 +6,7 @@ navbar-links:
   Feed: "feed"
   Archive: "/alex.ciobanu.org/index.html"
 
-avatar: "/img/avatar.jpeg"
+avatar: "/assets/mg/avatar.jpeg"
 round-avatar: true
 
 author: Alexandru Ciobanu
@@ -69,7 +69,6 @@ exclude:
   - Gemfile.lock
   - LICENSE
   - README.md
-  - screenshot.png
   - docs/
 plugins:
   - jekyll-paginate

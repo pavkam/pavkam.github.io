@@ -14,7 +14,7 @@ for i in *.html; do
 	echo "---" > $FNAME
 	echo "layout: post" >> $FNAME
         echo "title: $TITLE" >> $FNAME
-	echo "image: /img/archive.png" >> $FNAME
+	echo "image: /assets/img/archive.png" >> $FNAME
 	echo "---" >> $FNAME
 	echo "This archived post was originally published on $DATE. Read it [here](/alex.ciobanu.org/$i)." >> $FNAME
     fi
