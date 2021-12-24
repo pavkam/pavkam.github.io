@@ -6,7 +6,7 @@ navbar-links:
   Feed: "feed"
   Archive: "/alex.ciobanu.org/index.html"
 
-avatar: "/assets/mg/avatar.jpeg"
+avatar: "/assets/img/avatar.jpeg"
 round-avatar: true
 
 author: Alexandru Ciobanu
