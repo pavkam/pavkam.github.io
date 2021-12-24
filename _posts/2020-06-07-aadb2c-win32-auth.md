@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Authentication for Azure AD B2C for Windows Desktop Apps
-image: /img/aadb2c-windows.png
+image: /assets/img/aadb2c-windows.png
 tags: azure aad b2c microsoft
 ---
 In an effort to alleviate the pain I went through a few weeks ago while trying to setup a **Windows Desktop Application** (WinForms!) for other brave souls, I decided to put together this blog post.
