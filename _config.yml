@@ -7,20 +7,9 @@ navbar-links:
   Archive: "/alex.ciobanu.org/index.html"
 
 avatar: "/img/avatar.jpeg"
-navbar-col: "#353535"
-navbar-text-col: "#e8e8e8"
-navbar-children-col: "#353535"
-page-col: "#2a2a29"
-page-text-col: "#f0e7d5"
-page-header-text-col: "#e8e8e8"
-page-post-preview-col: "#808080"
-link-col: "#f4bf75"
-hover-col: "#ff8800"
-footer-col: "#353535"
-footer-text-col: "#e8e8e8"
-footer-link-col: "#ffcc00"
-author:
-  name: Alexandru Ciobanu
+round-avatar: true
+
+author: Alexandru Ciobanu
 social-network-links:
   rss: true
   email: "alex+git@ciobanu.org"
@@ -30,13 +19,28 @@ social-network-links:
   instagram: pavkam_
 share-links-active:
   twitter: true
-  facebook: true
   linkedin: true
-
-url-pretty: "pavkam.github.io"
+  url-pretty: "pavkam.github.io"
 google_analytics: "UA-143067975-1"
 excerpt_length: 50
+feed_show_excerpt: true
+feed_show_tags: true
+post_search: true
 title-separator: "-"
+
+navbar-col: "#353535"
+navbar-text-col: "#e8e8e8"
+navbar-children-col: "#353535"
+page-col: "#2a2a29"
+text-col: "#f0e7d5"
+link-col: "#f4bf75"
+hover-col: "#ff8800"
+footer-col: "#353535"
+footer-text-col: "#e8e8e8"
+footer-link-col: "#ffcc00"
+page-header-text-col: "#e8e8e8"
+page-post-preview-col: "#808080"
+
 timezone: "Europe/Dublin"
 markdown: kramdown
 highlighter: rouge
@@ -58,69 +62,15 @@ defaults:
       path: ""
     values:
       layout: "page"
-      show-avatar: true
-
-link-tags: true
 exclude:
   - CHANGELOG.md
   - CNAME
-  - Dockerfile
   - Gemfile
   - Gemfile.lock
   - LICENSE
   - README.md
-  - Vagrantfile
-prose:
-  rooturl: '_posts'
-  media: 'img'
-  ignore:
-    - 404.html
-    - LICENSE
-    - feed.xml
-    - _config.yml
-    - /_layouts
-    - /_includes
-    - /css
-    - /img
-    - /js
-    - /alex.ciobanu.org
-  metadata:
-    _posts:
-      - name: "layout"
-        field:
-          element: "hidden"
-          value: "post"
-      - name: "title"
-        field:
-          element: "text"
-          label: "Post title"
-          placeholder: "Title"
-          alterable: true
-      - name: "subtitle"
-        field:
-          element: "textarea"
-          label: "Subtitle"
-          placeholder: "A description of your post."
-          alterable: true
-      - name: "date"
-        field:
-          element: "text"
-          label: "Date"
-          help: "Enter date of post."
-          placeholder: "yyyy-mm-dd"
-          alterable: true
-      - name: "image"
-        field:
-          element: "text"
-          label: "Image"
-          help: "Add a thumbnail image to your post."
-          placeholder: "Thumbnail"
-          alterable: true
-      - name: "published"
-        field:
-          element: "checkbox"
-          label: "Publish"
-          help: "Check to publish post, uncheck to hide."
+  - screenshot.png
+  - docs/
 plugins:
   - jekyll-paginate
   - jekyll-sitemap
