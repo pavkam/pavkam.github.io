@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Decoding old-school SCR Images
-image: /assets/img/tzdb-auto.png
+image: /assets/img/es1841.jpg
 tags: nostalgia 8086 assembler python
 ---
 # A bit of history
