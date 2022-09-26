@@ -1,6 +1,6 @@
 ---
 layout: post
-title: [Rant] Actions ...
+title: (Rant) Actions ...
 image: /assets/img/archive.png
 tags: delphi
 ---

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Singleton' Azure Functions
+title: \'Singleton\' Azure Functions
 image: /assets/img/archive.png
 tags: azure csharp programming
 ---

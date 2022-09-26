@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'in' is dead, long live 'CharInSet' (or maybe not)
+title: \'in\' is dead, long live \'CharInSet\' (or maybe not)
 image: /assets/img/archive.png
 tags: delphi programming
 ---
