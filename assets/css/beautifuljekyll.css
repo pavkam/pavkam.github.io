@@ -105,6 +105,7 @@ img {
 }
 
 .linked-section {
+  font-size: 1.2rem;
   padding-top: 3.75rem;
   margin-top: -1.5625rem;
 }
@@ -599,18 +600,6 @@ footer .footer-custom-content {
 
 /* Tags page */
 
-.tag-btn {
-  margin: 0.3125rem;
-  background-color: transparent;
-  border-color: {{ site.link-col | default: "#008AFF" }};
-}
-
-.tag-btn:focus
-.tag-btn:hover {
-  background-color: transparent;
-  border-color: {{ site.hover-col | default: "#0085A1" }};
-}
-
 #full-tags-list {
   font-family: 'Roboto Mono', monospace;
 }
@@ -620,7 +609,7 @@ footer .footer-custom-content {
 }
 
 #full-tags-list .tag-entry a {
-  font-size: 1.25rem;
+  font-size: 1rem;
 }
 
 #full-tags-list .tag-entry .entry-date {
