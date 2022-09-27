@@ -3,7 +3,7 @@ description: Yet Another Internet Blog
 navbar-links:
   About Me: "about"
   Tags: "tags"
-  Feed: "feed"
+  Feed: "feed.xml"
   Archive: "/alex.ciobanu.org/index.html"
 
 avatar: "/assets/img/avatar.jpeg"
