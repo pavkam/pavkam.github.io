@@ -28,14 +28,14 @@ feed_show_tags: true
 post_search: true
 title-separator: "-"
 
-navbar-col: "#353535"
+navbar-col: "#1d1d1d"
 navbar-text-col: "#e8e8e8"
-navbar-children-col: "#353535"
-page-col: "#2a2a29"
+navbar-children-col: "#1d1d1d"
+page-col: "#0d0d0c"
 text-col: "#f0e7d5"
 link-col: "#f4bf75"
 hover-col: "#ff8800"
-footer-col: "#353535"
+footer-col: "#1d1d1d"
 footer-text-col: "#e8e8e8"
 footer-link-col: "#ffcc00"
 page-header-text-col: "#e8e8e8"
