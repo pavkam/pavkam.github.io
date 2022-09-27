@@ -39,6 +39,8 @@
   <meta name="keywords" content="{{ site.keywords }}">
   {% endif %}
 
+  <meta name="msapplication-TileColor" content="{{ site.mobile-theme-col }}">
+  
   {% if site.rss-description %}
   <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ '/feed.xml' | absolute_url }}">
   {% endif %}
@@ -137,6 +139,12 @@
   <meta name="twitter:image" content="{{ img | absolute_url }}">
   {% endif %}
 
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/ico/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/ico/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/ico/favicon-16x16.png">
+  <link rel="manifest" href="/assets/ico/site.webmanifest">
+  <link rel="mask-icon" href="/assets/ico/safari-pinned-tab.svg" color="{{ site.mobile-theme-col }}">
+  
   {% include matomo.html %}
 
   {% if page.comments and site.staticman.repository and site.staticman.branch %}
