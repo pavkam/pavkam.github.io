@@ -6,33 +6,33 @@ tags: nostalgia 8086 assembler python
 ---
 # A bit of history
 
-Back in the 80s, 90s and the first years of 2000s, my primary computing environment was a 1980s-era IBM 8086 clone produced in the USSR. This machine was known as ["ES-1841"](https://en.wikipedia.org/wiki/ES_PEVM). It had a whopping `640Kb` of memory, two `5inch` floppy drives and a small (can't remember the size) HDD.
+Back in the 80s, 90s and the first years of 2000s, my primary computing environment was a 1980s-era IBM 8086 clone produced in the USSR. This machine was known as ["ES-1841"](https://en.wikipedia.org/wiki/ES_PEVM). It had a whopping `640 Kb` of memory, two `5 inch` floppy drives and a small (can't remember the size) HDD.
 
-In 2002 I have finally have switched to a Pentium III machine with Windows 2000. I was lucky that the new machine had compatible connectors for the 5inch floppy drive. This allowed me to backup up most of the diskettes from my past. The result was a big ZIP archive that I have kept all these years.
+In the year 2002 I have finally switched to a **Pentium III** machine sporting **Windows 2000**. I was lucky that the new machine had compatible connectors for the `5 inch` floppy drive. This allowed me to backup up most of the diskettes from my past. The result was a fat ZIP archive that I kept all these years.
 
-Now, years later, nostalgia started to kick in and I was determined to restore my childhood environment using DOSBox (actually [DOSBox-X](https://dosbox-x.com/) since I needed more features that DOSBox could not handle.)
+Now, years later, nostalgia started to kick in and I was determined to restore my childhood environment using _DOSBox_ (actually [DOSBox-X](https://dosbox-x.com/) since I needed more features that _DOSBox_ could not handle.)
 
 One of the sub-projects of this effort was the ability to open and view images we had created in the past using graphical editors. Unfortunately, I could not find any off-the-shelf product that can open some of the formats I was interested in, the most common being `*.SCR`.
 
-So, I decided to create a application that will convert them to `*.BMP` myself. What follows is the story of this effort.
+So, I decided to create an application that will convert those files into `*.BMP`. What follows is the story of this effort.
 
 # Figuring out what they are
 
-In order to begin decoding these files, first, I needed to understand what was the format. To be honest, in _those days_, formats were quite simple. Usually, image files only stored the binary dump of the video memory in a file. Some of formats might have had a header but that was rare. I opened one of the files in a Hex viewer and that was the output:
+In order to begin decoding these files, first, I needed to understand what was their format. To be honest, in _those days_, formats were quite simple. Usually, image files only stored the binary dump of the video memory in a file. Some of formats might have had a header but that was rare. I opened one of the files in a Hex viewer and that was the output:
+
 ![Africa](/assets/img/scr-hex.png)
 
-From the first glance it looks bare -- no header. I have opened a few others and noticed that all of them are a bit different which confirmed my assumption that there was **no header**.
+At a first glance it looks bare -- no header. After opening a few other files it was noticed that all of them are a bit different, which confirmed my suspicion that they had **no header**.
 
-Another clue was important: the file sizes were all different. Which was either due to different image sizes or that contents were compressed somehow.
+Another clue was important - the file sizes were all different. This could only happen either due to different image sizes or due to contents being compressed somehow.
 
 # Lucky break
 
-While looking through mounds of Pascal and Assembler files written by me and my brother in the 90s, I had a lucky find, a tool called _"cg0toscr"_. Cool! Apparently That's something we had done. The `cg0toscr.pas` apparently uses a unit (module) called `PCISCR.PAS` which calls some functions inside a `PCISCR.ASM` object file.
+While looking through mounds of **Pascal** and **x86 Assembly** files written by me and my brother in the 1990s, I had a lucky find - a tool called `CG0TOSCR`. Cool! Apparently that's something we had done. The `CG0TOSCR.PAS` apparently uses a unit (module) called `PCISCR.PAS` which calls some functions inside a `PCISCR.ASM` (x86 assembly) object file.
 
-Opening `PCISCR.ASM` reveals a number of routines that are used for drawing on the screen and etc, and also a routine called `GenerateScr`. I believe that is the one:
+Opening `PCISCR.ASM` reveals a number of routines that are used for drawing on the screen and etc. Amongst those, there is a routine called `GenerateScr`:
 
-```assembler
-
+```nasm
 GenerateScr proc far
      push ds
      push es
@@ -134,10 +134,10 @@ genscr_8:
 GenerateScr endp
 ```
 
-It's even annotated with the Pascal code that was likely used to devise it. OK, we're onto something. So what do we in this function? Well, it looks like it is taking the contents of the video memory at `0xb800:0000` and does some manipulation on it and places the result into `BuffSegm:BuffOffs` segment/offset pair.
+Look at that, it is even annotated with the Pascal code-like comments that was likely used to create it. OK, we're onto something. So, what do we in this function? Well, it looks like it is taking the contents of the video memory at `0xb800:0000` and does some manipulation on it and places the result into `BuffSegm:BuffOffs` segment/offset pair.
 
 The code listed below gives us a further clue:
-```assembler
+```nasm
 genscr_2:
      mov ax,ds:[si+bx]       ;while (mem[$b800:count+i]=mem[$b800:count+i+1])
      cmp al,ah               ;
@@ -147,49 +147,65 @@ genscr_2:
      inc bx                  ;do inc(count);
      jmp genscr_2
 ```
-This looks like an [RLE encoder](https://en.wikipedia.org/wiki/Run-length_encoding). But it looks a bit weird that it compares to `79` and not `0x7F`. Looking at the code further, confirms this is an RLE encoder, albeit a bit weird.
+This looks like a piece of an [RLE encoder](https://en.wikipedia.org/wiki/Run-length_encoding). But it looks a bit weird that it compares to `79` decimal and not `0x7F` hex. Looking at the code further, confirms this is an RLE encoder, albeit a bit weird.
 
 # A refresher on RLE encoding
 
-RLE encoding is a very simple way of compressing data which has long strings of identical bytes. This was very common in image files. For instance, if you had a black horizontal like running from the start of the image to the end, then all the bytes would be `0x00`. For a resolution of `320x200` with `2bpp` that would mean that line would take `80 bytes`. So instead of saving 80 zeros into the file it would make sense to store a _control character_ followed by the number of repetitions and then by the byte that is repeated. For non-repeatable bytes, the encoder will use another _control character_, followed by the number of non-repeating bytes and then the bytes themselves.
+RLE encoding is a very simple way of compressing data which is likely to have long strings of identical bytes. This was very common in image files back in the days. For instance, if you had an image with a black horizontal like running from the start of the image to the end, then all the bytes would be `0x00`. For a resolution of `320x200` with `2 bpp` that would mean the line would be `80 bytes` long. So instead of saving `80 zeros` into the file it would make sense to compress them. RLE would see one store a _control character_ followed by the _number of repetitions_ and then by the _byte that is repeated_. For non-repeatable bytes, RLE would use another _control character_, followed by the _number of non-repeating bytes_ and then the _bytes_ themselves.
 
 ```
   # For example, if we had 0x0000000000000000 value, we could encode it as follows:
   0x01 0x08 0x00
+  ^    ^    ^
+  |    |    +----- The repeated byte.
+  |    +---------- The number of repetitions.
+  +--------------- The control character
 
   # Or in case of non-repeating sequence of 0x0001020304050607:
-  0x00 0x08 0x01 0x020304050607
+  0x00 0x08 0x010x020304050607
+  ^    ^    ^
+  |    |    +---- The bytes as they are.
+  |    +--------- The number of bytes.
+  +-------------- The control character.
 ```
 
 Note that I chose `0x00` as control character for encoding repeating sequences and `0x01` for non-repeating.
 
-We can actually optimize this further and same more bytes by combining the _escape character_ and the number of bytes into one byte. We will designate the most significant bit as _escape bit_ and the remaining 7 bits as the count:
+We can actually optimize this further and save some bytes by combining the _escape character_ and the number of (repeating) bytes into one single byte. We will designate  `8th bit` as _escape bit_ and the remaining `7 bits` as the count:
 
 ```
   # For example, if we had 0x0000000000000000 value, we could encode it as follows:
   0x88 0x00
+  ^    ^
+  |    +--------- The repeated byte.
+  +-------------- The control bit + number of repetitions.
 
   # Or in case of non-repeating sequence of 0x0001020304050607:
   0x08 0x020304050607
+  ^    ^
+  |    +--------- The bytes.
+  +-------------- The control bit + number of bytes.
 ```
 
 Note that `0x88` is `10001000` in binary. If we clear the most significant bit we're left with `0x08` which the count of bytes that need to be repeated.
 
-This is the encoding used by the `GenerateScr` routine. It also means that we can at most encode 127 bytes per _control bit_.
+This is the encoding used by the `GenerateScr` routine. It also means that we can at most encode `127 bytes` per at a time.
 
 # A refresher into CGA
 
-The "beloved" [CGA](https://en.wikipedia.org/wiki/Color_Graphics_Adapter) was the one used in my old machine and it influenced a lot the format of the images themselves. The adapter would use two pages of dedicated video memory. One was located at `0xb800:0000` and the other at `0xba00:0000`. There are two graphical modes we care about: `320x200` at `2bpp` (four colors) and `640x200` at 1bpp (black and white). Both modes will use exactly `(320 * 200) / 4 = 16000` or `640 * 200 = 16000` bytes. 
+The "_beloved_" [CGA](https://en.wikipedia.org/wiki/Color_Graphics_Adapter) was the one used in my old machine and it influenced a lot the format of the images themselves. The adapter used two pages of dedicated video memory. One was located at `0xb800:0000` and the other at `0xba00:0000`. Both were `8000 bytes` long. 
 
-A complication comes from the fact that CGA did interlacing of rows. That means that row 0 is at `0xb800:0000` and row 1 is at `0xba00:0000` followed by row 2 at `0xb800:0050` and row 3 at `0xba00:0050`, up to row 199. Each row is basically a horizontal line.
+There were two graphical modes we care about: `320x200` at `2 bpp` (four colors), and `640x200` at `1 bpp` (black and white). Both modes used exactly `(320 * 200) / 4 = 16000` or `640 * 200 = 16000` bytes. 
 
-Looking at `GenerateScr`, it becomes clear that the RLE encoder goes through the first page at  `0xb800:0000` and then starts encoding the second page at `0xba00:0000`, though it seems to accidentally include more bytes at the end of each page for repeating sequences. Those bytes are just garbage and we will need to make sure we account for that in the decoder.
+The primary complication came from the fact that CGA did row interlacing. What that meant in practice is that `row 0` was located at `0xb800:0000` and `row 1` was at `0xba00:0000` followed by `row 2` at `0xb800:0050` and `row 3` at `0xba00:0050`, up to `row 199`. Each row was basically a horizontal line on the screen consisting of `80 bytes`.
 
-Another observation that needs pointing out is that we do not know what resolution and what color palette was chosen when saving those images into the files. That will need adjusting as we try to convert the images to Bitmap format. More in that later.
+Looking at `GenerateScr`, it becomes clear that the RLE encoder goes through the first page at  `0xb800:0000` and then starts encoding the second page at `0xba00:0000`, though it seems to **accidentally** include more bytes at the end of each page for repeating sequences. Those bytes are just garbage and we will need to make sure we account for that in the decoder.
+
+Another observation that needs pointing out is that we do not know what resolution and what color palette was used when saving those images into the files. That will need adjusting as we try to convert the images to Bitmap format. But more on that later...
 
 # Python time!
 
-I have chosen **Python** for the decoder because it's **easy**. It already has all the libraries I need and it's akin to an "swiss army knife". Also, I don't need performance for this decoder.
+I have chosen **Python** for the decoder because it's **easy**. It already has all the libraries I need and it's akin to an "_swiss army knife_". Also, I don't need performance for this decoder.
 
 The process itself can be structured into 4 steps:
 1. Load the file contents into a `bytearray`,
@@ -212,8 +228,7 @@ def _get_bytes(in_file: str) -> bytes:
 
 ## Decoding the buffer:
 
-Once we have the bytes loaded, we now can decode the `iuput` using the following function:
-
+Once we have the bytes loaded, we can now decode the `input` using the following function:
 ```python
 def _pad_buffer(b: bytearray, size: int):
     rem=size-len(b)
@@ -256,15 +271,21 @@ def _expand_2p_rle(input: bytes) -> Tuple[bytearray, bytearray]:
     return pages
 ```
 
-You can see above, that we start with the first `page` from `pages` and read the command byte. Then we check if the most significant bit is `1`. If that is true, then the next byte in the `input` will be repeated `count` times. The `count` is simply the last `7` bits of the command byte. If the command byte's most significant bit it `0` then we need to read `count` bytes from the `input` as they are and copy them into the `page`. If the command byte is `0x00` then we store it as it is into the `page`. This process is repeated until we reach `8000` bytes. Note that last command will encode some garbage leftover bytes from the `0xb800` segment which we need to discard. After that we continue to the second page.
+You can see above, that:
+1. We start with the first `page` from `pages` and read the command byte. 
+2. Then we check if the most significant bit is `1`. If that is true, then the next byte in the `input` will be repeated `count` times. The `count` is simply the last `7` bits of the command byte. 
+3. If the command byte's most significant bit it `0` then we need to read `count` bytes from the `input` as they are and copy them into the `page`. 
+4. If the command byte is `0x00` then we store it as it is into the `page`. 
+5. This process is repeated until we reach `8000 bytes`. Note that last command will encode some garbage leftover bytes from the `0xb800` segment which we need to discard. 
+6. After that we continue to the second page.
 
-There are some issues in the original encoder so we sometimes need to pad the pages with `0x00` up to `8000` bytes.
+There are some issues in the original encoder so we sometimes need to pad the pages with `0x00` up to `8000 bytes`.
 
 The result of this decoding are two pages which need to be interleaved during rendering.
 
 ## Resolution and palettes
 
-Rendering is highly dependent on the chosen CGA mode. For `320x200` we will need to consider each byte consisting of `4` pixels. Each pixel is represented by `2` bits, amounting to `4` colors per pixel. CGA also has `6` palettes that can be chosen for this vide mode. Each palette attributes different colors values for the same bit combinations. For `640x200`, though, each pixel takes `1` bit, which means that each byte will sport `8` pixels. That also means that there are only two colors per pixel - black and white.
+Rendering is highly dependent on the chosen CGA mode. For `320x200` we will need to consider each byte consisting of `4 pixels`. Each pixel is represented by `2 bits`, amounting to `4 colors per pixel`. CGA also has `6 palettes` that can be chosen for this vide mode. Each palette attributes different colors values for the same bit combinations. For `640x200`, though, each pixel takes `1 bit`, which means that each byte will sport `8 pixels`. That also means that there are only two colors per pixel - black and white.
 
 To encode these choices, I have created a bunch of `dicts`:
 ``` python
@@ -378,7 +399,7 @@ CGA_modes={
 }
 ```
 
-This information is based on the (Wikipedia)[https://en.wikipedia.org/wiki/Color_Graphics_Adapter#320%C3%97200] article.
+This information is based on the [Wikipedia](https://en.wikipedia.org/wiki/Color_Graphics_Adapter#320%C3%97200) article.
 
 ## Rendering
 
@@ -408,7 +429,7 @@ def _render(pages: Tuple[bytes, bytes], width: int, height: int, bpp: int, color
     return output
 ```
 
-Woof! There's a lot of bit manipulation going on here. The short version is:
+**Woof!** That's a lot of bit manipulation going on here, but the short version is:
 1. Load each byte from each page,
 2. Divide the byte into pixels based on the `bpp`,
 3. Figure out the row and column for each pixel in the output,
@@ -442,3 +463,5 @@ Finally we can show the image we were trying to decode:
 ![Africa](/assets/img/scr-africa.bmp)
 
 Now that's some art! Wouldn't you agree? Totally worth the time.
+
+### Cheerios!
