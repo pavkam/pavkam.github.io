@@ -18,9 +18,9 @@ So let's explore these two topics in a bit of detail.
 
 I believe there are a few reasons why this topic keeps re-appearing in all discussion threads. The most likely one though is _"forced optimism"_. It is hard to believe that people don't feel anxious about these massive shifts -- after all, it's human nature to feel anxiety towards change (of any kind). It becomes easier to tell oneself _"I will adapt, it will be good for me. I have control."_ We, humans, tend to overestimate how much control we have in any given situation, and this is a perfect example.
 
-On the other hand, there is a clear underestimation of the force and speed of the changes. There have been numerous charts regarding exponential growth and linear thinking, but here's a reminder (courtesy of ![Singularity Hub](https://singularityhub.com/2016/04/05/how-to-think-exponentially-and-better-predict-the-future/)):
+On the other hand, there is a clear underestimation of the force and speed of the changes. There have been numerous charts regarding exponential growth and linear thinking, but here's a reminder (courtesy of [Singularity Hub](https://singularityhub.com/2016/04/05/how-to-think-exponentially-and-better-predict-the-future/)):
 
-![Exponential Growth](/assets/images/linear-vs-exponential-comic.jpg)
+![Exponential Growth](/assets/img/linear-vs-exponential-comic.jpg)
 
 I think most people are betting that _"next ChatGPT"_ will only be a **bit better** than the current version, and not **much better**. At this moment I cannot say which way things will go, but I will bet myself that it's going to be **much better**.
 
@@ -32,7 +32,7 @@ I must reiterate that I am not interested in the very short-term future (1 to 2 
 
 Here's an obligatory meme that I find best relays the message:
 
-![AI will replace you](/assets/images/took-my-job.jpg)
+![AI will replace you](/assets/img/took-my-job.jpg)
 
 ## Prompt engineering is the future
 
