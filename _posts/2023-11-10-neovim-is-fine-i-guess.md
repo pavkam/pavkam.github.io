@@ -128,7 +128,7 @@ Around `September 2023` I can finally say that the moment was reached where I wa
 
 The last couple of months from I was able to exclusively use `neovim` for work which is a big achievement.
 
-A side note: *I am very annoyed about inconsistencies. Small things like differently cased key descriptions would drive me crazy. Consistency gives me peace of mind.*
+Here you can find my current `neovim` config: [.dotfiles](https://github.com/pavkam/dotfiles/tree/main/.config/nvim)
 
 **Here's a couple of self-indulgent screenshots:**
 
@@ -207,5 +207,7 @@ Additionally, the beautiful icons require one to have [Nerd Fonts](https://www.n
 So, in a sense, a beautiful `neovim` is not really possible unless one uses complicated software that can render all those elements correctly. So why bother with terminal? Why not render directly as GUI? Well, there's an app for that too - [Neovide](https://neovide.dev/).
 
 And finally let's all thank Microsoft for their [LSP](https://microsoft.github.io/language-server-protocol/) and [DAP](https://microsoft.github.io/debug-adapter-protocol//) protocols used in `Visual Studio Code` that made all these cool features in `neovim` possible. In a sense, modern `neovim` is only possible because `Visual Studio Code` is popular.
+
+Once again, my `neovim` config for the curious mind is [here](https://github.com/pavkam/dotfiles/tree/main/.config/nvim)
 
 **Take that internet!**
