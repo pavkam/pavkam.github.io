@@ -19,7 +19,7 @@ social-network-links:
   instagram: pavkam_
   mastodon: "mastodon.social/@pavkam"
 share-links-active:
-  twitter: true
+  mastodon: true
   linkedin: true
   url-pretty: "pavkam.github.io"
 google_analytics: "UA-143067975-1"
