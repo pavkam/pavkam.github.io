@@ -1,4 +1,3 @@
-
 ---
 layout: post
 title: "They Can't Wait to Fire You"
