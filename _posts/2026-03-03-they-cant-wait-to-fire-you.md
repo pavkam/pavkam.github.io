@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "They Can't Wait to Fire You"
-thumbnail-img: /assets/img/cant-wait-to-fire-you.png
+image: /assets/img/cant-wait-to-fire-you.png
 tags: opinion ai tech elites society
 ---
 
