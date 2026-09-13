@@ -22,12 +22,8 @@ social-network-links:
   email: "alex+git@ciobanu.org"
   github: pavkam
   linkedin: ciobanua
-  stackoverflow: "8291909/pavkam"
-  instagram: pavkam_
-  mastodon: "mastodon.social/@pavkam"
   twitter: pavkamftw
 share-links-active:
-  mastodon: true
   linkedin: true
 
 # Was nested under share-links-active, so site.url-pretty resolved to nil.
