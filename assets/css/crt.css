@@ -467,6 +467,9 @@ a:hover { color: var(--green); }
 }
 
 .boot__logo {
+  position: relative;
+  display: inline-block;
+  max-width: 100%;
   font-family: var(--font-glyph);
   font-size: 0.85rem;
   line-height: 1;
@@ -474,7 +477,50 @@ a:hover { color: var(--green); }
   color: var(--green);
   text-shadow: var(--glow-strong);
   margin: 0 0 1.8rem;
-  overflow-x: auto;
+}
+
+/* Hard raster lines cut through the wordmark - heavier and tighter than the
+   global tube overlay, so the title reads as its own lit display element.
+   The lines are near-black, which means they only register where they cross a
+   glyph and stay invisible against the panel behind it. */
+.boot__logo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0,
+    rgba(0, 0, 0, 0) 2px,
+    rgba(0, 8, 2, 0.8) 2px,
+    rgba(0, 8, 2, 0.8) 4px
+  );
+}
+
+/* A roll bar drifting down the wordmark, like a tube that has lost vertical
+   hold. Darkening rather than brightening keeps it invisible over the
+   background and only dims the glyphs as it passes. */
+.boot__logo::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 38%;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 8, 2, 0) 0%,
+    rgba(0, 8, 2, 0.55) 50%,
+    rgba(0, 8, 2, 0) 100%
+  );
+  animation: logo-roll 4.5s linear infinite;
+}
+
+@keyframes logo-roll {
+  0%   { top: -40%; }
+  100% { top: 100%; }
 }
 
 .boot__title {
@@ -1145,7 +1191,9 @@ body.amber-mode {
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .crt-scanlines::after, .crt-flicker, .caret::after, .led { animation: none; }
+  .crt-scanlines::after, .crt-flicker, .caret::after, .led,
+  .boot__logo::before { animation: none; }
+  .boot__logo::before { display: none; }
   .crt-flicker { opacity: 0.1; }
   .crt-power { display: none; }
   .pager__btn, .catalog__link { transition: none; }
