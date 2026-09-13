@@ -1,11 +1,18 @@
 {% if site.post_search %}
+<div class="overlay" id="search-overlay" hidden>
+  <div class="overlay__frame">
+    <span class="panel__tab">QUERY</span>
 
-<div id="beautifuljekyll-search-overlay">
+    <button class="overlay__exit" type="button" id="nav-search-exit" title="Close (ESC)">ESC</button>
 
-  <div id="nav-search-exit" title="Exit search">✕</div>
-  <input type="text" id="nav-search-input" placeholder="Search">
-  <ul id="search-results-container"></ul>
-  
+    <label class="overlay__promptline" for="nav-search-input">
+      <span class="overlay__prompt">&gt;</span>
+      <input type="text" id="nav-search-input" placeholder="type to search_" autocomplete="off" spellcheck="false">
+    </label>
+
+    <ul class="filelist" id="search-results-container"></ul>
+  </div>
+
   <script src="https://unpkg.com/simple-jekyll-search@latest/dest/simple-jekyll-search.min.js"></script>
   <script>
     var searchjson = '[ \
@@ -14,7 +21,7 @@
           "title"    : "{% if post.title != "" %}{{ post.title | strip_html | escape }}{% else %}{{ post.excerpt | strip_html | escape | strip }}{%endif%}", \
           "category" : "{{ post.tags | join: \', \' }}", \
           "url"      : "{{ site.baseurl }}{{ post.url }}", \
-          "date"     : "{{ post.date | date: "%B %e, %Y" | default: "January 1, 1970" }}" \
+          "date"     : "{{ post.date | date: "%Y.%m.%d" | default: "1970.01.01" }}" \
         }, \
       {% endfor %} \
       {% for page in site.html_pages %}{% if page.title != "{title}" and page.title != "404 - Page not found" %} \
@@ -22,18 +29,19 @@
           "title"    : "{% if page.title != "" %}{{ page.title | strip_html | escape }}{% else %}{{ page.excerpt | strip_html | escape | strip }}{% endif %}", \
           "category" : "{% if page.tags %}{{ page.tags | join: \', \' }}{% else %}page{% endif %}", \
           "url"      : "{{ site.baseurl }}{{ page.url }}", \
-          "date"     : "{{ page.date | date: '%B %e, %Y' | default: "January 1, 1970" }}" \
+          "date"     : "{{ page.date | date: '%Y.%m.%d' | default: "1970.01.01" }}" \
         }{% unless forloop.last %},{% endunless %} \
       {% endif %}{% endfor %} \
     ]';
     searchjson = JSON.parse(searchjson);
 
-    var sjs = SimpleJekyllSearch({
+    SimpleJekyllSearch({
       searchInput: document.getElementById('nav-search-input'),
       resultsContainer: document.getElementById('search-results-container'),
-      json: searchjson
+      json: searchjson,
+      searchResultTemplate: '<li class="filelist__row"><a class="filelist__link" href="{url}"><time class="filelist__date">{date}</time><span class="filelist__name">{title}</span></a></li>',
+      noResultsText: '<li class="filelist__row filelist__row--empty">NO MATCHING SECTORS</li>'
     });
   </script>
 </div>
-
 {% endif %}

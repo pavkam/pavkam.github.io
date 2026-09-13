@@ -1,0 +1,24 @@
+{%- comment -%} End-of-screen system panel: contact channels and signature. {%- endcomment -%}
+
+<section class="panel panel--system">
+  <span class="panel__tab">SYSTEM</span>
+
+  <div class="sysgrid">
+    <div class="sysgrid__block">
+      <h2 class="sysgrid__label">CHANNELS</h2>
+      {% include social-networks-links.html %}
+    </div>
+
+    <div class="sysgrid__block">
+      <h2 class="sysgrid__label">OPERATOR</h2>
+      <p class="sysgrid__val">{{ site.author | default: "UNKNOWN" }}</p>
+      <p class="sysgrid__val sysgrid__val--dim">{{ site.time | date: '%Y' }}{% if site.url-pretty %} &middot; <a href="{% if site.url-canonical %}{{ site.url-canonical }}{% else %}{{ '/' | relative_url }}{% endif %}">{{ site.url-pretty }}</a>{% endif %}</p>
+    </div>
+  </div>
+
+  {% if page.footer-extra %}
+    <div class="sysgrid__extra">
+      {% for file in page.footer-extra %}{% include {{ file }} %}{% endfor %}
+    </div>
+  {% endif %}
+</section>

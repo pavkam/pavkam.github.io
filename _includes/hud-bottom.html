@@ -1,0 +1,15 @@
+{%- comment -%} Bottom HUD: key hints on the left, machine signature on the right. {%- endcomment -%}
+
+<footer class="hud hud--bottom">
+  <span class="hint"><b>1-9</b>JUMP</span>
+  <span class="hint"><b>/</b>SEARCH</span>
+  <span class="hint"><b>ESC</b>CLOSE</span>
+  <span class="hint hint--wide"><b>&uarr;&darr;</b>SCROLL</span>
+
+  <span class="hud__spacer"></span>
+
+  <span class="hint hint--sig">
+    {%- if site.author %}{{ site.author | upcase }}{% endif -%}
+    {%- if site.url-pretty %} &middot; {{ site.url-pretty | upcase }}{% endif -%}
+  </span>
+</footer>

@@ -1,0 +1,56 @@
+{%- comment -%}
+  Top HUD: the machine's identity strip plus a numbered console menu.
+  Menu entries are keyed 1..9 and are reachable by pressing that number.
+{%- endcomment -%}
+
+<header class="hud hud--top">
+
+  <div class="hud__ident">
+    {%- if site.title-img -%}
+      <a class="hud__brand hud__brand--logo" href="{{ '/' | relative_url }}">
+        <img alt="{{ site.title }}" src="{{ site.title-img | relative_url }}">
+      </a>
+    {%- else -%}
+      <a class="hud__brand" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+    {%- endif -%}
+
+    <div class="hud__readouts" aria-hidden="true">
+      <span class="readout"><b>SYS</b><span class="readout__val">ONLINE</span></span>
+      <span class="readout"><b>CLK</b><span class="readout__val" id="hud-clock">--:--:--</span></span>
+      <span class="readout readout--led"><span class="led"></span>PWR</span>
+    </div>
+
+    <button class="hud__toggle" type="button" id="menu-toggle"
+            aria-expanded="false" aria-controls="hud-menu" aria-label="Toggle menu">MENU</button>
+  </div>
+
+  <nav class="hud__menu" id="hud-menu">
+    <a class="mi" href="{{ '/' | relative_url }}" data-key="1"><span class="mi__key">1</span><span class="mi__label">HOME</span></a>
+
+    {%- assign slot = 1 -%}
+    {%- for link in site.navbar-links -%}
+      {%- assign slot = slot | plus: 1 -%}
+      {%- if link[1].first -%}
+        <span class="mi mi--group">
+          <span class="mi__key">{{ slot }}</span><span class="mi__label">{{ link[0] }}</span>
+          <span class="mi__sub">
+            {%- for childlink in link[1] -%}
+              {%- for parts in childlink -%}
+                <a href="{{ parts[1] | relative_url }}">{{ parts[0] }}</a>
+              {%- endfor -%}
+            {%- endfor -%}
+          </span>
+        </span>
+      {%- else -%}
+        <a class="mi" href="{{ link[1] | relative_url }}" data-key="{{ slot }}"><span class="mi__key">{{ slot }}</span><span class="mi__label">{{ link[0] }}</span></a>
+      {%- endif -%}
+    {%- endfor -%}
+
+    {%- if site.post_search -%}
+      <button class="mi mi--search" type="button" id="nav-search-link">
+        <span class="mi__key">/</span><span class="mi__label">SEARCH</span>
+      </button>
+    {%- endif -%}
+  </nav>
+
+</header>

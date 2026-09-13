@@ -1,5 +1,12 @@
 title: Thought Dumpster
 description: Yet Another Internet Blog
+
+# Required by absolute_url: without it the RSS feed, canonical tag
+# and og: images all render as domain-less paths.
+url: "https://pavkam.dev"
+
+# Presence of this also enables the <link rel="alternate"> feed autodiscovery.
+rss-description: "Yet Another Internet Blog"
 navbar-links:
   About Me: "about"
   Tags: "tags"
@@ -7,7 +14,7 @@ navbar-links:
   Archive: "/alex.ciobanu.org/index.html"
 
 avatar: "/assets/img/avatar.jpeg"
-round-avatar: true
+round-avatar: false
 
 author: Alexandru Ciobanu
 social-network-links:
@@ -22,26 +29,30 @@ social-network-links:
 share-links-active:
   mastodon: true
   linkedin: true
-  url-pretty: "pavkam.github.io"
+
+# Was nested under share-links-active, so site.url-pretty resolved to nil.
+url-pretty: "pavkam.dev"
 google_analytics: "UA-143067975-1"
 excerpt_length: 50
 feed_show_excerpt: true
 feed_show_tags: true
 post_search: true
+link-tags: true
 title-separator: "-"
 
-navbar-col: "#1d1d1d"
-navbar-text-col: "#e8e8e8"
-navbar-children-col: "#1d1d1d"
-page-col: "#0d0d0c"
-text-col: "#f0e7d5"
-link-col: "#f4bf75"
-hover-col: "#ff8800"
-footer-col: "#1d1d1d"
-footer-text-col: "#e8e8e8"
-footer-link-col: "#3d3516"
-page-header-text-col: "#e8e8e8"
-page-post-preview-col: "#808080"
+# --- 8-bit console palette -------------------------------------------------
+# Every colour in assets/css/crt.css resolves from these. Retune here.
+crt-bg: "#000a02"        # tube black, faint green cast
+crt-panel: "#031207"     # raised panel fill
+crt-green: "#33ff66"     # primary phosphor
+crt-green-hi: "#ccffdb"  # hot phosphor / headings
+crt-green-mid: "#19b347" # secondary text
+crt-green-dim: "#0d7a33" # meta, labels
+crt-line: "#0a4d22"      # rules, borders, pixel shadows
+crt-amber: "#ffb000"     # sparing accent (string literals, warnings)
+
+# Browser chrome / PWA colour
+mobile-theme-col: "#000a02"
 
 timezone: "Europe/Dublin"
 markdown: kramdown

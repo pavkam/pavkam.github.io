@@ -12,6 +12,15 @@ gem "jekyll", "~> 4.2.2"
 gem "minima", "~> 2.5"
 gem "webrick"
 
+# Stdlib gems unbundled in Ruby 3.4+/4.x - needed for local `bundle exec jekyll` only.
+# GitHub Pages builds this site with its own (legacy) toolchain and ignores this file.
+gem "csv"
+gem "base64"
+gem "bigdecimal"
+gem "logger"
+gem "ostruct"
+
+
 # If you want to use GitHub Pages, remove the "gem "jekyll"" above and
 # uncomment the line below. To upgrade, run `bundle update github-pages`.
 # gem "github-pages", group: :jekyll_plugins

@@ -1,0 +1,64 @@
+{%- comment -%}
+  Screen header panel. `type` is "post" or "page".
+  Renders the title as a framed console panel with a label/value readout grid
+  instead of the usual blog masthead.
+{%- endcomment -%}
+
+{%- assign date_format = site.date_format | default: "%Y.%m.%d" -%}
+
+{%- if page.cover-img -%}
+<div id="header-big-imgs" data-num-img={% if page.cover-img.first %}{{ page.cover-img.size }}{% else %}1{% endif %}
+  {%- for bigimg in page.cover-img -%}
+    {%- assign imgnum = forloop.index -%}
+    {%- for imginfo in bigimg %}
+      {% if imginfo[0] %}data-img-src-{{ imgnum }}="{{ imginfo[0] | absolute_url }}" data-img-desc-{{ imgnum }}="{{ imginfo[1] }}"
+      {% else %}data-img-src-{{ imgnum }}="{{ imginfo | absolute_url }}"{% endif %}
+    {%- endfor -%}
+  {%- endfor -%}
+></div>
+
+<div class="cover">
+  <div class="cover__img"></div>
+  <span class="cover__desc img-desc"></span>
+</div>
+{%- endif -%}
+
+<header class="panel panel--header">
+  <span class="panel__tab">{% if include.type == "post" %}ENTRY{% else %}PAGE{% endif %}</span>
+
+  <h1 class="panel__title">{% if page.title %}{{ page.title | strip_html }}{% else %}UNTITLED{% endif %}<span class="caret"></span></h1>
+
+  {%- if page.subtitle %}
+    <p class="panel__sub">{{ page.subtitle | strip_html }}</p>
+  {%- endif %}
+
+  <dl class="readout-grid">
+    {%- if include.type == "post" %}
+      <div class="readout-grid__pair">
+        <dt>DATE</dt><dd>{{ page.date | date: date_format }}</dd>
+      </div>
+      {%- if page.last-updated %}
+      <div class="readout-grid__pair">
+        <dt>UPDATED</dt><dd>{{ page.last-updated | date: date_format }}</dd>
+      </div>
+      {%- endif %}
+      <div class="readout-grid__pair">
+        <dt>LENGTH</dt><dd>{% include readtime.html %}</dd>
+      </div>
+      {%- if page.tags.size > 0 %}
+      <div class="readout-grid__pair readout-grid__pair--wide">
+        <dt>TAGS</dt>
+        <dd class="taglist">
+          {%- for tag in page.tags -%}
+            <a class="tag" href="{{ '/tags' | relative_url }}#{{- tag -}}">{{- tag -}}</a>
+          {%- endfor -%}
+        </dd>
+      </div>
+      {%- endif %}
+    {%- else %}
+      <div class="readout-grid__pair">
+        <dt>STATUS</dt><dd>READY</dd>
+      </div>
+    {%- endif %}
+  </dl>
+</header>

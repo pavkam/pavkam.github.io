@@ -1,11 +1,25 @@
 ---
-layout: default
+layout: base
 title: 404 - Page not found
 permalink: /404.html
 ---
 
-<div class="text-center">
-  <h1>404</h1>
-  <br/>
-  <img src="{{ 'assets/img/404.jpg' | relative_url }}" alt="Not found" />
-</div>
+<section class="panel panel--error">
+  <span class="panel__tab">FAULT</span>
+
+  <pre class="error__code" aria-hidden="true">
+ _  _  ___  _  _
+| || |/ _ \| || |
+| __ | (_) |__  _|
+|_||_|\___/   |_|</pre>
+
+  <h1 class="error__title">SIGNAL LOST</h1>
+
+  <dl class="readout-grid">
+    <div class="readout-grid__pair"><dt>CODE</dt><dd>404</dd></div>
+    <div class="readout-grid__pair"><dt>CAUSE</dt><dd class="bad">SECTOR NOT FOUND</dd></div>
+    <div class="readout-grid__pair readout-grid__pair--wide"><dt>ACTION</dt><dd><a href="{{ '/' | relative_url }}">RETURN TO MAIN MENU</a></dd></div>
+  </dl>
+
+  <img class="error__img" src="{{ 'assets/img/404.jpg' | relative_url }}" alt="Not found">
+</section>

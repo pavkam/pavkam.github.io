@@ -1,39 +1,44 @@
 ---
-layout: page
+layout: base
 title: 'Tag Index'
+subtitle: 'Every label in the archive'
 ---
 
-{% assign date_format = site.date_format | default: "%B %-d, %Y" %}
+{% assign date_format = site.date_format | default: "%Y.%m.%d" %}
 
 {%- capture site_tags -%}
-    {%- for tag in site.tags -%}
-        {{- tag | first -}}{%- unless forloop.last -%},{%- endunless -%}
-    {%- endfor -%}
+  {%- for tag in site.tags -%}{{- tag | first -}}{%- unless forloop.last -%},{%- endunless -%}{%- endfor -%}
 {%- endcapture -%}
-{%- assign tags_list = site_tags | split:',' | sort -%}
+{%- assign tags_list = site_tags | split: ',' | sort -%}
+
+{% include screen-header.html type="page" %}
 
 {% if tags_list.size > 0 %}
-<div class="blog-tags">
+<section class="panel panel--matrix">
+  <span class="panel__tab">INDEX</span>
+  <div class="taglist taglist--matrix">
     {%- for tag in tags_list -%}
-    <a href="#{{- tag -}}"><i class="fas fa-tag" aria-hidden="true"></i>&nbsp;{{- tag -}}&nbsp;({{site.tags[tag].size}})</a>
+      <a class="tag" href="#{{- tag -}}">{{- tag -}}<span class="tag__count">{{ site.tags[tag].size }}</span></a>
     {%- endfor -%}
-</div>
+  </div>
+</section>
 {% endif %}
 
-<div id="full-tags-list">
+<div class="tagsections">
 {%- for tag in tags_list -%}
-    <h2 id="{{- tag -}}" class="linked-section">
-        <i class="fas fa-tag" aria-hidden="true"></i>&nbsp;{{- tag -}}&nbsp;({{site.tags[tag].size}})
-    </h2>
-    <div class="post-list">
-        {%- for post in site.tags[tag] -%}
-            <div class="tag-entry">
-                <a href="{{ post.url | relative_url }}">{{- post.title | strip_html -}}</a>
-                <div class="entry-date">
-                    <time datetime="{{- post.date | date_to_xmlschema -}}">{{- post.date | date: date_format -}}</time>
-                </div>
-            </div>
-        {%- endfor -%}
-    </div>
+  <section class="tagsection" id="{{- tag -}}">
+    <h2 class="screen__title"><span class="screen__title-mark">&gt;&gt;</span> {{ tag }} <span class="screen__title-count">[{{ site.tags[tag].size }}]</span></h2>
+
+    <ol class="filelist">
+      {%- for post in site.tags[tag] -%}
+        <li class="filelist__row">
+          <a class="filelist__link" href="{{ post.url | relative_url }}">
+            <time class="filelist__date" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: date_format }}</time>
+            <span class="filelist__name">{{ post.title | strip_html }}</span>
+          </a>
+        </li>
+      {%- endfor -%}
+    </ol>
+  </section>
 {%- endfor -%}
 </div>

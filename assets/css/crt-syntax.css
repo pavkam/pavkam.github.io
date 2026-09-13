@@ -1,0 +1,105 @@
+---
+layout: null
+---
+
+/* ==========================================================================
+   Rouge syntax highlighting — monochrome green phosphor.
+   Hierarchy is carried by brightness (as on a real mono monitor), with amber
+   reserved for literals so strings stay scannable.
+   ========================================================================== */
+
+.highlight, .highlight pre { background: #000; color: #19b347; }
+
+/* Comments — dimmest, italic */
+.highlight .c,
+.highlight .ch,
+.highlight .cd,
+.highlight .cm,
+.highlight .c1,
+.highlight .cs,
+.highlight .cp,
+.highlight .cpf { color: #0d7a33; font-style: italic; }
+
+/* Keywords — brightest, the "hot" phosphor */
+.highlight .k,
+.highlight .kc,
+.highlight .kd,
+.highlight .kn,
+.highlight .kp,
+.highlight .kr,
+.highlight .kt,
+.highlight .kv { color: #ccffdb; font-weight: bold; }
+
+/* Operators & punctuation — mid */
+.highlight .o,
+.highlight .ow { color: #7dffa4; }
+.highlight .p,
+.highlight .pi { color: #19b347; }
+
+/* Names */
+.highlight .n   { color: #33ff66; }
+.highlight .na  { color: #7dffa4; }
+.highlight .nb  { color: #ccffdb; }
+.highlight .bp  { color: #ccffdb; }
+.highlight .nc  { color: #a8ffc2; font-weight: bold; }
+.highlight .no  { color: #ffb000; }
+.highlight .nd  { color: #7dffa4; font-style: italic; }
+.highlight .ni  { color: #7dffa4; }
+.highlight .ne  { color: #a8ffc2; font-weight: bold; }
+.highlight .nf,
+.highlight .fm  { color: #a8ffc2; }
+.highlight .nl  { color: #7dffa4; }
+.highlight .nn  { color: #33ff66; }
+.highlight .nt  { color: #ccffdb; font-weight: bold; }
+.highlight .nv,
+.highlight .vc,
+.highlight .vg,
+.highlight .vi,
+.highlight .vm  { color: #33ff66; }
+.highlight .py  { color: #7dffa4; }
+
+/* Literals — amber, the one deliberate break from green */
+.highlight .s,
+.highlight .sa,
+.highlight .sb,
+.highlight .sc,
+.highlight .dl,
+.highlight .sd,
+.highlight .s2,
+.highlight .se,
+.highlight .sh,
+.highlight .si,
+.highlight .sx,
+.highlight .sr,
+.highlight .s1,
+.highlight .ss { color: #ffb000; }
+
+.highlight .m,
+.highlight .mb,
+.highlight .mf,
+.highlight .mh,
+.highlight .mi,
+.highlight .il,
+.highlight .mo,
+.highlight .mx { color: #ffcf66; }
+
+/* Errors */
+.highlight .err { color: #ff6b6b; background: rgba(255, 77, 77, 0.12); }
+.highlight .gr  { color: #ff6b6b; }
+
+/* Generic / diff */
+.highlight .gd { color: #ff8080; background: rgba(255, 77, 77, 0.10); }
+.highlight .gi { color: #ccffdb; background: rgba(51, 255, 102, 0.12); }
+.highlight .gh { color: #ccffdb; font-weight: bold; }
+.highlight .gu { color: #7dffa4; font-weight: bold; }
+.highlight .ge { font-style: italic; }
+.highlight .gs { font-weight: bold; }
+.highlight .gp { color: #0d7a33; }
+.highlight .go { color: #19b347; }
+.highlight .gt { color: #ff6b6b; }
+.highlight .gl { text-decoration: underline; }
+
+/* Whitespace / line numbers */
+.highlight .w  { color: #0a4d22; }
+.highlight .gutter,
+.highlight .lineno { color: #0a4d22; }
